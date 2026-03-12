@@ -115,7 +115,7 @@
     <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
         <div class="layout-container flex h-full grow flex-col">
 
-            <!-- Navigation Bar -->
+            <!-- Navigation Bar atas -->
             <nav class="sticky top-0 z-50 glass-effect px-6 md:px-20 lg:px-40 py-4">
                 <div class="max-w-7xl mx-auto flex items-center justify-between">
                     <div class="flex items-center gap-10">
