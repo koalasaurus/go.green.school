@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>About & Programs - Go Green School</title>
+    <title>About - Go Green School</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -14,10 +14,19 @@
                 extend: {
                     colors: {
                         "primary": "#10b981",
+                        "primary-light": "#34d399",
+                        "primary-dark": "#059669",
                         "forest": "#064e3b",
+                        "forest-light": "#065f46",
                         "sage": "#f0fdf4",
+                        "mint": "#d1fae5",
                         "background-light": "#f8faf9",
                         "background-dark": "#022c22",
+                        "accent-amber": "#f59e0b",
+                        "accent-blue": "#3b82f6",
+                        "accent-violet": "#8b5cf6",
+                        "accent-rose": "#f43f5e",
+                        "accent-teal": "#14b8a6",
                     },
                     fontFamily: {
                         "display": ["Lexend", "sans-serif"]
@@ -33,10 +42,43 @@
         }
     </script>
     <style>
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(6, 78, 59, 0.05);
+        localStorage.setItem('ggs_lang', lang || 'en');
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes floatLeaf {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-18px) rotate(8deg); }
+            50% { transform: translateY(-8px) rotate(-5deg); }
+            75% { transform: translateY(-22px) rotate(3deg); }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.3); }
+            50% { box-shadow: 0 0 30px 10px rgba(16, 185, 129, 0.15); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .fade-up {
@@ -44,20 +86,244 @@
             transform: translateY(30px);
             transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
-
         .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+        .fade-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .fade-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .fade-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .fade-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.85);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stagger-children.visible > * {
+            animation: fadeSlideUp 500ms ease-out forwards;
+        }
+        .stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+        .stagger-children > *:nth-child(2) { animation-delay: 120ms; }
+        .stagger-children > *:nth-child(3) { animation-delay: 240ms; }
+        .stagger-children > *:nth-child(4) { animation-delay: 360ms; }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(6, 78, 59, 0.06);
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        .glass-effect.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 30px rgba(6, 78, 59, 0.08);
+        }
+
+        .floating-leaf {
+            animation: floatLeaf 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .floating-leaf:nth-child(2) { animation-delay: -2s; animation-duration: 7s; }
+        .floating-leaf:nth-child(3) { animation-delay: -4s; animation-duration: 8s; }
+
+        .pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
+        .spin-slow { animation: spinSlow 20s linear infinite; }
+
+        .dot-pattern {
+            background-image: radial-gradient(circle, rgba(16, 185, 129, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .gradient-border { position: relative; }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            padding: 2px;
+            background: linear-gradient(135deg, #10b981, #064e3b, #10b981);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gradient-border:hover::before { opacity: 1; }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-overlay {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .mobile-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .scroll-top-btn {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+        }
+        .scroll-top-btn.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .wave-divider { position: relative; overflow: hidden; }
+        .wave-divider::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30 C300 60 600 0 900 30 C1050 45 1150 20 1200 30 L1200 60 L0 60Z' fill='%23f8faf9'/%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+        }
+
+        .quote-card::before {
+            content: '\201C';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 80px;
+            font-family: Georgia, serif;
+            color: rgba(16, 185, 129, 0.12);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .step-badge {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #064e3b);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 14px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
         }
 
         .program-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         .program-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 20px 40px -12px rgba(16, 185, 129, 0.15);
         }
+
+        /* Enhanced UI Effects */
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981 0%, #064e3b 40%, #14b8a6 60%, #10b981 100%);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 6s ease-in-out infinite;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .mesh-gradient {
+            background:
+                radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+        }
+
+        .nav-gradient-line { position: relative; }
+        .nav-gradient-line::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #10b981 20%, #3b82f6 50%, #8b5cf6 80%, transparent 100%);
+            opacity: 0.3;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 25px 50px -12px rgba(16, 185, 129, 0.15);
+        }
+
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.2), 0 0 60px rgba(16, 185, 129, 0.1);
+        }
+
+        .section-divider {
+            height: 6px;
+            background: linear-gradient(90deg, transparent, #10b981, #3b82f6, #8b5cf6, transparent);
+            opacity: 0.15;
+            border-radius: 3px;
+            margin: 0 auto;
+            max-width: 200px;
+        }
+
+        /* Smooth section background gradient transitions */
+        .bg-section-sage-30 {
+            background: linear-gradient(to bottom, #f8faf9 0%, rgba(240, 253, 244, 0.3) 12%, rgba(240, 253, 244, 0.3) 88%, #f8faf9 100%);
+        }
+        .bg-section-sage-50 {
+            background: linear-gradient(to bottom, #f8faf9 0%, rgba(240, 253, 244, 0.5) 12%, rgba(240, 253, 244, 0.5) 88%, #f8faf9 100%);
+        }
+
+        @keyframes floatParticle {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+            25% { transform: translate(10px, -20px) scale(1.1); opacity: 0.8; }
+            50% { transform: translate(-5px, -35px) scale(0.9); opacity: 0.4; }
+            75% { transform: translate(15px, -15px) scale(1.05); opacity: 0.7; }
+        }
+        .float-particle {
+            animation: floatParticle 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f8faf9; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #10b981, #064e3b); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #059669; }
     </style>
 </head>
 <body class="bg-background-light font-display text-forest selection:bg-primary/30">
@@ -65,7 +331,7 @@
         <div class="layout-container flex h-full grow flex-col">
 
             <!-- Navigation Bar -->
-            <nav class="sticky top-0 z-50 glass-effect px-6 md:px-20 lg:px-40 py-4">
+            <nav class="sticky top-0 z-50 glass-effect nav-gradient-line px-6 md:px-20 lg:px-40 py-4">
                 <div class="max-w-7xl mx-auto flex items-center justify-between">
                     <div class="flex items-center gap-10">
                         <a class="flex items-center gap-2 group" href="/">
@@ -76,7 +342,8 @@
                         </a>
                         <div class="hidden lg:flex items-center gap-8">
                             <a class="text-forest/70 hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/" data-i18n="nav_home">Home</a>
-                            <a class="text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/about" data-i18n="nav_about">About & Programs</a>
+                            <a class="text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/about" data-i18n="nav_about">About</a>
+                            <a class="text-forest/70 hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/program" data-i18n="nav_program">Program</a>
                             <a class="text-forest/70 hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/contact" data-i18n="nav_contact">Contact</a>
                             <a class="text-forest/70 hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/kalkulator" data-i18n="nav_calculator">Calculator</a>
                         </div>
@@ -90,9 +357,52 @@
                             <span class="material-symbols-outlined text-lg">home</span>
                             <span data-i18n="nav_back_home">Back to Home</span>
                         </a>
+                        <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center size-10 rounded-xl hover:bg-forest/5 transition-colors">
+                            <span class="material-symbols-outlined text-2xl text-forest">menu</span>
+                        </button>
                     </div>
                 </div>
             </nav>
+            <!-- Mobile Menu Overlay -->
+            <div id="mobile-overlay" class="mobile-overlay fixed inset-0 bg-black/50 z-[60]"></div>
+            <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-72 bg-white z-[70] shadow-2xl p-8 flex flex-col">
+                <div class="flex items-center justify-between mb-10">
+                    <h3 class="text-forest text-lg font-extrabold">Menu</h3>
+                    <button id="mobile-menu-close" class="size-10 flex items-center justify-center rounded-xl hover:bg-forest/5 transition-colors">
+                        <span class="material-symbols-outlined text-2xl text-forest">close</span>
+                    </button>
+                </div>
+                <div class="flex flex-col gap-6">
+                    <a class="text-forest hover:text-primary text-base font-semibold transition-colors flex items-center gap-3" href="/">
+                        <span class="material-symbols-outlined text-primary">home</span> <span data-i18n="nav_home">Home</span>
+                    </a>
+                    <a class="text-forest hover:text-primary text-base font-semibold transition-colors flex items-center gap-3" href="/about">
+                        <span class="material-symbols-outlined text-primary">info</span> <span data-i18n="nav_about">About</span>
+                    </a>
+                    <a class="text-forest hover:text-primary text-base font-semibold transition-colors flex items-center gap-3" href="/program">
+                        <span class="material-symbols-outlined text-primary">eco</span> <span data-i18n="nav_program">Program</span>
+                    </a>
+                    <a class="text-forest hover:text-primary text-base font-semibold transition-colors flex items-center gap-3" href="/contact">
+                        <span class="material-symbols-outlined text-primary">mail</span> <span data-i18n="nav_contact">Contact</span>
+                    </a>
+                    <a class="text-forest hover:text-primary text-base font-semibold transition-colors flex items-center gap-3" href="/kalkulator">
+                        <span class="material-symbols-outlined text-primary">calculate</span> <span data-i18n="nav_calculator">Calculator</span>
+                    </a>
+                </div>
+                <div class="mt-auto">
+                    <a href="/" class="flex items-center justify-center gap-2 bg-primary hover:bg-forest text-white w-full py-3 rounded-xl text-sm font-bold shadow-lg transition-all">
+                        <span class="material-symbols-outlined text-lg">home</span>
+                        <span data-i18n="nav_back_home">Back to Home</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Floating Leaf Decorations -->
+            <div class="floating-leaf fixed top-32 left-8 text-4xl opacity-20 z-10">🍃</div>
+            <div class="floating-leaf fixed top-96 right-12 text-3xl opacity-15 z-10">🌿</div>
+            <div class="floating-leaf fixed bottom-40 left-16 text-2xl opacity-10 z-10">🌱</div>
+            <div class="float-particle fixed top-[30%] right-[18%] w-3 h-3 bg-primary/20 rounded-full z-10" style="animation-delay: -2s;"></div>
+            <div class="float-particle fixed top-[60%] left-[22%] w-2 h-2 bg-accent-blue/20 rounded-full z-10" style="animation-delay: -5s; animation-duration: 10s;"></div>
 
             <main class="flex flex-col flex-1">
 
@@ -100,14 +410,20 @@
                 <section class="relative px-4 md:px-20 lg:px-40 pt-16 pb-12">
                     <div class="absolute -top-20 -left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl -z-10"></div>
                     <div class="absolute top-20 right-0 w-96 h-96 bg-forest/5 rounded-full blur-3xl -z-10"></div>
+                    <div class="absolute inset-0 mesh-gradient -z-10"></div>
+                    <!-- Top fade from page background -->
+                    <div class="absolute inset-x-0 top-0 h-40 pointer-events-none" style="background: linear-gradient(to bottom, #f8faf9 0%, transparent 100%); z-index: -1;"></div>
                     <div class="max-w-7xl mx-auto text-center">
                         <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
                             <span class="material-symbols-outlined text-base">info</span>
-                            <span data-i18n="about_badge">About Us & Our Programs</span>
+                            <span data-i18n="about_badge">About Us</span>
                         </div>
-                        <h1 class="text-forest text-4xl md:text-6xl font-black tracking-tight leading-[1.1] mb-4" data-i18n="about_title">About Go Green School</h1>
+                        <h1 class="text-forest text-4xl md:text-6xl font-black tracking-tight leading-[1.1] mb-4"><span data-i18n="about_title_prefix">About</span> <span class="gradient-text">Go Green School</span></h1>
                         <p class="text-forest/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed" data-i18n="about_subtitle">Educating the next generation to care for our planet through innovative green programs and sustainable practices.</p>
+                        <div class="section-divider mt-8"></div>
                     </div>
+                    <!-- Bottom fade into page background -->
+                    <div class="absolute inset-x-0 bottom-0 h-32 pointer-events-none" style="background: linear-gradient(to bottom, transparent 0%, #f8faf9 100%); z-index: -1;"></div>
                 </section>
 
                 <!-- About Section -->
@@ -118,15 +434,19 @@
                                 <span class="text-primary font-bold tracking-widest uppercase text-xs" data-i18n="about_who_label">Who We Are</span>
                                 <h2 class="text-forest text-3xl md:text-4xl font-black tracking-tight mt-3 mb-6" data-i18n="about_who_title">Our Story</h2>
                                 <div class="space-y-4 text-forest/60 text-base leading-relaxed">
-                                    <p data-i18n="about_who_p1">Go Green School is an educational initiative dedicated to integrating environmental awareness into the school curriculum. We believe that the future of our planet lies in the hands of today's students.</p>
-                                    <p data-i18n="about_who_p2">Founded with the vision of creating environmentally conscious leaders, our school combines academic excellence with hands-on sustainability programs that make a real difference.</p>
-                                    <p data-i18n="about_who_p3">Through our comprehensive approach, students learn not just about environmental issues, but actively participate in solutions — from waste management to green energy projects.</p>
+                                    <p data-i18n="about_who_p1">Go Green School Web is an educational website that provides information about waste management and environmental programs at school. This website has several features such as the Home page which contains a brief explanation of the program, the About page which explains the goals and vision, the Program page which discusses organic, inorganic, and hazardous (B3) waste management, as well as 3R Education, Gallery, News, and Contact features.</p>
+                                    <p data-i18n="about_who_p2">Through this website, students and teachers can learn and practice environmentally friendly habits to create a clean and green school. A Go Green School is a school that cares about the environment and encourages students to protect nature. One important activity is waste management, which helps reduce pollution and keeps the school environment clean and healthy.</p>
+                                    <p data-i18n="about_who_p3">Waste management usually begins with separating waste. Organic waste includes food scraps, leaves, and natural materials that can be processed into compost. Inorganic waste such as plastic bottles, paper, and cans can be collected and recycled. Hazardous waste (B3) is collected and safely processed.</p>
+                                    <p data-i18n="about_who_p4">In conclusion, waste management is an important part of a Go Green School program. By separating, recycling, and reusing waste, schools can reduce pollution and create a cleaner and greener environment for everyone.</p>
                                 </div>
                             </div>
                             <div class="relative">
-                                <div class="rounded-2xl overflow-hidden shadow-2xl shadow-forest/10">
-                                    <div class="bg-gradient-to-br from-primary/20 to-forest/10 h-80 flex items-center justify-center">
-                                        <span class="material-symbols-outlined text-primary/30" style="font-size: 120px;">eco</span>
+                                <div class="rounded-2xl overflow-hidden shadow-2xl shadow-forest/10 hover-glow transition-all duration-500">
+                                    <div class="bg-gradient-to-br from-primary/20 via-accent-teal/10 to-forest/10 h-80 flex items-center justify-center relative">
+                                        <div class="absolute inset-0 mesh-gradient"></div>
+                                        <div class="absolute top-4 right-4 w-20 h-20 border-2 border-primary/10 rounded-full animate-spin" style="animation-duration: 20s;"></div>
+                                        <div class="absolute bottom-6 left-6 w-12 h-12 border border-accent-blue/10 rounded-lg animate-spin" style="animation-duration: 15s; animation-direction: reverse;"></div>
+                                        <span class="material-symbols-outlined text-primary/30 relative z-10" style="font-size: 120px;">eco</span>
                                     </div>
                                 </div>
                                 <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-6 border border-forest/5">
@@ -145,12 +465,30 @@
                     </div>
                 </section>
 
+                <!-- Website Information Section -->
+                <section class="px-4 md:px-20 lg:px-40 py-14">
+                    <div class="max-w-5xl mx-auto">
+                        <div class="fade-up bg-white rounded-3xl shadow-xl shadow-forest/5 border border-forest/10 p-8 md:p-10">
+                            <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-5">
+                                <span class="material-symbols-outlined text-base">description</span>
+                                <span data-i18n="website_info_badge">Website Overview</span>
+                            </div>
+                            <h3 class="text-forest text-2xl md:text-3xl font-black tracking-tight mb-4" data-i18n="website_info_title">Information about the website</h3>
+                            <p class="text-forest/60 text-base leading-relaxed mb-5" data-i18n="website_info_support_1">This summary helps students, teachers, and parents quickly understand the main purpose and features of Go Green School Web.</p>
+                            <p class="text-forest/70 text-base leading-relaxed whitespace-pre-line" data-i18n="website_info_main">Information about the website:
+Go Green School Web is an educational website that provides information about waste management and environmental programs at school. This website has several features such as the Home page which contains a brief explanation of the program, the About page which explains the goals and vision, the Program page which discusses organic, inorganic, and hazardous (B3) waste management, as well as 3R Education, Gallery, News, and Contact features. The website also consists of a header, navigation menu, main content section, and footer. Through this website, students and teachers can learn and practice environmentally friendly habits to create a clean and green school.</p>
+                            <p class="text-forest/60 text-sm leading-relaxed mt-5" data-i18n="website_info_support_2">Together, we continue building a school culture that is sustainable, responsible, and inspiring for future generations.</p>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Vision & Mission -->
-                <section class="px-4 md:px-20 lg:px-40 py-16 bg-sage/50">
+                <section class="px-4 md:px-20 lg:px-40 py-16 bg-section-sage-50">
                     <div class="max-w-7xl mx-auto">
                         <div class="fade-up grid grid-cols-1 md:grid-cols-2 gap-10">
                             <!-- Vision -->
-                            <div class="bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 p-8">
+                            <div class="bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 p-8 hover-glow transition-all duration-500 hover:-translate-y-1 relative overflow-hidden">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent-teal"></div>
                                 <div class="flex items-center gap-3 mb-6">
                                     <div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center">
                                         <span class="material-symbols-outlined text-primary text-2xl">visibility</span>
@@ -160,7 +498,8 @@
                                 <p class="text-forest/60 leading-relaxed" data-i18n="about_vision_desc">To become a leading educational institution that produces environmentally conscious leaders who are committed to sustainability and innovation for a greener future.</p>
                             </div>
                             <!-- Mission -->
-                            <div class="bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 p-8">
+                            <div class="bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 p-8 hover-glow transition-all duration-500 hover:-translate-y-1 relative overflow-hidden">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-blue to-accent-violet"></div>
                                 <div class="flex items-center gap-3 mb-6">
                                     <div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center">
                                         <span class="material-symbols-outlined text-primary text-2xl">flag</span>
@@ -190,107 +529,14 @@
                     </div>
                 </section>
 
-                <!-- Programs Section -->
-                <section class="px-4 md:px-20 lg:px-40 py-20">
-                    <div class="max-w-7xl mx-auto">
-                        <div class="fade-up text-center mb-16">
-                            <span class="text-primary font-bold tracking-widest uppercase text-xs" data-i18n="programs_label">What We Do</span>
-                            <h2 class="text-forest text-3xl md:text-5xl font-black tracking-tight mt-3" data-i18n="programs_title">Our Programs</h2>
-                            <p class="text-forest/60 text-lg max-w-2xl mx-auto mt-4 leading-relaxed" data-i18n="programs_subtitle">Discover our comprehensive green programs designed to make a real environmental impact.</p>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            <!-- Program 1 -->
-                            <div class="fade-up program-card bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 p-8">
-                                <div class="size-14 rounded-2xl bg-green-100 flex items-center justify-center mb-6">
-                                    <span class="material-symbols-outlined text-green-600 text-3xl">recycling</span>
-                                </div>
-                                <h3 class="text-forest font-bold text-xl mb-3" data-i18n="program_1_title">Waste Management</h3>
-                                <p class="text-forest/60 text-sm leading-relaxed" data-i18n="program_1_desc">Learn to sort, reduce, and recycle waste effectively. Students actively manage school waste through hands-on sorting and composting activities.</p>
-                            </div>
-
-                            <!-- Program 2 -->
-                            <div class="fade-up program-card bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 p-8">
-                                <div class="size-14 rounded-2xl bg-emerald-100 flex items-center justify-center mb-6">
-                                    <span class="material-symbols-outlined text-emerald-600 text-3xl">park</span>
-                                </div>
-                                <h3 class="text-forest font-bold text-xl mb-3" data-i18n="program_2_title">Green Garden</h3>
-                                <p class="text-forest/60 text-sm leading-relaxed" data-i18n="program_2_desc">Our school garden program teaches students about organic farming, biodiversity, and sustainable agriculture practices.</p>
-                            </div>
-
-                            <!-- Program 3 -->
-                            <div class="fade-up program-card bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 p-8">
-                                <div class="size-14 rounded-2xl bg-teal-100 flex items-center justify-center mb-6">
-                                    <span class="material-symbols-outlined text-teal-600 text-3xl">water_drop</span>
-                                </div>
-                                <h3 class="text-forest font-bold text-xl mb-3" data-i18n="program_3_title">Water Conservation</h3>
-                                <p class="text-forest/60 text-sm leading-relaxed" data-i18n="program_3_desc">Students learn about water conservation techniques including rainwater harvesting, water recycling, and responsible water usage.</p>
-                            </div>
-
-                            <!-- Program 4 -->
-                            <div class="fade-up program-card bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 p-8">
-                                <div class="size-14 rounded-2xl bg-lime-100 flex items-center justify-center mb-6">
-                                    <span class="material-symbols-outlined text-lime-600 text-3xl">solar_power</span>
-                                </div>
-                                <h3 class="text-forest font-bold text-xl mb-3" data-i18n="program_4_title">Green Energy</h3>
-                                <p class="text-forest/60 text-sm leading-relaxed" data-i18n="program_4_desc">Explore renewable energy sources through solar panel projects, energy audits, and learning about sustainable energy solutions.</p>
-                            </div>
-
-                            <!-- Program 5 -->
-                            <div class="fade-up program-card bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 p-8">
-                                <div class="size-14 rounded-2xl bg-cyan-100 flex items-center justify-center mb-6">
-                                    <span class="material-symbols-outlined text-cyan-600 text-3xl">groups</span>
-                                </div>
-                                <h3 class="text-forest font-bold text-xl mb-3" data-i18n="program_5_title">Eco Ambassador</h3>
-                                <p class="text-forest/60 text-sm leading-relaxed" data-i18n="program_5_desc">Students become environmental ambassadors, leading campaigns and community outreach programs to spread green awareness.</p>
-                            </div>
-
-                            <!-- Program 6 -->
-                            <div class="fade-up program-card bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 p-8">
-                                <div class="size-14 rounded-2xl bg-amber-100 flex items-center justify-center mb-6">
-                                    <span class="material-symbols-outlined text-amber-600 text-3xl">calculate</span>
-                                </div>
-                                <h3 class="text-forest font-bold text-xl mb-3" data-i18n="program_6_title">Waste Calculator</h3>
-                                <p class="text-forest/60 text-sm leading-relaxed" data-i18n="program_6_desc">Use our mathematical waste calculator to analyze and predict school waste production with precision and data-driven insights.</p>
-                                <a href="/kalkulator" class="inline-flex items-center gap-1 text-primary text-sm font-bold mt-4 hover:gap-2 transition-all">
-                                    <span data-i18n="program_6_link">Try Calculator</span>
-                                    <span class="material-symbols-outlined text-base">arrow_forward</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Stats Section -->
-                <section class="px-4 md:px-20 lg:px-40 py-16 bg-forest text-white">
-                    <div class="max-w-7xl mx-auto">
-                        <div class="fade-up grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                            <div>
-                                <p class="text-4xl md:text-5xl font-black text-primary">500+</p>
-                                <p class="text-white/60 text-sm mt-2 font-medium" data-i18n="stat_students">Students Enrolled</p>
-                            </div>
-                            <div>
-                                <p class="text-4xl md:text-5xl font-black text-primary">10+</p>
-                                <p class="text-white/60 text-sm mt-2 font-medium" data-i18n="stat_programs">Green Programs</p>
-                            </div>
-                            <div>
-                                <p class="text-4xl md:text-5xl font-black text-primary">200kg</p>
-                                <p class="text-white/60 text-sm mt-2 font-medium" data-i18n="stat_recycled">Waste Recycled</p>
-                            </div>
-                            <div>
-                                <p class="text-4xl md:text-5xl font-black text-primary">50+</p>
-                                <p class="text-white/60 text-sm mt-2 font-medium" data-i18n="stat_partners">Community Partners</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
                 <!-- CTA Section -->
                 <section class="px-4 md:px-20 lg:px-40 py-20">
                     <div class="max-w-7xl mx-auto">
                         <div class="fade-up bg-gradient-to-br from-primary to-forest rounded-3xl p-12 md:p-16 text-center text-white relative overflow-hidden">
                             <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
                             <div class="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-white/5 rounded-full"></div>
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] border border-white/5 rounded-full"></div>
                             <div class="relative z-10">
                                 <h2 class="text-3xl md:text-4xl font-black mb-4" data-i18n="cta_title">Ready to Join Us?</h2>
                                 <p class="text-white/80 text-lg max-w-xl mx-auto mb-8" data-i18n="cta_desc">Be part of the green revolution in education. Together, we can create a sustainable future for the next generation.</p>
@@ -311,8 +557,15 @@
 
             </main>
 
+            <!-- Wave Divider -->
+            <div class="relative">
+                <svg class="w-full h-16 text-forest" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 30 C300 60 600 0 900 30 C1050 45 1150 20 1200 30 L1200 60 L0 60Z" fill="currentColor"/>
+                </svg>
+            </div>
+
             <!-- Footer -->
-            <footer class="bg-forest text-sage py-20 px-4 md:px-20 lg:px-40 border-t border-white/5">
+            <footer class="bg-forest text-sage py-20 px-4 md:px-20 lg:px-40">
                 <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-16">
                     <div class="space-y-6 lg:col-span-1">
                         <div class="flex items-center gap-2">
@@ -341,7 +594,8 @@
                             <h5 class="text-white font-bold text-sm uppercase tracking-widest" data-i18n="footer_quicklinks">Quick Links</h5>
                             <ul class="space-y-4 text-sage/60 text-sm">
                                 <li><a class="hover:text-primary transition-colors" href="/" data-i18n="nav_home">Home</a></li>
-                                <li><a class="hover:text-primary transition-colors" href="/about" data-i18n="nav_about">About & Programs</a></li>
+                                <li><a class="hover:text-primary transition-colors" href="/about" data-i18n="nav_about">About</a></li>
+                                <li><a class="hover:text-primary transition-colors" href="/program" data-i18n="nav_program">Program</a></li>
                                 <li><a class="hover:text-primary transition-colors" href="/contact" data-i18n="nav_contact">Contact</a></li>
                                 <li><a class="hover:text-primary transition-colors" href="/kalkulator" data-i18n="nav_calculator">Calculator</a></li>
                             </ul>
@@ -393,12 +647,14 @@
     var translations = {
         en: {
             nav_home: "Home",
-            nav_about: "About & Programs",
+            nav_about: "About",
+            nav_program: "Program",
             nav_contact: "Contact",
             nav_calculator: "Calculator",
             nav_back_home: "Back to Home",
             about_badge: "About Us & Our Programs",
             about_title: "About Go Green School",
+            about_title_prefix: "About",
             about_subtitle: "Educating the next generation to care for our planet through innovative green programs and sustainable practices.",
             about_who_label: "Who We Are",
             about_who_title: "Our Story",
@@ -413,6 +669,11 @@
             about_mission_2: "Develop practical sustainability programs for students.",
             about_mission_3: "Foster community partnerships for environmental initiatives.",
             about_mission_4: "Reduce school waste and promote a circular economy mindset.",
+            website_info_badge: "Website Overview",
+            website_info_title: "Information about the website",
+            website_info_support_1: "This summary helps students, teachers, and parents quickly understand the main purpose and features of Go Green School Web.",
+            website_info_main: "Information about the website:\nGo Green School Web is an educational website that provides information about waste management and environmental programs at school. This website has several features such as the Home page which contains a brief explanation of the program, the About page which explains the goals and vision, the Program page which discusses organic, inorganic, and hazardous (B3) waste management, as well as 3R Education, Gallery, News, and Contact features. The website also consists of a header, navigation menu, main content section, and footer. Through this website, students and teachers can learn and practice environmentally friendly habits to create a clean and green school.",
+            website_info_support_2: "Together, we continue building a school culture that is sustainable, responsible, and inspiring for future generations.",
             programs_label: "What We Do",
             programs_title: "Our Programs",
             programs_subtitle: "Discover our comprehensive green programs designed to make a real environmental impact.",
@@ -448,12 +709,14 @@
         },
         id: {
             nav_home: "Beranda",
-            nav_about: "Tentang & Program",
+            nav_about: "Tentang",
+            nav_program: "Program",
             nav_contact: "Kontak",
             nav_calculator: "Kalkulator",
             nav_back_home: "Kembali ke Beranda",
             about_badge: "Tentang Kami & Program Kami",
             about_title: "Tentang Go Green School",
+            about_title_prefix: "Tentang",
             about_subtitle: "Mendidik generasi berikutnya untuk peduli terhadap planet kita melalui program hijau inovatif dan praktik berkelanjutan.",
             about_who_label: "Siapa Kami",
             about_who_title: "Cerita Kami",
@@ -468,6 +731,11 @@
             about_mission_2: "Mengembangkan program keberlanjutan praktis untuk siswa.",
             about_mission_3: "Memupuk kemitraan komunitas untuk inisiatif lingkungan.",
             about_mission_4: "Mengurangi sampah sekolah dan mempromosikan pola pikir ekonomi sirkular.",
+            website_info_badge: "Ringkasan Website",
+            website_info_title: "Informasi tentang website",
+            website_info_support_1: "Ringkasan ini membantu siswa, guru, dan orang tua memahami tujuan utama serta fitur Go Green School Web dengan cepat.",
+            website_info_main: "Informasi tentang website:\nGo Green School Web adalah website edukasi yang menyediakan informasi tentang pengelolaan sampah dan program lingkungan di sekolah. Website ini memiliki beberapa fitur seperti halaman Home yang berisi penjelasan singkat program, halaman About yang menjelaskan tujuan dan visi, halaman Program yang membahas pengelolaan sampah organik, anorganik, dan berbahaya (B3), serta fitur Edukasi 3R, Galeri, Berita, dan Kontak. Website ini juga terdiri dari header, menu navigasi, bagian konten utama, dan footer. Melalui website ini, siswa dan guru dapat belajar serta mempraktikkan kebiasaan ramah lingkungan untuk mewujudkan sekolah yang bersih dan hijau.",
+            website_info_support_2: "Bersama-sama, kita terus membangun budaya sekolah yang berkelanjutan, bertanggung jawab, dan menginspirasi generasi masa depan.",
             programs_label: "Apa Yang Kami Lakukan",
             programs_title: "Program Kami",
             programs_subtitle: "Temukan program hijau komprehensif kami yang dirancang untuk memberikan dampak lingkungan nyata.",
@@ -530,22 +798,69 @@
     });
     </script>
 
-    <!-- Scroll Fade-Up Animation -->
+    <!-- Scroll-to-Top Button -->
+    <button id="scroll-top" class="scroll-top-btn fixed bottom-8 right-8 z-50 w-12 h-12 bg-primary hover:bg-forest text-white rounded-full shadow-xl shadow-primary/30 flex items-center justify-center transition-all hover:-translate-y-1" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <span class="material-symbols-outlined">keyboard_arrow_up</span>
+    </button>
+
+    <!-- Scroll Animations + Mobile Menu + Nav Scroll -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var fadeEls = document.querySelectorAll('.fade-up');
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
+    document.addEventListener('DOMContentLoaded', function () {
+        // Observe all animated elements
+        var animEls = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .scale-in, .stagger-children');
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.12 });
+        animEls.forEach(function (el) { observer.observe(el); });
 
-        fadeEls.forEach(function(el) {
-            observer.observe(el);
+        // Navbar scroll effect
+        var nav = document.querySelector('nav');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
         });
+
+        // Scroll-to-top button visibility
+        var scrollBtn = document.getElementById('scroll-top');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 500) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+
+        // Mobile menu
+        var mobileBtn = document.getElementById('mobile-menu-btn');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var mobileOverlay = document.getElementById('mobile-overlay');
+        var mobileClose = document.getElementById('mobile-menu-close');
+
+        function openMobile() {
+            mobileMenu.classList.add('open');
+            mobileOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobile() {
+            mobileMenu.classList.remove('open');
+            mobileOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        if (mobileBtn) mobileBtn.addEventListener('click', openMobile);
+        if (mobileClose) mobileClose.addEventListener('click', closeMobile);
+        if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobile);
     });
     </script>
 </body>
 </html>
+
+
+

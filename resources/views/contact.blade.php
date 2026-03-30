@@ -14,10 +14,19 @@
                 extend: {
                     colors: {
                         "primary": "#10b981",
+                        "primary-light": "#34d399",
+                        "primary-dark": "#059669",
                         "forest": "#064e3b",
+                        "forest-light": "#065f46",
                         "sage": "#f0fdf4",
+                        "mint": "#d1fae5",
                         "background-light": "#f8faf9",
                         "background-dark": "#022c22",
+                        "accent-amber": "#f59e0b",
+                        "accent-blue": "#3b82f6",
+                        "accent-violet": "#8b5cf6",
+                        "accent-rose": "#f43f5e",
+                        "accent-teal": "#14b8a6",
                     },
                     fontFamily: {
                         "display": ["Lexend", "sans-serif"]
@@ -33,10 +42,43 @@
         }
     </script>
     <style>
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(6, 78, 59, 0.05);
+        localStorage.setItem('ggs_lang', lang || 'en');
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes floatLeaf {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-18px) rotate(8deg); }
+            50% { transform: translateY(-8px) rotate(-5deg); }
+            75% { transform: translateY(-22px) rotate(3deg); }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.3); }
+            50% { box-shadow: 0 0 30px 10px rgba(16, 185, 129, 0.15); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .fade-up {
@@ -44,11 +86,102 @@
             transform: translateY(30px);
             transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .fade-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .fade-left.visible { opacity: 1; transform: translateX(0); }
+        .fade-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .fade-right.visible { opacity: 1; transform: translateX(0); }
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.85);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scale-in.visible { opacity: 1; transform: scale(1); }
 
-        .fade-up.visible {
+        .stagger-children.visible > * {
+            animation: fadeSlideUp 500ms ease-out forwards;
+        }
+        .stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+        .stagger-children > *:nth-child(2) { animation-delay: 120ms; }
+        .stagger-children > *:nth-child(3) { animation-delay: 240ms; }
+        .stagger-children > *:nth-child(4) { animation-delay: 360ms; }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(6, 78, 59, 0.06);
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        .glass-effect.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 30px rgba(6, 78, 59, 0.08);
+        }
+
+        .floating-leaf {
+            animation: floatLeaf 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .floating-leaf:nth-child(2) { animation-delay: -2s; animation-duration: 7s; }
+        .floating-leaf:nth-child(3) { animation-delay: -4s; animation-duration: 8s; }
+
+        .pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
+        .spin-slow { animation: spinSlow 20s linear infinite; }
+
+        .dot-pattern {
+            background-image: radial-gradient(circle, rgba(16, 185, 129, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .gradient-border { position: relative; }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            padding: 2px;
+            background: linear-gradient(135deg, #10b981, #064e3b, #10b981);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gradient-border:hover::before { opacity: 1; }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-overlay {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .mobile-overlay.open { opacity: 1; pointer-events: all; }
+
+        .scroll-top-btn {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+        }
+        .scroll-top-btn.show {
             opacity: 1;
             transform: translateY(0);
+            pointer-events: all;
         }
+
+        .wave-divider { position: relative; overflow: hidden; }
 
         .input-field:focus {
             box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
@@ -57,11 +190,92 @@
         .contact-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         .contact-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 20px 40px -12px rgba(16, 185, 129, 0.15);
         }
+
+        /* Enhanced UI Effects */
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981 0%, #064e3b 40%, #14b8a6 60%, #10b981 100%);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 6s ease-in-out infinite;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .mesh-gradient {
+            background:
+                radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+        }
+
+        .nav-gradient-line { position: relative; }
+        .nav-gradient-line::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #10b981 20%, #3b82f6 50%, #8b5cf6 80%, transparent 100%);
+            opacity: 0.3;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.2), 0 0 60px rgba(16, 185, 129, 0.1);
+        }
+
+        .section-divider {
+            height: 6px;
+            background: linear-gradient(90deg, transparent, #10b981, #3b82f6, #8b5cf6, transparent);
+            opacity: 0.15;
+            border-radius: 3px;
+            margin: 0 auto;
+            max-width: 200px;
+        }
+
+        /* Smooth section background gradient transitions */
+        .bg-section-sage-30 {
+            background: linear-gradient(to bottom, #f8faf9 0%, rgba(240, 253, 244, 0.3) 12%, rgba(240, 253, 244, 0.3) 88%, #f8faf9 100%);
+        }
+        .bg-section-sage-50 {
+            background: linear-gradient(to bottom, #f8faf9 0%, rgba(240, 253, 244, 0.5) 12%, rgba(240, 253, 244, 0.5) 88%, #f8faf9 100%);
+        }
+
+        @keyframes floatParticle {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+            25% { transform: translate(10px, -20px) scale(1.1); opacity: 0.8; }
+            50% { transform: translate(-5px, -35px) scale(0.9); opacity: 0.4; }
+            75% { transform: translate(15px, -15px) scale(1.05); opacity: 0.7; }
+        }
+        .float-particle {
+            animation: floatParticle 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .input-field:focus {
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15), 0 0 20px rgba(16, 185, 129, 0.08);
+            border-color: #10b981;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f8faf9; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #10b981, #064e3b); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #059669; }
     </style>
 </head>
 <body class="bg-background-light font-display text-forest selection:bg-primary/30">
@@ -69,7 +283,7 @@
         <div class="layout-container flex h-full grow flex-col">
 
             <!-- Navigation Bar -->
-            <nav class="sticky top-0 z-50 glass-effect px-6 md:px-20 lg:px-40 py-4">
+            <nav class="sticky top-0 z-50 glass-effect nav-gradient-line px-6 md:px-20 lg:px-40 py-4">
                 <div class="max-w-7xl mx-auto flex items-center justify-between">
                     <div class="flex items-center gap-10">
                         <a class="flex items-center gap-2 group" href="/">
@@ -80,7 +294,8 @@
                         </a>
                         <div class="hidden lg:flex items-center gap-8">
                             <a class="text-forest/70 hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/" data-i18n="nav_home">Home</a>
-                            <a class="text-forest/70 hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/about" data-i18n="nav_about">About & Programs</a>
+                            <a class="text-forest/70 hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/about" data-i18n="nav_about">About</a>
+                            <a class="text-forest/70 hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/program" data-i18n="nav_program">Program</a>
                             <a class="text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/contact" data-i18n="nav_contact">Contact</a>
                             <a class="text-forest/70 hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/kalkulator" data-i18n="nav_calculator">Calculator</a>
                         </div>
@@ -94,9 +309,52 @@
                             <span class="material-symbols-outlined text-lg">home</span>
                             <span data-i18n="nav_back_home">Back to Home</span>
                         </a>
+                        <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center size-10 rounded-xl hover:bg-forest/5 transition-colors">
+                            <span class="material-symbols-outlined text-2xl text-forest">menu</span>
+                        </button>
                     </div>
                 </div>
             </nav>
+            <!-- Mobile Menu Overlay -->
+            <div id="mobile-overlay" class="mobile-overlay fixed inset-0 bg-black/50 z-[60]"></div>
+            <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-72 bg-white z-[70] shadow-2xl p-8 flex flex-col">
+                <div class="flex items-center justify-between mb-10">
+                    <h3 class="text-forest text-lg font-extrabold">Menu</h3>
+                    <button id="mobile-menu-close" class="size-10 flex items-center justify-center rounded-xl hover:bg-forest/5 transition-colors">
+                        <span class="material-symbols-outlined text-2xl text-forest">close</span>
+                    </button>
+                </div>
+                <div class="flex flex-col gap-6">
+                    <a class="text-forest hover:text-primary text-base font-semibold transition-colors flex items-center gap-3" href="/">
+                        <span class="material-symbols-outlined text-primary">home</span> <span data-i18n="nav_home">Home</span>
+                    </a>
+                    <a class="text-forest hover:text-primary text-base font-semibold transition-colors flex items-center gap-3" href="/about">
+                        <span class="material-symbols-outlined text-primary">info</span> <span data-i18n="nav_about">About</span>
+                    </a>
+                    <a class="text-forest hover:text-primary text-base font-semibold transition-colors flex items-center gap-3" href="/program">
+                        <span class="material-symbols-outlined text-primary">eco</span> <span data-i18n="nav_program">Program</span>
+                    </a>
+                    <a class="text-forest hover:text-primary text-base font-semibold transition-colors flex items-center gap-3" href="/contact">
+                        <span class="material-symbols-outlined text-primary">mail</span> <span data-i18n="nav_contact">Contact</span>
+                    </a>
+                    <a class="text-forest hover:text-primary text-base font-semibold transition-colors flex items-center gap-3" href="/kalkulator">
+                        <span class="material-symbols-outlined text-primary">calculate</span> <span data-i18n="nav_calculator">Calculator</span>
+                    </a>
+                </div>
+                <div class="mt-auto">
+                    <a href="/" class="flex items-center justify-center gap-2 bg-primary hover:bg-forest text-white w-full py-3 rounded-xl text-sm font-bold shadow-lg transition-all">
+                        <span class="material-symbols-outlined text-lg">home</span>
+                        <span data-i18n="nav_back_home">Back to Home</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Floating Leaf Decorations -->
+            <div class="floating-leaf fixed top-32 left-8 text-4xl opacity-20 z-10">🍃</div>
+            <div class="floating-leaf fixed top-96 right-12 text-3xl opacity-15 z-10">🌿</div>
+            <div class="floating-leaf fixed bottom-40 left-16 text-2xl opacity-10 z-10">🌱</div>
+            <div class="float-particle fixed top-[28%] right-[16%] w-3 h-3 bg-primary/20 rounded-full z-10" style="animation-delay: -2s;"></div>
+            <div class="float-particle fixed top-[58%] left-[18%] w-2 h-2 bg-accent-blue/20 rounded-full z-10" style="animation-delay: -5s; animation-duration: 10s;"></div>
 
             <main class="flex flex-col flex-1">
 
@@ -104,46 +362,60 @@
                 <section class="relative px-4 md:px-20 lg:px-40 pt-16 pb-12">
                     <div class="absolute -top-20 -left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl -z-10"></div>
                     <div class="absolute top-20 right-0 w-96 h-96 bg-forest/5 rounded-full blur-3xl -z-10"></div>
+                    <div class="absolute inset-0 mesh-gradient -z-10"></div>
+                    <!-- Top fade from page background -->
+                    <div class="absolute inset-x-0 top-0 h-40 pointer-events-none" style="background: linear-gradient(to bottom, #f8faf9 0%, transparent 100%); z-index: -1;"></div>
                     <div class="max-w-7xl mx-auto text-center">
                         <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
                             <span class="material-symbols-outlined text-base">contact_mail</span>
                             <span data-i18n="contact_badge">Get In Touch</span>
                         </div>
-                        <h1 class="text-forest text-4xl md:text-6xl font-black tracking-tight leading-[1.1] mb-4" data-i18n="contact_title">Contact Us</h1>
+                        <h1 class="text-forest text-4xl md:text-6xl font-black tracking-tight leading-[1.1] mb-4"><span class="gradient-text" data-i18n="contact_title">Contact Us</span></h1>
                         <p class="text-forest/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed" data-i18n="contact_subtitle">Have questions or want to learn more about Go Green School? We'd love to hear from you.</p>
+                        <div class="section-divider mt-8"></div>
                     </div>
+                    <!-- Bottom fade into page background -->
+                    <div class="absolute inset-x-0 bottom-0 h-32 pointer-events-none" style="background: linear-gradient(to bottom, transparent 0%, #f8faf9 100%); z-index: -1;"></div>
                 </section>
 
                 <!-- Contact Info Cards -->
-                <section class="px-4 md:px-20 lg:px-40 py-8">
+                <section class="px-4 md:px-20 lg:px-40 py-8 relative">
+                    <div class="absolute inset-0 mesh-gradient -z-10"></div>
+                    <!-- Top fade from page background -->
+                    <div class="absolute inset-x-0 top-0 h-24 pointer-events-none" style="background: linear-gradient(to bottom, #f8faf9 0%, transparent 100%); z-index: -1;"></div>
+                    <!-- Bottom fade into page background -->
+                    <div class="absolute inset-x-0 bottom-0 h-24 pointer-events-none" style="background: linear-gradient(to bottom, transparent 0%, #f8faf9 100%); z-index: -1;"></div>
                     <div class="max-w-7xl mx-auto">
                         <div class="fade-up grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <!-- Address -->
-                            <div class="contact-card bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 p-8 text-center">
-                                <div class="size-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
-                                    <span class="material-symbols-outlined text-primary text-3xl">location_on</span>
-                                </div>
-                                <h3 class="text-forest font-bold text-lg mb-2" data-i18n="contact_address_title">Address</h3>
-                                <p class="text-forest/60 text-sm leading-relaxed" data-i18n="contact_address_desc">Jl. Hijau Lestari No. 123<br/>Jakarta, Indonesia 12345</p>
-                            </div>
-
-                            <!-- Email -->
-                            <div class="contact-card bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 p-8 text-center">
+                            <!-- Email Tab (Default Active) -->
+                            <button onclick="switchContactMode('email')" id="card-email" class="contact-card bg-white rounded-2xl shadow-lg shadow-forest/5 border-2 border-primary ring-2 ring-primary/20 p-8 text-center cursor-pointer transition-all hover-glow relative overflow-hidden">
+                                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent-teal"></div>
                                 <div class="size-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
                                     <span class="material-symbols-outlined text-primary text-3xl">mail</span>
                                 </div>
                                 <h3 class="text-forest font-bold text-lg mb-2" data-i18n="contact_email_title">Email</h3>
-                                <p class="text-forest/60 text-sm leading-relaxed">info@gogreenschool.id<br/>admin@gogreenschool.id</p>
-                            </div>
+                                <p class="text-forest/60 text-sm leading-relaxed">info@gogreenschool.id</p>
+                            </button>
 
-                            <!-- Phone -->
-                            <div class="contact-card bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 p-8 text-center">
+                            <!-- Instagram Tab -->
+                            <button onclick="switchContactMode('instagram')" id="card-instagram" class="contact-card bg-white rounded-2xl shadow-lg shadow-forest/5 border-2 border-transparent p-8 text-center cursor-pointer transition-all hover:border-forest/10 hover-glow relative overflow-hidden">
+                                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-rose to-accent-violet opacity-0 transition-opacity group-hover:opacity-100"></div>
                                 <div class="size-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
-                                    <span class="material-symbols-outlined text-primary text-3xl">phone</span>
+                                    <svg class="w-7 h-7 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                                 </div>
-                                <h3 class="text-forest font-bold text-lg mb-2" data-i18n="contact_phone_title">Phone</h3>
-                                <p class="text-forest/60 text-sm leading-relaxed">(021) 555-0123<br/>(021) 555-0456</p>
-                            </div>
+                                <h3 class="text-forest font-bold text-lg mb-2" data-i18n="contact_ig_title">Instagram</h3>
+                                <p class="text-forest/60 text-sm leading-relaxed" data-i18n="contact_ig_desc">@earthyhgreen.vibes</p>
+                            </button>
+
+                            <!-- WhatsApp Tab -->
+                            <button onclick="switchContactMode('whatsapp')" id="card-whatsapp" class="contact-card bg-white rounded-2xl shadow-lg shadow-forest/5 border-2 border-transparent p-8 text-center cursor-pointer transition-all hover:border-forest/10 hover-glow relative overflow-hidden">
+                                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-light to-primary opacity-0 transition-opacity group-hover:opacity-100"></div>
+                                <div class="size-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
+                                    <svg class="w-7 h-7 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                </div>
+                                <h3 class="text-forest font-bold text-lg mb-2" data-i18n="contact_wa_title">WhatsApp</h3>
+                                <p class="text-forest/60 text-sm leading-relaxed" data-i18n="contact_wa_desc">+62 21 555-0123</p>
+                            </button>
                         </div>
                     </div>
                 </section>
@@ -155,68 +427,184 @@
 
                             <!-- Contact Form -->
                             <div class="fade-up">
-                                <div class="bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 p-8 md:p-10">
-                                    <div class="flex items-center gap-3 mb-8">
-                                        <div class="size-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                                            <span class="material-symbols-outlined text-primary">edit_note</span>
+                                <div class="bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 p-8 md:p-10 hover-glow transition-all duration-500">
+
+                                    <!-- ===== EMAIL FORM (Default) ===== -->
+                                    <div id="form-email">
+                                        <div class="flex items-center gap-3 mb-8">
+                                            <div class="size-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                                                <span class="material-symbols-outlined text-primary">mail</span>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-forest font-bold text-xl" data-i18n="form_email_heading">Send via Email</h3>
+                                                <p class="text-forest/50 text-xs" data-i18n="form_email_desc">Fill out the form and we'll get back to you</p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <h3 class="text-forest font-bold text-xl" data-i18n="form_title">Send a Message</h3>
-                                            <p class="text-forest/50 text-xs" data-i18n="form_desc">Fill out the form and we'll get back to you</p>
+
+                                        @if(session('success'))
+                                        <div class="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center gap-3">
+                                            <span class="material-symbols-outlined text-green-600">check_circle</span>
+                                            <p class="text-green-700 text-sm font-medium">{{ session('success') }}</p>
                                         </div>
+                                        @endif
+
+                                        @if($errors->any())
+                                        <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <span class="material-symbols-outlined text-red-500">error</span>
+                                                <p class="text-red-700 text-sm font-bold">Please fix the following errors:</p>
+                                            </div>
+                                            <ul class="list-disc list-inside text-red-600 text-sm space-y-1">
+                                                @foreach($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        @endif
+
+                                        <form class="space-y-5" method="POST" action="{{ route('contact.send') }}">
+                                            @csrf
+                                            <div>
+                                                <label class="block text-sm font-semibold text-forest/80 mb-2" data-i18n="form_name">Full Name</label>
+                                                <div class="relative">
+                                                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-forest/30 text-xl">person</span>
+                                                    <input type="text" name="name" value="{{ old('name') }}" placeholder="John Doe" class="input-field w-full pl-11 pr-4 py-3 border border-forest/10 rounded-xl text-sm focus:border-primary focus:outline-none transition-all bg-sage/30" required/>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-semibold text-forest/80 mb-2" data-i18n="form_email_label">Email Address</label>
+                                                <div class="relative">
+                                                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-forest/30 text-xl">mail</span>
+                                                    <input type="email" name="email" value="{{ old('email') }}" placeholder="john@example.com" class="input-field w-full pl-11 pr-4 py-3 border border-forest/10 rounded-xl text-sm focus:border-primary focus:outline-none transition-all bg-sage/30" required/>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-semibold text-forest/80 mb-2" data-i18n="form_subject">Subject</label>
+                                                <div class="relative">
+                                                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-forest/30 text-xl">topic</span>
+                                                    <input type="text" name="subject" value="{{ old('subject') }}" placeholder="How can we help?" class="input-field w-full pl-11 pr-4 py-3 border border-forest/10 rounded-xl text-sm focus:border-primary focus:outline-none transition-all bg-sage/30" required/>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-semibold text-forest/80 mb-2" data-i18n="form_message">Message</label>
+                                                <textarea rows="5" name="message" placeholder="Write your message here..." class="input-field w-full px-4 py-3 border border-forest/10 rounded-xl text-sm focus:border-primary focus:outline-none transition-all bg-sage/30 resize-none" required>{{ old('message') }}</textarea>
+                                            </div>
+                                            <button type="submit" class="w-full flex items-center justify-center gap-2 bg-primary hover:bg-forest text-white py-3.5 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 transition-all transform hover:-translate-y-0.5">
+                                                <span class="material-symbols-outlined text-lg">send</span>
+                                                <span data-i18n="form_submit_email">Send Message</span>
+                                            </button>
+                                        </form>
                                     </div>
 
-                                    <form class="space-y-5" onsubmit="return false;">
-                                        <!-- Name -->
-                                        <div>
-                                            <label class="block text-sm font-semibold text-forest/80 mb-2" data-i18n="form_name">Full Name</label>
-                                            <div class="relative">
-                                                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-forest/30 text-xl">person</span>
-                                                <input type="text" placeholder="John Doe" class="input-field w-full pl-11 pr-4 py-3 border border-forest/10 rounded-xl text-sm focus:border-primary focus:outline-none transition-all bg-sage/30" data-i18n-placeholder="form_name_placeholder"/>
+                                    <!-- ===== INSTAGRAM FORM (Hidden) ===== -->
+                                    <div id="form-instagram" class="hidden">
+                                        <div class="flex items-center gap-3 mb-8">
+                                            <div class="size-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                                                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-forest font-bold text-xl" data-i18n="form_ig_heading">Send via Instagram</h3>
+                                                <p class="text-forest/50 text-xs" data-i18n="form_ig_desc">Your message will be sent as an Instagram DM</p>
                                             </div>
                                         </div>
 
-                                        <!-- Email -->
-                                        <div>
-                                            <label class="block text-sm font-semibold text-forest/80 mb-2" data-i18n="form_email">Email Address</label>
-                                            <div class="relative">
-                                                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-forest/30 text-xl">mail</span>
-                                                <input type="email" placeholder="john@example.com" class="input-field w-full pl-11 pr-4 py-3 border border-forest/10 rounded-xl text-sm focus:border-primary focus:outline-none transition-all bg-sage/30"/>
+                                        <div class="mb-6 p-4 bg-primary/5 border border-primary/10 rounded-xl flex items-start gap-3">
+                                            <span class="material-symbols-outlined text-primary text-xl mt-0.5">info</span>
+                                            <div>
+                                                <p class="text-forest text-sm font-semibold" data-i18n="form_ig_info_title">Message via Instagram DM</p>
+                                                <p class="text-forest/60 text-xs mt-1" data-i18n="form_ig_info_desc">Fill in your message below. Clicking "Send" will copy your message and open our Instagram DM.</p>
                                             </div>
                                         </div>
 
-                                        <!-- Subject -->
-                                        <div>
-                                            <label class="block text-sm font-semibold text-forest/80 mb-2" data-i18n="form_subject">Subject</label>
-                                            <div class="relative">
-                                                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-forest/30 text-xl">topic</span>
-                                                <input type="text" placeholder="How can we help?" class="input-field w-full pl-11 pr-4 py-3 border border-forest/10 rounded-xl text-sm focus:border-primary focus:outline-none transition-all bg-sage/30" data-i18n-placeholder="form_subject_placeholder"/>
+                                        <form id="ig-dm-form" class="space-y-5" onsubmit="return redirectToInstagramDM(event)">
+                                            <div>
+                                                <label class="block text-sm font-semibold text-forest/80 mb-2" data-i18n="form_name">Full Name</label>
+                                                <div class="relative">
+                                                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-forest/30 text-xl">person</span>
+                                                    <input type="text" id="ig-name" placeholder="John Doe" class="input-field w-full pl-11 pr-4 py-3 border border-forest/10 rounded-xl text-sm focus:border-primary focus:outline-none transition-all bg-sage/30" required/>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-semibold text-forest/80 mb-2" data-i18n="form_subject">Subject</label>
+                                                <div class="relative">
+                                                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-forest/30 text-xl">topic</span>
+                                                    <input type="text" id="ig-subject" placeholder="How can we help?" class="input-field w-full pl-11 pr-4 py-3 border border-forest/10 rounded-xl text-sm focus:border-primary focus:outline-none transition-all bg-sage/30" required/>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-semibold text-forest/80 mb-2" data-i18n="form_message">Message</label>
+                                                <textarea rows="5" id="ig-message" placeholder="Write your message here..." class="input-field w-full px-4 py-3 border border-forest/10 rounded-xl text-sm focus:border-primary focus:outline-none transition-all bg-sage/30 resize-none" required></textarea>
+                                            </div>
+                                            <div id="ig-preview" class="hidden p-4 bg-forest/5 rounded-xl">
+                                                <div class="flex items-center justify-between mb-2">
+                                                    <p class="text-xs font-semibold text-forest/50" data-i18n="form_preview">📋 Message Preview:</p>
+                                                    <button type="button" onclick="copyPreviewText()" id="ig-copy-btn" class="flex items-center gap-1 text-xs font-semibold text-primary hover:text-forest bg-primary/10 hover:bg-primary/20 px-3 py-1.5 rounded-lg transition-all">
+                                                        <span class="material-symbols-outlined text-sm" id="ig-copy-icon">content_copy</span>
+                                                        <span id="ig-copy-label" data-i18n="form_copy">Copy</span>
+                                                    </button>
+                                                </div>
+                                                <p id="ig-preview-text" class="text-sm text-forest/70 whitespace-pre-line"></p>
+                                            </div>
+                                            <button type="submit" class="w-full flex items-center justify-center gap-2 bg-primary hover:bg-forest text-white py-3.5 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 transition-all transform hover:-translate-y-0.5">
+                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                                                <span data-i18n="form_ig_submit">Send via Instagram DM</span>
+                                            </button>
+                                            <p class="text-center text-xs text-forest/40" data-i18n="form_ig_note">Message will be copied to clipboard, then Instagram DM will open</p>
+                                        </form>
+                                    </div>
+
+                                    <!-- ===== WHATSAPP FORM (Hidden) ===== -->
+                                    <div id="form-whatsapp" class="hidden">
+                                        <div class="flex items-center gap-3 mb-8">
+                                            <div class="size-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                                                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-forest font-bold text-xl" data-i18n="form_wa_heading">Send via WhatsApp</h3>
+                                                <p class="text-forest/50 text-xs" data-i18n="form_wa_desc">Chat with us directly on WhatsApp</p>
                                             </div>
                                         </div>
 
-                                        <!-- Message -->
-                                        <div>
-                                            <label class="block text-sm font-semibold text-forest/80 mb-2" data-i18n="form_message">Message</label>
-                                            <textarea rows="5" placeholder="Write your message here..." class="input-field w-full px-4 py-3 border border-forest/10 rounded-xl text-sm focus:border-primary focus:outline-none transition-all bg-sage/30 resize-none" data-i18n-placeholder="form_message_placeholder"></textarea>
+                                        <div class="mb-6 p-4 bg-primary/5 border border-primary/10 rounded-xl flex items-start gap-3">
+                                            <span class="material-symbols-outlined text-primary text-xl mt-0.5">info</span>
+                                            <div>
+                                                <p class="text-forest text-sm font-semibold" data-i18n="form_wa_info_title">Chat via WhatsApp</p>
+                                                <p class="text-forest/60 text-xs mt-1" data-i18n="form_wa_info_desc">Fill in your message below. Clicking "Send" will open WhatsApp with your message pre-filled.</p>
+                                            </div>
                                         </div>
 
-                                        <!-- Submit Button -->
-                                        <button type="submit" class="w-full flex items-center justify-center gap-2 bg-primary hover:bg-forest text-white py-3.5 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 transition-all transform hover:-translate-y-0.5">
-                                            <span class="material-symbols-outlined text-lg">send</span>
-                                            <span data-i18n="form_submit">Send Message</span>
-                                        </button>
-                                    </form>
+                                        <form id="wa-form" class="space-y-5" onsubmit="return redirectToWhatsApp(event)">
+                                            <div>
+                                                <label class="block text-sm font-semibold text-forest/80 mb-2" data-i18n="form_name">Full Name</label>
+                                                <div class="relative">
+                                                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-forest/30 text-xl">person</span>
+                                                    <input type="text" id="wa-name" placeholder="John Doe" class="input-field w-full pl-11 pr-4 py-3 border border-forest/10 rounded-xl text-sm focus:border-primary focus:outline-none transition-all bg-sage/30" required/>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-semibold text-forest/80 mb-2" data-i18n="form_message">Message</label>
+                                                <textarea rows="5" id="wa-message" placeholder="Write your message here..." class="input-field w-full px-4 py-3 border border-forest/10 rounded-xl text-sm focus:border-primary focus:outline-none transition-all bg-sage/30 resize-none" required></textarea>
+                                            </div>
+                                            <button type="submit" class="w-full flex items-center justify-center gap-2 bg-primary hover:bg-forest text-white py-3.5 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 transition-all transform hover:-translate-y-0.5">
+                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                                <span data-i18n="form_wa_submit">Send via WhatsApp</span>
+                                            </button>
+                                            <p class="text-center text-xs text-forest/40" data-i18n="form_wa_note">WhatsApp will open with your message pre-filled</p>
+                                        </form>
+                                    </div>
+
                                 </div>
                             </div>
 
                             <!-- Map & Additional Info -->
                             <div class="fade-up space-y-8">
                                 <!-- Map Placeholder -->
-                                <div class="bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 overflow-hidden">
-                                    <div class="bg-gradient-to-br from-primary/10 to-forest/5 h-72 flex flex-col items-center justify-center text-center p-8">
-                                        <span class="material-symbols-outlined text-primary/30 mb-4" style="font-size: 80px;">map</span>
-                                        <p class="text-forest/40 text-sm font-semibold" data-i18n="map_placeholder">Map will be displayed here</p>
-                                        <p class="text-forest/30 text-xs mt-1" data-i18n="map_hint">Embed your Google Maps here</p>
+                                <div class="bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 overflow-hidden hover-glow transition-all duration-500">
+                                    <div class="bg-gradient-to-br from-primary/10 via-accent-teal/5 to-forest/5 h-72 flex flex-col items-center justify-center text-center p-8 relative">
+                                        <div class="absolute inset-0 mesh-gradient"></div>
+                                        <span class="material-symbols-outlined text-primary/30 mb-4 relative z-10" style="font-size: 80px;">map</span>
+                                        <p class="text-forest/40 text-sm font-semibold relative z-10" data-i18n="map_placeholder">Map will be displayed here</p>
+                                        <p class="text-forest/30 text-xs mt-1 relative z-10" data-i18n="map_hint">Embed your Google Maps here</p>
                                     </div>
                                 </div>
 
@@ -273,8 +661,13 @@
                 </section>
 
                 <!-- FAQ Section -->
-                <section class="px-4 md:px-20 lg:px-40 py-16 bg-sage/50">
-                    <div class="max-w-3xl mx-auto">
+                <section class="px-4 md:px-20 lg:px-40 py-16 bg-section-sage-50 relative">
+                    <div class="absolute inset-0 mesh-gradient"></div>
+                    <!-- Top fade from page background -->
+                    <div class="absolute inset-x-0 top-0 h-24 pointer-events-none" style="background: linear-gradient(to bottom, #f8faf9 0%, transparent 100%); z-index: 5;"></div>
+                    <!-- Bottom fade into page background -->
+                    <div class="absolute inset-x-0 bottom-0 h-24 pointer-events-none" style="background: linear-gradient(to bottom, transparent 0%, #f8faf9 100%); z-index: 5;"></div>
+                    <div class="max-w-3xl mx-auto relative z-10">
                         <div class="fade-up text-center mb-12">
                             <span class="text-primary font-bold tracking-widest uppercase text-xs" data-i18n="faq_label">FAQ</span>
                             <h2 class="text-forest text-3xl md:text-4xl font-black tracking-tight mt-3" data-i18n="faq_title">Frequently Asked Questions</h2>
@@ -282,9 +675,9 @@
 
                         <div class="fade-up space-y-4">
                             <!-- FAQ 1 -->
-                            <details class="bg-white rounded-2xl shadow-sm border border-forest/5 group">
+                            <details class="bg-white rounded-2xl shadow-sm border border-forest/5 group hover:shadow-md hover:border-primary/10 transition-all">
                                 <summary class="flex items-center justify-between p-6 cursor-pointer">
-                                    <span class="text-forest font-semibold text-sm pr-4" data-i18n="faq_1_q">How can I enroll my child in Go Green School?</span>
+                                    <span class="text-forest font-semibold text-sm pr-4 group-hover:text-primary transition-colors" data-i18n="faq_1_q">How can I enroll my child in Go Green School?</span>
                                     <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
                                 </summary>
                                 <div class="px-6 pb-6 text-forest/60 text-sm leading-relaxed">
@@ -293,9 +686,9 @@
                             </details>
 
                             <!-- FAQ 2 -->
-                            <details class="bg-white rounded-2xl shadow-sm border border-forest/5 group">
+                            <details class="bg-white rounded-2xl shadow-sm border border-forest/5 group hover:shadow-md hover:border-primary/10 transition-all">
                                 <summary class="flex items-center justify-between p-6 cursor-pointer">
-                                    <span class="text-forest font-semibold text-sm pr-4" data-i18n="faq_2_q">What green programs are available for students?</span>
+                                    <span class="text-forest font-semibold text-sm pr-4 group-hover:text-primary transition-colors" data-i18n="faq_2_q">What green programs are available for students?</span>
                                     <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
                                 </summary>
                                 <div class="px-6 pb-6 text-forest/60 text-sm leading-relaxed">
@@ -304,9 +697,9 @@
                             </details>
 
                             <!-- FAQ 3 -->
-                            <details class="bg-white rounded-2xl shadow-sm border border-forest/5 group">
+                            <details class="bg-white rounded-2xl shadow-sm border border-forest/5 group hover:shadow-md hover:border-primary/10 transition-all">
                                 <summary class="flex items-center justify-between p-6 cursor-pointer">
-                                    <span class="text-forest font-semibold text-sm pr-4" data-i18n="faq_3_q">Can I volunteer or partner with Go Green School?</span>
+                                    <span class="text-forest font-semibold text-sm pr-4 group-hover:text-primary transition-colors" data-i18n="faq_3_q">Can I volunteer or partner with Go Green School?</span>
                                     <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
                                 </summary>
                                 <div class="px-6 pb-6 text-forest/60 text-sm leading-relaxed">
@@ -315,9 +708,9 @@
                             </details>
 
                             <!-- FAQ 4 -->
-                            <details class="bg-white rounded-2xl shadow-sm border border-forest/5 group">
+                            <details class="bg-white rounded-2xl shadow-sm border border-forest/5 group hover:shadow-md hover:border-primary/10 transition-all">
                                 <summary class="flex items-center justify-between p-6 cursor-pointer">
-                                    <span class="text-forest font-semibold text-sm pr-4" data-i18n="faq_4_q">Is there a school tour available?</span>
+                                    <span class="text-forest font-semibold text-sm pr-4 group-hover:text-primary transition-colors" data-i18n="faq_4_q">Is there a school tour available?</span>
                                     <span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
                                 </summary>
                                 <div class="px-6 pb-6 text-forest/60 text-sm leading-relaxed">
@@ -330,8 +723,15 @@
 
             </main>
 
+            <!-- Wave Divider -->
+            <div class="relative">
+                <svg class="w-full h-16 text-forest" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 30 C300 60 600 0 900 30 C1050 45 1150 20 1200 30 L1200 60 L0 60Z" fill="currentColor"/>
+                </svg>
+            </div>
+
             <!-- Footer -->
-            <footer class="bg-forest text-sage py-20 px-4 md:px-20 lg:px-40 border-t border-white/5">
+            <footer class="bg-forest text-sage py-20 px-4 md:px-20 lg:px-40">
                 <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-16">
                     <div class="space-y-6 lg:col-span-1">
                         <div class="flex items-center gap-2">
@@ -360,7 +760,8 @@
                             <h5 class="text-white font-bold text-sm uppercase tracking-widest" data-i18n="footer_quicklinks">Quick Links</h5>
                             <ul class="space-y-4 text-sage/60 text-sm">
                                 <li><a class="hover:text-primary transition-colors" href="/" data-i18n="nav_home">Home</a></li>
-                                <li><a class="hover:text-primary transition-colors" href="/about" data-i18n="nav_about">About & Programs</a></li>
+                                <li><a class="hover:text-primary transition-colors" href="/about" data-i18n="nav_about">About</a></li>
+                                <li><a class="hover:text-primary transition-colors" href="/program" data-i18n="nav_program">Program</a></li>
                                 <li><a class="hover:text-primary transition-colors" href="/contact" data-i18n="nav_contact">Contact</a></li>
                                 <li><a class="hover:text-primary transition-colors" href="/kalkulator" data-i18n="nav_calculator">Calculator</a></li>
                             </ul>
@@ -412,24 +813,40 @@
     var translations = {
         en: {
             nav_home: "Home",
-            nav_about: "About & Programs",
+            nav_about: "About",
+            nav_program: "Program",
             nav_contact: "Contact",
             nav_calculator: "Calculator",
             nav_back_home: "Back to Home",
             contact_badge: "Get In Touch",
             contact_title: "Contact Us",
             contact_subtitle: "Have questions or want to learn more about Go Green School? We'd love to hear from you.",
-            contact_address_title: "Address",
-            contact_address_desc: "Jl. Hijau Lestari No. 123\nJakarta, Indonesia 12345",
             contact_email_title: "Email",
-            contact_phone_title: "Phone",
-            form_title: "Send a Message",
-            form_desc: "Fill out the form and we'll get back to you",
+            contact_ig_title: "Instagram",
+            contact_ig_desc: "@earthyhgreen.vibes",
+            contact_wa_title: "WhatsApp",
+            contact_wa_desc: "+62 21 555-0123",
+            form_email_heading: "Send via Email",
+            form_email_desc: "Fill out the form and we'll get back to you",
+            form_email_label: "Email Address",
+            form_submit_email: "Send Message",
+            form_ig_heading: "Send via Instagram",
+            form_ig_desc: "Your message will be sent as an Instagram DM",
+            form_ig_info_title: "Message via Instagram DM",
+            form_ig_info_desc: "Fill in your message below. Clicking \"Send\" will copy your message and open our Instagram DM.",
+            form_ig_submit: "Send via Instagram DM",
+            form_ig_note: "Message will be copied to clipboard, then Instagram DM will open",
+            form_wa_heading: "Send via WhatsApp",
+            form_wa_desc: "Chat with us directly on WhatsApp",
+            form_wa_info_title: "Chat via WhatsApp",
+            form_wa_info_desc: "Fill in your message below. Clicking \"Send\" will open WhatsApp with your message pre-filled.",
+            form_wa_submit: "Send via WhatsApp",
+            form_wa_note: "WhatsApp will open with your message pre-filled",
             form_name: "Full Name",
-            form_email: "Email Address",
             form_subject: "Subject",
             form_message: "Message",
-            form_submit: "Send Message",
+            form_preview: "📋 Message Preview:",
+            form_copy: "Copy",
             map_placeholder: "Map will be displayed here",
             map_hint: "Embed your Google Maps here",
             hours_title: "Operating Hours",
@@ -459,24 +876,40 @@
         },
         id: {
             nav_home: "Beranda",
-            nav_about: "Tentang & Program",
+            nav_about: "Tentang",
+            nav_program: "Program",
             nav_contact: "Kontak",
             nav_calculator: "Kalkulator",
             nav_back_home: "Kembali ke Beranda",
             contact_badge: "Hubungi Kami",
             contact_title: "Kontak Kami",
             contact_subtitle: "Punya pertanyaan atau ingin tahu lebih banyak tentang Go Green School? Kami senang mendengar dari Anda.",
-            contact_address_title: "Alamat",
-            contact_address_desc: "Jl. Hijau Lestari No. 123\nJakarta, Indonesia 12345",
             contact_email_title: "Email",
-            contact_phone_title: "Telepon",
-            form_title: "Kirim Pesan",
-            form_desc: "Isi formulir dan kami akan menghubungi Anda kembali",
+            contact_ig_title: "Instagram",
+            contact_ig_desc: "@earthyhgreen.vibes",
+            contact_wa_title: "WhatsApp",
+            contact_wa_desc: "+62 21 555-0123",
+            form_email_heading: "Kirim via Email",
+            form_email_desc: "Isi formulir dan kami akan menghubungi Anda kembali",
+            form_email_label: "Alamat Email",
+            form_submit_email: "Kirim Pesan",
+            form_ig_heading: "Kirim via Instagram",
+            form_ig_desc: "Pesan Anda akan dikirim sebagai Instagram DM",
+            form_ig_info_title: "Pesan via Instagram DM",
+            form_ig_info_desc: "Isi pesan Anda di bawah. Klik \"Kirim\" akan menyalin pesan dan membuka Instagram DM kami.",
+            form_ig_submit: "Kirim via Instagram DM",
+            form_ig_note: "Pesan akan disalin ke clipboard, lalu Instagram DM akan terbuka",
+            form_wa_heading: "Kirim via WhatsApp",
+            form_wa_desc: "Chat langsung dengan kami di WhatsApp",
+            form_wa_info_title: "Chat via WhatsApp",
+            form_wa_info_desc: "Isi pesan Anda di bawah. Klik \"Kirim\" akan membuka WhatsApp dengan pesan Anda.",
+            form_wa_submit: "Kirim via WhatsApp",
+            form_wa_note: "WhatsApp akan terbuka dengan pesan Anda",
             form_name: "Nama Lengkap",
-            form_email: "Alamat Email",
             form_subject: "Subjek",
             form_message: "Pesan",
-            form_submit: "Kirim Pesan",
+            form_preview: "📋 Preview Pesan:",
+            form_copy: "Salin",
             map_placeholder: "Peta akan ditampilkan di sini",
             map_hint: "Sematkan Google Maps Anda di sini",
             hours_title: "Jam Operasional",
@@ -537,22 +970,207 @@
     });
     </script>
 
-    <!-- Scroll Fade-Up Animation -->
+    <!-- Contact Mode Switching + IG DM + WhatsApp Script -->
     <script>
+    // ===== CONFIGURATION - GANTI DENGAN DATA KALIAN =====
+    var IG_USERNAME = 'earthyhgreen.vibes';
+    var WA_NUMBER = '6221555012';  // Nomor WA tanpa + dan spasi
+
+    // ===== TAB SWITCHING =====
+    function switchContactMode(mode) {
+        // Hide all forms
+        var forms = ['form-email', 'form-instagram', 'form-whatsapp'];
+        forms.forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.classList.add('hidden');
+        });
+
+        // Show selected form
+        var target = document.getElementById('form-' + mode);
+        if (target) target.classList.remove('hidden');
+
+        // Update card styles
+        var cards = ['card-email', 'card-instagram', 'card-whatsapp'];
+        cards.forEach(function(id) {
+            var card = document.getElementById(id);
+            if (card) {
+                card.classList.remove('border-primary', 'ring-2', 'ring-primary/20');
+                card.classList.add('border-transparent', 'hover:border-forest/10');
+            }
+        });
+
+        var activeCard = document.getElementById('card-' + mode);
+        if (activeCard) {
+            activeCard.classList.remove('border-transparent', 'hover:border-forest/10');
+            activeCard.classList.add('border-primary', 'ring-2', 'ring-primary/20');
+        }
+
+        // Smooth scroll to form
+        var formSection = document.getElementById('form-' + mode);
+        if (formSection) {
+            formSection.closest('.bg-white').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }
+
+    // ===== INSTAGRAM DM =====
     document.addEventListener('DOMContentLoaded', function() {
-        var fadeEls = document.querySelectorAll('.fade-up');
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
+        var nameInput = document.getElementById('ig-name');
+        var subjectInput = document.getElementById('ig-subject');
+        var messageInput = document.getElementById('ig-message');
+        var previewBox = document.getElementById('ig-preview');
+        var previewText = document.getElementById('ig-preview-text');
+
+        function updatePreview() {
+            var name = nameInput ? nameInput.value.trim() : '';
+            var subject = subjectInput ? subjectInput.value.trim() : '';
+            var message = messageInput ? messageInput.value.trim() : '';
+
+            if (name || subject || message) {
+                previewBox.classList.remove('hidden');
+                var text = '';
+                if (name) text += 'Halo, saya ' + name + '.\n';
+                if (subject) text += 'Subjek: ' + subject + '\n\n';
+                if (message) text += message;
+                previewText.textContent = text;
+            } else {
+                previewBox.classList.add('hidden');
+            }
+        }
+
+        if (nameInput) nameInput.addEventListener('input', updatePreview);
+        if (subjectInput) subjectInput.addEventListener('input', updatePreview);
+        if (messageInput) messageInput.addEventListener('input', updatePreview);
+    });
+
+    function redirectToInstagramDM(e) {
+        e.preventDefault();
+        var name = document.getElementById('ig-name').value.trim();
+        var subject = document.getElementById('ig-subject').value.trim();
+        var message = document.getElementById('ig-message').value.trim();
+
+        var fullMessage = '';
+        if (name) fullMessage += 'Halo, saya ' + name + '.\n';
+        if (subject) fullMessage += 'Subjek: ' + subject + '\n\n';
+        if (message) fullMessage += message;
+
+        if (navigator.clipboard && fullMessage) {
+            navigator.clipboard.writeText(fullMessage).then(function() {
+                showNotification('✅', 'Pesan di-copy! Paste di Instagram DM', '#064e3b', 'white');
+            }).catch(function() {
+                showNotification('📋', 'Buka Instagram DM & ketik pesan Anda', '#fef3c7', '#92400e');
+            });
+        }
+
+        setTimeout(function() {
+            window.open('https://ig.me/m/' + IG_USERNAME, '_blank');
+        }, 800);
+        return false;
+    }
+
+    // ===== WHATSAPP =====
+    function redirectToWhatsApp(e) {
+        e.preventDefault();
+        var name = document.getElementById('wa-name').value.trim();
+        var message = document.getElementById('wa-message').value.trim();
+
+        var fullMessage = '';
+        if (name) fullMessage += 'Halo, saya ' + name + '.\n\n';
+        if (message) fullMessage += message;
+
+        var waUrl = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(fullMessage);
+        window.open(waUrl, '_blank');
+        return false;
+    }
+
+    // ===== NOTIFICATION =====
+    function showNotification(icon, text, bg, color) {
+        var existing = document.getElementById('contact-notification');
+        if (existing) existing.remove();
+
+        var div = document.createElement('div');
+        div.id = 'contact-notification';
+        div.style.cssText = 'position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:9999;padding:12px 24px;border-radius:12px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;box-shadow:0 10px 30px rgba(0,0,0,0.15);animation:fadeSlideUp 0.4s ease-out;';
+        div.style.background = bg;
+        div.style.color = color;
+        div.innerHTML = '<span style="font-size:18px">' + icon + '</span> ' + text;
+
+        document.body.appendChild(div);
+        setTimeout(function() { div.remove(); }, 4000);
+    }
+
+    // ===== COPY PREVIEW TEXT =====
+    function copyPreviewText() {
+        var previewText = document.getElementById('ig-preview-text');
+        if (!previewText) return;
+
+        var text = previewText.textContent;
+        if (navigator.clipboard && text) {
+            navigator.clipboard.writeText(text).then(function() {
+                var icon = document.getElementById('ig-copy-icon');
+                var label = document.getElementById('ig-copy-label');
+                if (icon) icon.textContent = 'check';
+                if (label) label.textContent = currentLang === 'id' ? 'Tersalin!' : 'Copied!';
+
+                setTimeout(function() {
+                    if (icon) icon.textContent = 'content_copy';
+                    if (label) label.textContent = currentLang === 'id' ? 'Salin' : 'Copy';
+                }, 2000);
+            });
+        }
+    }
+    </script>
+
+    <!-- Scroll-to-Top Button -->
+    <button id="scroll-top" class="scroll-top-btn fixed bottom-8 right-8 z-50 w-12 h-12 bg-primary hover:bg-forest text-white rounded-full shadow-xl shadow-primary/30 flex items-center justify-center transition-all hover:-translate-y-1" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <span class="material-symbols-outlined">keyboard_arrow_up</span>
+    </button>
+
+    <!-- Scroll Animations + Mobile Menu + Nav Scroll -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var animEls = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .scale-in, .stagger-children');
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.12 });
+        animEls.forEach(function (el) { observer.observe(el); });
 
-        fadeEls.forEach(function(el) {
-            observer.observe(el);
+        var nav = document.querySelector('nav');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
         });
+
+        var scrollBtn = document.getElementById('scroll-top');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 500) scrollBtn.classList.add('show');
+            else scrollBtn.classList.remove('show');
+        });
+
+        var mobileBtn = document.getElementById('mobile-menu-btn');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var mobileOverlay = document.getElementById('mobile-overlay');
+        var mobileClose = document.getElementById('mobile-menu-close');
+
+        function openMobile() {
+            mobileMenu.classList.add('open');
+            mobileOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobile() {
+            mobileMenu.classList.remove('open');
+            mobileOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        if (mobileBtn) mobileBtn.addEventListener('click', openMobile);
+        if (mobileClose) mobileClose.addEventListener('click', closeMobile);
+        if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobile);
     });
     </script>
 </body>
 </html>
+
