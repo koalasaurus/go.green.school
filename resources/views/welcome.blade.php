@@ -1131,7 +1131,7 @@ View All Tips
 <span class="material-symbols-outlined text-xl">share</span>
 </a>
 <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all" href="#">
-<span class="material-symbols-outlined text-xl">mail</span>
+<span class="material-symbols-outlined text-xl">Mail</span>
 </a>
 </div>
 </div>
