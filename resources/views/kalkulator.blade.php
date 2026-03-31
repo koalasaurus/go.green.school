@@ -15,10 +15,19 @@
                 extend: {
                     colors: {
                         "primary": "#10b981",
+                        "primary-light": "#34d399",
+                        "primary-dark": "#059669",
                         "forest": "#064e3b",
+                        "forest-light": "#065f46",
                         "sage": "#f0fdf4",
+                        "mint": "#d1fae5",
                         "background-light": "#f8faf9",
                         "background-dark": "#022c22",
+                        "accent-amber": "#f59e0b",
+                        "accent-blue": "#3b82f6",
+                        "accent-violet": "#8b5cf6",
+                        "accent-rose": "#f43f5e",
+                        "accent-teal": "#14b8a6",
                     },
                     fontFamily: {
                         "display": ["Lexend", "sans-serif"]
@@ -34,10 +43,47 @@
         }
     </script>
     <style>
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(6, 78, 59, 0.05);
+        html { scroll-behavior: smooth; }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes floatLeaf {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-18px) rotate(8deg); }
+            50% { transform: translateY(-8px) rotate(-5deg); }
+            75% { transform: translateY(-22px) rotate(3deg); }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.3); }
+            50% { box-shadow: 0 0 30px 10px rgba(16, 185, 129, 0.15); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .fade-up {
@@ -45,12 +91,104 @@
             transform: translateY(30px);
             transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .fade-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .fade-left.visible { opacity: 1; transform: translateX(0); }
+        .fade-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .fade-right.visible { opacity: 1; transform: translateX(0); }
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.85);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scale-in.visible { opacity: 1; transform: scale(1); }
 
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .stagger-children.visible > * {
+            animation: fadeSlideUp 500ms ease-out forwards;
+        }
+        .stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+        .stagger-children > *:nth-child(2) { animation-delay: 120ms; }
+        .stagger-children > *:nth-child(3) { animation-delay: 240ms; }
+        .stagger-children > *:nth-child(4) { animation-delay: 360ms; }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(6, 78, 59, 0.06);
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        .glass-effect.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 30px rgba(6, 78, 59, 0.08);
         }
 
+        .floating-leaf {
+            animation: floatLeaf 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .floating-leaf:nth-child(2) { animation-delay: -2s; animation-duration: 7s; }
+        .floating-leaf:nth-child(3) { animation-delay: -4s; animation-duration: 8s; }
+
+        .pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
+        .spin-slow { animation: spinSlow 20s linear infinite; }
+
+        .dot-pattern {
+            background-image: radial-gradient(circle, rgba(16, 185, 129, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .gradient-border { position: relative; }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            padding: 2px;
+            background: linear-gradient(135deg, #10b981, #064e3b, #10b981);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gradient-border:hover::before { opacity: 1; }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-overlay {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .mobile-overlay.open { opacity: 1; pointer-events: all; }
+
+        .scroll-top-btn {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+        }
+        .scroll-top-btn.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .wave-divider { position: relative; overflow: hidden; }
+
+        /* Calculator-specific styles */
         .formula-box {
             background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
             border-left: 4px solid #10b981;
@@ -59,7 +197,6 @@
         .result-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         .result-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 20px 40px -12px rgba(16, 185, 129, 0.15);
@@ -67,11 +204,6 @@
 
         .input-field:focus {
             box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
-        }
-
-        @keyframes countUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .animate-result {
@@ -88,16 +220,11 @@
             transition: all 0.3s ease;
             cursor: pointer;
         }
-
-        .history-row:hover {
-            background-color: #f0fdf4;
-        }
-
+        .history-row:hover { background-color: #f0fdf4; }
         .history-row.active-row {
             background-color: #dcfce7;
             border-left: 3px solid #10b981;
         }
-
         .history-row.removing {
             opacity: 0;
             transform: translateX(30px);
@@ -109,6 +236,80 @@
         .badge-organic { background: #dcfce7; color: #15803d; }
         .badge-anorganic { background: #fef3c7; color: #b45309; }
         .badge-plastic { background: #fee2e2; color: #dc2626; }
+
+        /* Enhanced UI Effects */
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981 0%, #064e3b 40%, #14b8a6 60%, #10b981 100%);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 6s ease-in-out infinite;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .mesh-gradient {
+            background:
+                radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+        }
+
+        .nav-gradient-line { position: relative; }
+        .nav-gradient-line::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #10b981 20%, #3b82f6 50%, #8b5cf6 80%, transparent 100%);
+            opacity: 0.3;
+        }
+
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.2), 0 0 60px rgba(16, 185, 129, 0.1);
+        }
+
+        .section-divider {
+            height: 6px;
+            background: linear-gradient(90deg, transparent, #10b981, #3b82f6, #8b5cf6, transparent);
+            opacity: 0.15;
+            border-radius: 3px;
+            margin: 0 auto;
+            max-width: 200px;
+        }
+
+        /* Smooth section background gradient transitions */
+        .bg-section-sage-30 {
+            background: linear-gradient(to bottom, #f8faf9 0%, rgba(240, 253, 244, 0.3) 12%, rgba(240, 253, 244, 0.3) 88%, #f8faf9 100%);
+        }
+        .bg-section-sage-50 {
+            background: linear-gradient(to bottom, #f8faf9 0%, rgba(240, 253, 244, 0.5) 12%, rgba(240, 253, 244, 0.5) 88%, #f8faf9 100%);
+        }
+
+        @keyframes floatParticle {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+            25% { transform: translate(10px, -20px) scale(1.1); opacity: 0.8; }
+            50% { transform: translate(-5px, -35px) scale(0.9); opacity: 0.4; }
+            75% { transform: translate(15px, -15px) scale(1.05); opacity: 0.7; }
+        }
+        .float-particle {
+            animation: floatParticle 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .input-field:focus {
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15), 0 0 20px rgba(16, 185, 129, 0.08);
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f8faf9; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #10b981, #064e3b); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #059669; }
     </style>
 </head>
 <body class="bg-background-light font-display text-forest selection:bg-primary/30">
@@ -116,7 +317,7 @@
         <div class="layout-container flex h-full grow flex-col">
 
             <!-- Navigation Bar atas -->
-            <nav class="sticky top-0 z-50 glass-effect px-6 md:px-20 lg:px-40 py-4">
+            <nav class="sticky top-0 z-50 glass-effect nav-gradient-line px-6 md:px-20 lg:px-40 py-4">
                 <div class="max-w-7xl mx-auto flex items-center justify-between">
                     <div class="flex items-center gap-10">
                         <a class="flex items-center gap-2 group" href="/">
@@ -127,7 +328,8 @@
                         </a>
                         <div class="hidden lg:flex items-center gap-8">
                             <a class="text-forest/70 hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/" data-i18n="nav_home">Home</a>
-                            <a class="text-forest/70 hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/about" data-i18n="nav_about">About & Programs</a>
+                            <a class="text-forest/70 hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/about" data-i18n="nav_about">About</a>
+                            <a class="text-forest/70 hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/program" data-i18n="nav_program">Program</a>
                             <a class="text-forest/70 hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/contact" data-i18n="nav_contact">Contact</a>
                             <a class="text-primary text-sm font-semibold transition-colors uppercase tracking-widest" href="/kalkulator" data-i18n="nav_calculator">Calculator</a>
                         </div>
@@ -141,9 +343,52 @@
                             <span class="material-symbols-outlined text-lg">home</span>
                             <span data-i18n="nav_back_home">Back to Home</span>
                         </a>
+                        <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center size-10 rounded-xl hover:bg-forest/5 transition-colors">
+                            <span class="material-symbols-outlined text-2xl text-forest">menu</span>
+                        </button>
                     </div>
                 </div>
             </nav>
+            <!-- Mobile Menu Overlay -->
+            <div id="mobile-overlay" class="mobile-overlay fixed inset-0 bg-black/50 z-[60]"></div>
+            <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-72 bg-white z-[70] shadow-2xl p-8 flex flex-col">
+                <div class="flex items-center justify-between mb-10">
+                    <h3 class="text-forest text-lg font-extrabold">Menu</h3>
+                    <button id="mobile-menu-close" class="size-10 flex items-center justify-center rounded-xl hover:bg-forest/5 transition-colors">
+                        <span class="material-symbols-outlined text-2xl text-forest">close</span>
+                    </button>
+                </div>
+                <div class="flex flex-col gap-6">
+                    <a class="text-forest hover:text-primary text-base font-semibold transition-colors flex items-center gap-3" href="/">
+                        <span class="material-symbols-outlined text-primary">home</span> <span data-i18n="nav_home">Home</span>
+                    </a>
+                    <a class="text-forest hover:text-primary text-base font-semibold transition-colors flex items-center gap-3" href="/about">
+                        <span class="material-symbols-outlined text-primary">info</span> <span data-i18n="nav_about">About</span>
+                    </a>
+                    <a class="text-forest hover:text-primary text-base font-semibold transition-colors flex items-center gap-3" href="/program">
+                        <span class="material-symbols-outlined text-primary">eco</span> <span data-i18n="nav_program">Program</span>
+                    </a>
+                    <a class="text-forest hover:text-primary text-base font-semibold transition-colors flex items-center gap-3" href="/contact">
+                        <span class="material-symbols-outlined text-primary">mail</span> <span data-i18n="nav_contact">Contact</span>
+                    </a>
+                    <a class="text-forest hover:text-primary text-base font-semibold transition-colors flex items-center gap-3" href="/kalkulator">
+                        <span class="material-symbols-outlined text-primary">calculate</span> <span data-i18n="nav_calculator">Calculator</span>
+                    </a>
+                </div>
+                <div class="mt-auto">
+                    <a href="/" class="flex items-center justify-center gap-2 bg-primary hover:bg-forest text-white w-full py-3 rounded-xl text-sm font-bold shadow-lg transition-all">
+                        <span class="material-symbols-outlined text-lg">home</span>
+                        <span data-i18n="nav_back_home">Back to Home</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Floating Leaf Decorations -->
+            <div class="floating-leaf fixed top-32 left-8 text-4xl opacity-20 z-10">🍃</div>
+            <div class="floating-leaf fixed top-96 right-12 text-3xl opacity-15 z-10">🌿</div>
+            <div class="floating-leaf fixed bottom-40 left-16 text-2xl opacity-10 z-10">🌱</div>
+            <div class="float-particle fixed top-[30%] right-[12%] w-3 h-3 bg-primary/20 rounded-full z-10" style="animation-delay: -2s;"></div>
+            <div class="float-particle fixed top-[65%] left-[15%] w-2 h-2 bg-accent-blue/20 rounded-full z-10" style="animation-delay: -5s; animation-duration: 10s;"></div>
 
             <main class="flex flex-col flex-1">
 
@@ -151,14 +396,20 @@
                 <section class="relative px-4 md:px-20 lg:px-40 pt-12 pb-8">
                     <div class="absolute -top-20 -left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl -z-10"></div>
                     <div class="absolute top-20 right-0 w-96 h-96 bg-forest/5 rounded-full blur-3xl -z-10"></div>
+                    <div class="absolute inset-0 mesh-gradient -z-10"></div>
+                    <!-- Top fade from page background -->
+                    <div class="absolute inset-x-0 top-0 h-40 pointer-events-none" style="background: linear-gradient(to bottom, #f8faf9 0%, transparent 100%); z-index: -1;"></div>
                     <div class="max-w-7xl mx-auto text-center">
                         <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
                             <span class="material-symbols-outlined text-base">science</span>
                             <span data-i18n="calc_badge">RPL × Mathematics Collaboration</span>
                         </div>
-                        <h1 class="text-forest text-4xl md:text-6xl font-black tracking-tight leading-[1.1] mb-4" data-i18n="calc_title">Waste Calculator</h1>
+                        <h1 class="text-forest text-4xl md:text-6xl font-black tracking-tight leading-[1.1] mb-4"><span class="gradient-text" data-i18n="calc_title">Waste Calculator</span></h1>
                         <p class="text-forest/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed" data-i18n="calc_subtitle">Calculate, analyze, and predict your school's waste production with mathematical precision.</p>
+                        <div class="section-divider mt-8"></div>
                     </div>
+                    <!-- Bottom fade into page background -->
+                    <div class="absolute inset-x-0 bottom-0 h-32 pointer-events-none" style="background: linear-gradient(to bottom, transparent 0%, #f8faf9 100%); z-index: -1;"></div>
                 </section>
 
                 <!-- Calculator Section -->
@@ -168,7 +419,7 @@
 
                             <!-- Input Form - Left Side -->
                             <div class="lg:col-span-2 fade-up">
-                                <div class="bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 p-8 sticky top-28">
+                                <div class="bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 p-8 sticky top-28 hover-glow transition-all duration-500">
                                     <div class="flex items-center gap-3 mb-6">
                                         <div class="size-10 rounded-xl bg-primary/10 flex items-center justify-center">
                                             <span class="material-symbols-outlined text-primary">edit_note</span>
@@ -302,13 +553,17 @@
                                             <p class="text-forest/50 text-xs font-semibold uppercase tracking-wider mb-1" data-i18n="res_average">Average / Day</p>
                                             <p id="resAverage" class="text-forest text-2xl font-black">0 kg</p>
                                         </div>
-                                        <!-- Prediction -->
-                                        <div class="result-card bg-white rounded-2xl shadow-md shadow-forest/5 border border-forest/5 p-5 text-center">
-                                            <div class="size-10 rounded-xl bg-purple-500/10 flex items-center justify-center mx-auto mb-3">
+                                        <!-- Prediction (Clickable) -->
+                                        <div onclick="openPredictionModal()" class="result-card bg-white rounded-2xl shadow-md shadow-forest/5 border border-forest/5 p-5 text-center cursor-pointer hover:shadow-xl hover:shadow-purple-500/10 hover:-translate-y-1 transition-all duration-300 group relative">
+                                            <div class="size-10 rounded-xl bg-purple-500/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-purple-500/20 transition-colors">
                                                 <span class="material-symbols-outlined text-purple-500">trending_up</span>
                                             </div>
                                             <p class="text-forest/50 text-xs font-semibold uppercase tracking-wider mb-1" data-i18n="res_prediction">30-Day Prediction</p>
                                             <p id="resPrediction" class="text-forest text-2xl font-black">0 kg</p>
+                                            <p class="text-purple-500 text-[10px] font-semibold mt-2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1" data-i18n="pred_click_detail">
+                                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                                                Click for details
+                                            </p>
                                         </div>
                                         <!-- Category Count -->
                                         <div class="result-card bg-white rounded-2xl shadow-md shadow-forest/5 border border-forest/5 p-5 text-center">
@@ -525,14 +780,20 @@
                 </section>
 
                 <!-- Info Section - How It Works -->
-                <section class="px-4 md:px-20 lg:px-40 py-16">
+                <section class="px-4 md:px-20 lg:px-40 py-16 relative">
+                    <div class="absolute inset-0 mesh-gradient -z-10"></div>
+                    <!-- Top fade from page background -->
+                    <div class="absolute inset-x-0 top-0 h-40 pointer-events-none" style="background: linear-gradient(to bottom, #f8faf9 0%, transparent 100%); z-index: -1;"></div>
+                    <!-- Bottom fade into page background -->
+                    <div class="absolute inset-x-0 bottom-0 h-40 pointer-events-none" style="background: linear-gradient(to bottom, transparent 0%, #f8faf9 100%); z-index: -1;"></div>
                     <div class="max-w-7xl mx-auto">
                         <div class="fade-up text-center mb-12">
                             <span class="text-primary font-bold tracking-widest uppercase text-xs" data-i18n="how_label">Guide</span>
                             <h2 class="text-forest text-3xl md:text-4xl font-black tracking-tight mt-3" data-i18n="how_title">How to Use the Calculator</h2>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div class="fade-up bg-white rounded-2xl shadow-md shadow-forest/5 border border-forest/5 p-8 text-center hover:scale-105 hover:-translate-y-1 transition-all duration-300">
+                            <div class="fade-up bg-white rounded-2xl shadow-md shadow-forest/5 border border-forest/5 p-8 text-center hover:scale-105 hover:-translate-y-1 transition-all duration-300 hover-glow relative overflow-hidden">
+                                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent-teal"></div>
                                 <div class="size-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
                                     <span class="material-symbols-outlined text-primary text-3xl">edit_note</span>
                                 </div>
@@ -540,7 +801,8 @@
                                 <h4 class="text-forest font-bold text-base mb-2" data-i18n="step1_title">Enter Data</h4>
                                 <p class="text-forest/50 text-sm" data-i18n="step1_desc">Input your class name, number of data collection days, and the weight of each waste type in kilograms.</p>
                             </div>
-                            <div class="fade-up bg-white rounded-2xl shadow-md shadow-forest/5 border border-forest/5 p-8 text-center hover:scale-105 hover:-translate-y-1 transition-all duration-300">
+                            <div class="fade-up bg-white rounded-2xl shadow-md shadow-forest/5 border border-forest/5 p-8 text-center hover:scale-105 hover:-translate-y-1 transition-all duration-300 hover-glow relative overflow-hidden">
+                                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-blue to-blue-600"></div>
                                 <div class="size-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mx-auto mb-5">
                                     <span class="material-symbols-outlined text-blue-500 text-3xl">calculate</span>
                                 </div>
@@ -548,7 +810,8 @@
                                 <h4 class="text-forest font-bold text-base mb-2" data-i18n="step2_title">Calculate</h4>
                                 <p class="text-forest/50 text-sm" data-i18n="step2_desc">Click the Calculate button and the system will instantly compute the total, average, percentage, and 30-day prediction.</p>
                             </div>
-                            <div class="fade-up bg-white rounded-2xl shadow-md shadow-forest/5 border border-forest/5 p-8 text-center hover:scale-105 hover:-translate-y-1 transition-all duration-300">
+                            <div class="fade-up bg-white rounded-2xl shadow-md shadow-forest/5 border border-forest/5 p-8 text-center hover:scale-105 hover:-translate-y-1 transition-all duration-300 hover-glow relative overflow-hidden">
+                                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-violet to-purple-600"></div>
                                 <div class="size-16 rounded-2xl bg-purple-500/10 flex items-center justify-center mx-auto mb-5">
                                     <span class="material-symbols-outlined text-purple-500 text-3xl">analytics</span>
                                 </div>
@@ -561,6 +824,13 @@
                 </section>
 
             </main>
+
+            <!-- Wave Divider -->
+            <div class="relative">
+                <svg class="w-full h-16 text-forest" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 30 C300 60 600 0 900 30 C1050 45 1150 20 1200 30 L1200 60 L0 60Z" fill="currentColor"/>
+                </svg>
+            </div>
 
             <!-- Footer -->
             <footer class="bg-forest px-6 md:px-20 lg:px-40 py-12">
@@ -576,11 +846,101 @@
         </div>
     </div>
 
+    <!-- 30-Day Prediction Detail Modal -->
+    <div id="predictionModal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closePredictionModal()"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div id="predictionModalContent" class="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg p-8 transform scale-95 opacity-0 transition-all duration-300">
+                <!-- Close Button -->
+                <button onclick="closePredictionModal()" class="absolute top-4 right-4 size-10 rounded-xl hover:bg-forest/5 flex items-center justify-center text-forest/40 hover:text-forest transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+
+                <!-- Header -->
+                <div class="text-center mb-8">
+                    <div class="size-14 rounded-2xl bg-purple-500/10 flex items-center justify-center mx-auto mb-4">
+                        <span class="material-symbols-outlined text-purple-500 text-3xl">trending_up</span>
+                    </div>
+                    <h3 class="text-forest text-2xl font-black tracking-tight" data-i18n="pred_modal_title">30-Day Prediction</h3>
+                    <p class="text-forest/50 text-sm mt-1" data-i18n="pred_modal_subtitle">Waste prediction breakdown by category</p>
+                </div>
+
+                <!-- Total Prediction -->
+                <div class="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl p-5 text-center mb-6">
+                    <p class="text-white/70 text-xs font-semibold uppercase tracking-wider mb-1" data-i18n="pred_total_label">Total 30-Day Prediction</p>
+                    <p id="predModalTotal" class="text-white text-3xl font-black">0 kg</p>
+                </div>
+
+                <!-- Category Predictions -->
+                <div class="space-y-4">
+                    <!-- Organic Prediction -->
+                    <div class="flex items-center gap-4 bg-green-50 rounded-2xl p-4 border border-green-100">
+                        <div class="size-12 rounded-xl bg-green-500/20 flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-green-600 text-2xl">compost</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-forest/50 text-xs font-semibold uppercase tracking-wider" data-i18n="pred_organic_label">Organic Waste</p>
+                            <p id="predModalOrganic" class="text-forest text-xl font-black">0 kg</p>
+                        </div>
+                        <div class="text-right">
+                            <p id="predModalOrganicPct" class="text-green-600 text-sm font-bold">0%</p>
+                            <p class="text-forest/40 text-[10px]" data-i18n="pred_per_day">per day</p>
+                            <p id="predModalOrganicDaily" class="text-forest/60 text-xs font-semibold">0 kg</p>
+                        </div>
+                    </div>
+
+                    <!-- Anorganic Prediction -->
+                    <div class="flex items-center gap-4 bg-amber-50 rounded-2xl p-4 border border-amber-100">
+                        <div class="size-12 rounded-xl bg-amber-500/20 flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-amber-600 text-2xl">recycling</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-forest/50 text-xs font-semibold uppercase tracking-wider" data-i18n="pred_anorganic_label">Anorganic Waste</p>
+                            <p id="predModalAnorganic" class="text-forest text-xl font-black">0 kg</p>
+                        </div>
+                        <div class="text-right">
+                            <p id="predModalAnorganicPct" class="text-amber-600 text-sm font-bold">0%</p>
+                            <p class="text-forest/40 text-[10px]" data-i18n="pred_per_day">per day</p>
+                            <p id="predModalAnorganicDaily" class="text-forest/60 text-xs font-semibold">0 kg</p>
+                        </div>
+                    </div>
+
+                    <!-- B3 Prediction -->
+                    <div class="flex items-center gap-4 bg-red-50 rounded-2xl p-4 border border-red-100">
+                        <div class="size-12 rounded-xl bg-red-500/20 flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-red-600 text-2xl">warning</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-forest/50 text-xs font-semibold uppercase tracking-wider" data-i18n="pred_b3_label">B3 Hazardous Waste</p>
+                            <p id="predModalB3" class="text-forest text-xl font-black">0 kg</p>
+                        </div>
+                        <div class="text-right">
+                            <p id="predModalB3Pct" class="text-red-600 text-sm font-bold">0%</p>
+                            <p class="text-forest/40 text-[10px]" data-i18n="pred_per_day">per day</p>
+                            <p id="predModalB3Daily" class="text-forest/60 text-xs font-semibold">0 kg</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formula Note -->
+                <div class="mt-6 bg-forest/5 rounded-xl p-4">
+                    <p class="text-forest/50 text-xs leading-relaxed flex items-start gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm mt-0.5">info</span>
+                        <span data-i18n="pred_formula_note">Prediction formula: (Category Weight ÷ Days) × 30. Each category is predicted based on its own daily average.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Language Translations -->
     <script>
     const translations = {
         en: {
             nav_home: "Home",
+            nav_about: "About",
+            nav_program: "Program",
+            nav_contact: "Contact",
             nav_calculator: "Calculator",
             nav_back_home: "Back to Home",
             calc_badge: "RPL × Mathematics Collaboration",
@@ -601,6 +961,15 @@
             res_total: "Total",
             res_average: "Average / Day",
             res_prediction: "30-Day Prediction",
+            pred_click_detail: "Click for details",
+            pred_modal_title: "30-Day Prediction",
+            pred_modal_subtitle: "Waste prediction breakdown by category",
+            pred_total_label: "Total 30-Day Prediction",
+            pred_organic_label: "Organic Waste",
+            pred_anorganic_label: "Anorganic Waste",
+            pred_b3_label: "B3 Hazardous Waste",
+            pred_per_day: "per day",
+            pred_formula_note: "Prediction formula: (Category Weight ÷ Days) × 30. Each category is predicted based on its own daily average.",
             res_categories: "Categories",
             res_composition: "Waste Composition",
             res_chart: "Visual Chart",
@@ -658,6 +1027,9 @@
         },
         id: {
             nav_home: "Beranda",
+            nav_about: "Tentang",
+            nav_program: "Program",
+            nav_contact: "Kontak",
             nav_calculator: "Kalkulator",
             nav_back_home: "Kembali ke Beranda",
             calc_badge: "Kolaborasi RPL × Matematika",
@@ -678,6 +1050,15 @@
             res_total: "Total",
             res_average: "Rata-rata / Hari",
             res_prediction: "Prediksi 30 Hari",
+            pred_click_detail: "Klik untuk detail",
+            pred_modal_title: "Prediksi 30 Hari",
+            pred_modal_subtitle: "Rincian prediksi sampah per kategori",
+            pred_total_label: "Total Prediksi 30 Hari",
+            pred_organic_label: "Sampah Organik",
+            pred_anorganic_label: "Sampah Anorganik",
+            pred_b3_label: "Sampah B3 (Berbahaya)",
+            pred_per_day: "per hari",
+            pred_formula_note: "Rumus prediksi: (Berat Kategori ÷ Hari) × 30. Setiap kategori diprediksi berdasarkan rata-rata hariannya.",
             res_categories: "Kategori",
             res_composition: "Komposisi Sampah",
             res_chart: "Grafik Visual",
@@ -1023,6 +1404,25 @@
         document.getElementById('resAverage').textContent = average.toFixed(2) + ' kg';
         document.getElementById('resPrediction').textContent = prediction.toFixed(2) + ' kg';
 
+        // Per-category 30-day predictions
+        const predOrganic = (organic / days) * 30;
+        const predAnorganic = (anorganic / days) * 30;
+        const predB3 = (plastic / days) * 30;
+
+        // Update modal values
+        document.getElementById('predModalTotal').textContent = prediction.toFixed(2) + ' kg';
+        document.getElementById('predModalOrganic').textContent = predOrganic.toFixed(2) + ' kg';
+        document.getElementById('predModalAnorganic').textContent = predAnorganic.toFixed(2) + ' kg';
+        document.getElementById('predModalB3').textContent = predB3.toFixed(2) + ' kg';
+
+        document.getElementById('predModalOrganicPct').textContent = pctOrg.toFixed(1) + '%';
+        document.getElementById('predModalAnorganicPct').textContent = pctAnorg.toFixed(1) + '%';
+        document.getElementById('predModalB3Pct').textContent = pctPlast.toFixed(1) + '%';
+
+        document.getElementById('predModalOrganicDaily').textContent = (organic / days).toFixed(2) + ' kg';
+        document.getElementById('predModalAnorganicDaily').textContent = (anorganic / days).toFixed(2) + ' kg';
+        document.getElementById('predModalB3Daily').textContent = (plastic / days).toFixed(2) + ' kg';
+
         document.getElementById('pctOrganic').textContent = pctOrg.toFixed(1) + '%';
         document.getElementById('barOrganic').style.width = pctOrg + '%';
         document.getElementById('kgOrganic').textContent = organic.toFixed(2) + ' kg';
@@ -1144,22 +1544,93 @@
     });
     </script>
 
-    <!-- Scroll Fade-Up Animation -->
+    <!-- Scroll-to-Top Button -->
+    <button id="scroll-top" class="scroll-top-btn fixed bottom-8 right-8 z-50 w-12 h-12 bg-primary hover:bg-forest text-white rounded-full shadow-xl shadow-primary/30 flex items-center justify-center transition-all hover:-translate-y-1" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <span class="material-symbols-outlined">keyboard_arrow_up</span>
+    </button>
+
+    <!-- Prediction Modal Logic -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const fadeEls = document.querySelectorAll('.fade-up');
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
+    function openPredictionModal() {
+        const modal = document.getElementById('predictionModal');
+        const content = document.getElementById('predictionModalContent');
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        // Trigger animation
+        requestAnimationFrame(function() {
+            content.style.transform = 'scale(1)';
+            content.style.opacity = '1';
+        });
+    }
+
+    function closePredictionModal() {
+        const modal = document.getElementById('predictionModal');
+        const content = document.getElementById('predictionModalContent');
+        content.style.transform = 'scale(0.95)';
+        content.style.opacity = '0';
+        setTimeout(function() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }, 300);
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('predictionModal');
+            if (!modal.classList.contains('hidden')) {
+                closePredictionModal();
+            }
+        }
+    });
+    </script>
+
+    <!-- Scroll Animations + Mobile Menu + Nav Scroll -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var animEls = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .scale-in, .stagger-children');
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.12 });
+        animEls.forEach(function (el) { observer.observe(el); });
 
-        fadeEls.forEach(function(el) {
-            observer.observe(el);
+        var nav = document.querySelector('nav');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
         });
+
+        var scrollBtn = document.getElementById('scroll-top');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 500) scrollBtn.classList.add('show');
+            else scrollBtn.classList.remove('show');
+        });
+
+        var mobileBtn = document.getElementById('mobile-menu-btn');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var mobileOverlay = document.getElementById('mobile-overlay');
+        var mobileClose = document.getElementById('mobile-menu-close');
+
+        function openMobile() {
+            mobileMenu.classList.add('open');
+            mobileOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobile() {
+            mobileMenu.classList.remove('open');
+            mobileOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        if (mobileBtn) mobileBtn.addEventListener('click', openMobile);
+        if (mobileClose) mobileClose.addEventListener('click', closeMobile);
+        if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobile);
     });
     </script>
 </body>
 </html>
+
