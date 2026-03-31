@@ -642,7 +642,11 @@ Go Green School Web is an educational website that provides information about wa
 
     <!-- Language Switcher Script -->
     <script>
-    var currentLang = localStorage.getItem('ggs_lang') || 'en';
+    var currentLang = localStorage.getItem('ggs_lang');
+    if (!currentLang) {
+        currentLang = 'en';
+        localStorage.setItem('ggs_lang', 'en');
+    }
 
     var translations = {
         en: {

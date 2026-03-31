@@ -1519,6 +1519,9 @@ function setLanguage(lang) {
             } else {
                 el.textContent = translations[lang][key];
             }
+        } else {
+            // fallback: biarkan value asli tetap ada jika key tidak ditemukan
+            // tidak melakukan apa-apa, value HTML tetap
         }
     });
 

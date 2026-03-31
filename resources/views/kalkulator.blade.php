@@ -1116,7 +1116,11 @@
         }
     };
 
-    let currentLang = localStorage.getItem('lang') || 'en';
+    let currentLang = localStorage.getItem('lang');
+    if (!currentLang) {
+        currentLang = 'en';
+        localStorage.setItem('lang', 'en');
+    }
 
     function setLanguage(lang) {
         currentLang = lang;
