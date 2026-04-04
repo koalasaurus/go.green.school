@@ -37,7 +37,54 @@
         }
       </script>
 <style>
-        var lang = currentLang || 'en';
+                /* Earth Button Animations */
+                @keyframes earthSpin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+                @keyframes earthPulse {
+                    0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+                    50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+                }
+                .dev-earth-btn {
+                    animation: earthPulse 2s ease-in-out infinite;
+                    background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(6,78,59,0.1));
+                    cursor: pointer;
+                    position: relative;
+                }
+                .dev-earth-btn:hover span {
+                    animation: earthSpin 1s linear infinite;
+                    display: inline-block;
+                }
+                .dev-modal-overlay {
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all 0.3s ease;
+                }
+                .dev-modal-overlay.active {
+                    opacity: 1;
+                    visibility: visible;
+                }
+                .dev-modal-content {
+                    transform: scale(0.8) translateY(20px);
+                    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+                }
+                .dev-modal-overlay.active .dev-modal-content {
+                    transform: scale(1) translateY(0);
+                }
+                .dev-card {
+                    transition: all 0.3s ease;
+                }
+                .dev-card:hover {
+                    transform: translateY(-6px);
+                    box-shadow: 0 12px 30px rgba(16, 185, 129, 0.2);
+                }
+                .dev-card-img {
+                    transition: transform 0.5s ease;
+                }
+                .dev-card:hover .dev-card-img {
+                    transform: scale(1.08);
+                }
 
                 @keyframes fadeSlideUp {
                     from { opacity: 0; transform: translateY(18px); }
@@ -499,6 +546,10 @@
 Get Started
 <span class="material-symbols-outlined text-lg">arrow_forward</span>
 </button>
+<!-- Earth Dev Button -->
+<button onclick="openDevModal()" class="dev-earth-btn flex items-center justify-center size-10 rounded-full hover:scale-110 transition-all duration-300" title="Meet the Developers">
+<span class="text-2xl">🌍</span>
+</button>
 <!-- Mobile Hamburger -->
 <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center size-10 rounded-xl hover:bg-forest/5 transition-colors">
 <span class="material-symbols-outlined text-2xl text-forest">menu</span>
@@ -554,8 +605,7 @@ Get Started
 <h1 class="hero-animate text-white text-4xl font-black leading-[1.1] tracking-tighter md:text-6xl drop-shadow-md max-w-3xl mb-4" style="animation-delay: 120ms;" data-i18n="hero1_title">Educating Future Leaders for a Greener World</h1>
 <p class="hero-animate text-white/90 text-lg md:text-xl font-normal leading-relaxed max-w-2xl mx-auto mb-8" style="animation-delay: 250ms;" data-i18n="hero1_desc">Join Go Green School and be part of the environmental revolution in education.</p>
 <div class="hero-animate flex flex-col sm:flex-row gap-4 mb-7" style="animation-delay: 380ms;">
-<button class="flex min-w-[190px] cursor-pointer items-center justify-center gap-2 rounded-xl h-12 px-8 bg-primary text-white text-base font-bold shadow-xl shadow-primary/30 hover:shadow-primary/40 hover:bg-primary/90 transition-all duration-300" data-i18n="hero_btn_primary">Learn Program</button>
-<button class="flex min-w-[190px] cursor-pointer items-center justify-center rounded-xl h-12 px-8 border border-white/30 text-white text-base font-bold bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300" data-i18n="hero_btn_secondary">View Activities</button>
+<a href="/program" class="flex min-w-[190px] cursor-pointer items-center justify-center gap-2 rounded-xl h-12 px-8 bg-primary text-white text-base font-bold shadow-xl shadow-primary/30 hover:shadow-primary/40 hover:bg-primary/90 transition-all duration-300 no-underline" data-i18n="hero_btn_primary">Learn Program</a>
 </div>
 </div>
 </div>
@@ -566,8 +616,7 @@ Get Started
 <h1 class="hero-animate text-white text-4xl font-black leading-[1.1] tracking-tighter md:text-6xl drop-shadow-md max-w-3xl mb-4" style="animation-delay: 120ms;" data-i18n="hero2_title">Manage Waste Wisely</h1>
 <p class="hero-animate text-white/90 text-lg md:text-xl font-normal leading-relaxed max-w-2xl mx-auto mb-8" style="animation-delay: 250ms;" data-i18n="hero2_desc">Together we recycle for a cleaner and more sustainable future for the earth.</p>
 <div class="hero-animate flex flex-col sm:flex-row gap-4 mb-7" style="animation-delay: 380ms;">
-<button class="flex min-w-[190px] cursor-pointer items-center justify-center gap-2 rounded-xl h-12 px-8 bg-primary text-white text-base font-bold shadow-xl shadow-primary/30 hover:shadow-primary/40 hover:bg-primary/90 transition-all duration-300" data-i18n="hero_btn_primary">Learn Program</button>
-<button class="flex min-w-[190px] cursor-pointer items-center justify-center rounded-xl h-12 px-8 border border-white/30 text-white text-base font-bold bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300" data-i18n="hero_btn_secondary">View Activities</button>
+<a href="/program" class="flex min-w-[190px] cursor-pointer items-center justify-center gap-2 rounded-xl h-12 px-8 bg-primary text-white text-base font-bold shadow-xl shadow-primary/30 hover:shadow-primary/40 hover:bg-primary/90 transition-all duration-300 no-underline" data-i18n="hero_btn_primary">Learn Program</a>
 </div>
 </div>
 </div>
@@ -578,8 +627,7 @@ Get Started
 <h1 class="hero-animate text-white text-4xl font-black leading-[1.1] tracking-tighter md:text-6xl drop-shadow-md max-w-3xl mb-4" style="animation-delay: 120ms;" data-i18n="hero3_title">Reduce, Reuse, Recycle</h1>
 <p class="hero-animate text-white/90 text-lg md:text-xl font-normal leading-relaxed max-w-2xl mx-auto mb-8" style="animation-delay: 250ms;" data-i18n="hero3_desc">Three simple steps that can change the world. Start from school, start from us.</p>
 <div class="hero-animate flex flex-col sm:flex-row gap-4 mb-7" style="animation-delay: 380ms;">
-<button class="flex min-w-[190px] cursor-pointer items-center justify-center gap-2 rounded-xl h-12 px-8 bg-primary text-white text-base font-bold shadow-xl shadow-primary/30 hover:shadow-primary/40 hover:bg-primary/90 transition-all duration-300" data-i18n="hero_btn_primary">Learn Program</button>
-<button class="flex min-w-[190px] cursor-pointer items-center justify-center rounded-xl h-12 px-8 border border-white/30 text-white text-base font-bold bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300" data-i18n="hero_btn_secondary">View Activities</button>
+<a href="/program" class="flex min-w-[190px] cursor-pointer items-center justify-center gap-2 rounded-xl h-12 px-8 bg-primary text-white text-base font-bold shadow-xl shadow-primary/30 hover:shadow-primary/40 hover:bg-primary/90 transition-all duration-300 no-underline" data-i18n="hero_btn_primary">Learn Program</a>
 </div>
 </div>
 </div>
@@ -590,8 +638,7 @@ Get Started
 <h1 class="hero-animate text-white text-4xl font-black leading-[1.1] tracking-tighter md:text-6xl drop-shadow-md max-w-3xl mb-4" style="animation-delay: 120ms;" data-i18n="hero4_title">Sorting Waste from an Early Age</h1>
 <p class="hero-animate text-white/90 text-lg md:text-xl font-normal leading-relaxed max-w-2xl mx-auto mb-8" style="animation-delay: 250ms;" data-i18n="hero4_desc">Teach children to sort waste to build environmentally friendly habits.</p>
 <div class="hero-animate flex flex-col sm:flex-row gap-4 mb-7" style="animation-delay: 380ms;">
-<button class="flex min-w-[190px] cursor-pointer items-center justify-center gap-2 rounded-xl h-12 px-8 bg-primary text-white text-base font-bold shadow-xl shadow-primary/30 hover:shadow-primary/40 hover:bg-primary/90 transition-all duration-300" data-i18n="hero_btn_primary">Learn Program</button>
-<button class="flex min-w-[190px] cursor-pointer items-center justify-center rounded-xl h-12 px-8 border border-white/30 text-white text-base font-bold bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300" data-i18n="hero_btn_secondary">View Activities</button>
+<a href="/program" class="flex min-w-[190px] cursor-pointer items-center justify-center gap-2 rounded-xl h-12 px-8 bg-primary text-white text-base font-bold shadow-xl shadow-primary/30 hover:shadow-primary/40 hover:bg-primary/90 transition-all duration-300 no-underline" data-i18n="hero_btn_primary">Learn Program</a>
 </div>
 </div>
 </div>
@@ -1262,7 +1309,6 @@ const translations = {
         hero4_title: "Sorting Waste from an Early Age",
         hero4_desc: "Teach children to sort waste to build environmentally friendly habits.",
         hero_btn_primary: "Learn Program",
-        hero_btn_secondary: "View Activities",
         hero_stat_students: "500+ students joined the program",
         hero_stat_recycle: "200kg of waste recycled",
         hero_stat_programs: "10 environmental programs",
@@ -1370,6 +1416,14 @@ const translations = {
         ticker_energy: "Renewable Energy",
         ticker_water: "Water Conservation",
         ticker_community: "Community Impact",
+        dev_modal_title: "Meet Our Developers",
+        dev_modal_subtitle: "The team behind Go Green School",
+        dev_role: "Developer",
+        dev_specialty_1: "🌱 Frontend",
+        dev_specialty_2: "🌿 Backend",
+        dev_specialty_3: "🍀 UI/UX",
+        dev_specialty_4: "🌳 Fullstack",
+        dev_modal_footer: "Made with 💚 for a greener future",
     },
     id: {
         nav_home: "Beranda",
@@ -1386,7 +1440,6 @@ const translations = {
         hero4_title: "Memilah Sampah Sejak Dini",
         hero4_desc: "Ajarkan anak-anak memilah sampah untuk membangun kebiasaan ramah lingkungan.",
         hero_btn_primary: "Pelajari Program",
-        hero_btn_secondary: "Lihat Kegiatan",
         hero_stat_students: "500+ siswa berpartisipasi",
         hero_stat_recycle: "200kg sampah didaur ulang",
         hero_stat_programs: "10 program lingkungan",
@@ -1494,14 +1547,22 @@ const translations = {
         ticker_energy: "Energi Terbarukan",
         ticker_water: "Konservasi Air",
         ticker_community: "Dampak Komunitas",
+        dev_modal_title: "Temui Developer Kami",
+        dev_modal_subtitle: "Tim di balik Go Green School",
+        dev_role: "Pengembang",
+        dev_specialty_1: "🌱 Frontend",
+        dev_specialty_2: "🌿 Backend",
+        dev_specialty_3: "🍀 UI/UX",
+        dev_specialty_4: "🌳 Fullstack",
+        dev_modal_footer: "Dibuat dengan 💚 untuk masa depan yang lebih hijau",
     }
 };
 
-let currentLang = localStorage.getItem('lang') || 'en';
+let currentLang = localStorage.getItem('ggs_lang') || 'en';
 
 function setLanguage(lang) {
     currentLang = lang;
-    localStorage.setItem('lang', lang);
+    localStorage.setItem('ggs_lang', lang);
     document.documentElement.lang = lang;
 
     // Update page title
@@ -1535,6 +1596,10 @@ function setLanguage(lang) {
         btnId.className = 'flex min-w-[40px] cursor-pointer items-center justify-center rounded-full h-8 px-3 bg-primary text-white text-xs font-bold transition-all';
         btnEn.className = 'flex min-w-[40px] cursor-pointer items-center justify-center rounded-full h-8 px-3 text-forest/60 text-xs font-bold hover:bg-forest/10 transition-all';
     }
+
+    // Update earth button tooltip
+    var earthBtn = document.querySelector('.dev-earth-btn');
+    if (earthBtn) earthBtn.title = lang === 'en' ? 'Meet the Developers' : 'Temui Developer';
 }
 
 // Apply saved language on page load
@@ -1732,7 +1797,7 @@ var learnMoreData = {
 };
 
 function openLearnMore(cardKey) {
-    var lang = currentLang || localStorage.getItem('lang') || 'en';
+    var lang = currentLang || localStorage.getItem('ggs_lang') || 'en';
     var langData = learnMoreData[lang] || learnMoreData.en;
     var data = langData[cardKey] || learnMoreData.en[cardKey];
     if (!data) return;
@@ -1946,6 +2011,95 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, { threshold: 0.5 });
     counters.forEach(function (el) { counterObserver.observe(el); });
+});
+</script>
+<!-- Developer Credits Modal -->
+<div id="devModal" class="dev-modal-overlay fixed inset-0 z-[100] flex items-center justify-center p-4" style="background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);">
+    <div class="dev-modal-content bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <!-- Modal Header -->
+        <div class="relative bg-gradient-to-br from-primary via-emerald-500 to-forest rounded-t-3xl p-8 text-center overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-4 left-8 text-6xl">🌿</div>
+                <div class="absolute bottom-4 right-8 text-6xl">🌍</div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-8xl opacity-20">♻️</div>
+            </div>
+            <button onclick="closeDevModal()" class="absolute top-4 right-4 text-white/80 hover:text-white hover:bg-white/20 rounded-full size-10 flex items-center justify-center transition-all">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+            <div class="relative z-10">
+                <div class="text-5xl mb-3">🌏</div>
+                <h2 data-i18n="dev_modal_title" class="text-2xl md:text-3xl font-bold text-white mb-1">Meet Our Developers</h2>
+                <p data-i18n="dev_modal_subtitle" class="text-white/80 text-sm">The team behind Go Green School</p>
+            </div>
+        </div>
+        <!-- Developer Cards -->
+        <div class="p-6 md:p-8 grid grid-cols-2 gap-4 md:gap-6">
+            <!-- Developer 1 -->
+            <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
+                <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
+                    <img src="https://ui-avatars.com/api/?name=Richard+Wong&background=10b981&color=fff&size=200&bold=true&font-size=0.35" alt="Richard Wong" class="dev-card-img w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-forest text-sm md:text-base">Richard Wong</h3>
+                <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
+                <div class="mt-2 flex justify-center">
+                    <span data-i18n="dev_specialty_1" class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">🌱 Frontend</span>
+                </div>
+            </div>
+            <!-- Developer 2 -->
+            <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
+                <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
+                    <img src="https://ui-avatars.com/api/?name=Andika+Dicky&background=059669&color=fff&size=200&bold=true&font-size=0.35" alt="Andika Dicky Sanjaya" class="dev-card-img w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-forest text-sm md:text-base">Andika Dicky Sanjaya</h3>
+                <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
+                <div class="mt-2 flex justify-center">
+                    <span data-i18n="dev_specialty_2" class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">🌿 Backend</span>
+                </div>
+            </div>
+            <!-- Developer 3 -->
+            <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
+                <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
+                    <img src="https://ui-avatars.com/api/?name=Irene+Trisnawati&background=047857&color=fff&size=200&bold=true&font-size=0.35" alt="Irene Trisnawati" class="dev-card-img w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-forest text-sm md:text-base">Irene Trisnawati</h3>
+                <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
+                <div class="mt-2 flex justify-center">
+                    <span data-i18n="dev_specialty_3" class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">🍀 UI/UX</span>
+                </div>
+            </div>
+            <!-- Developer 4 -->
+            <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
+                <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
+                    <img src="https://ui-avatars.com/api/?name=Deny+Hendrata&background=065f46&color=fff&size=200&bold=true&font-size=0.35" alt="Deny Hendrata" class="dev-card-img w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-forest text-sm md:text-base">Deny Hendrata</h3>
+                <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
+                <div class="mt-2 flex justify-center">
+                    <span data-i18n="dev_specialty_4" class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">🌳 Fullstack</span>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Footer -->
+        <div class="px-6 pb-6 text-center">
+            <p data-i18n="dev_modal_footer" class="text-xs text-gray-400">Made with 💚 for a greener future</p>
+        </div>
+    </div>
+</div>
+
+<script>
+function openDevModal() {
+    document.getElementById('devModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeDevModal() {
+    document.getElementById('devModal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+document.getElementById('devModal').addEventListener('click', function(e) {
+    if (e.target === this) closeDevModal();
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDevModal();
 });
 </script>
 </body></html>

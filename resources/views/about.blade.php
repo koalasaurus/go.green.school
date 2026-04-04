@@ -42,7 +42,54 @@
         }
     </script>
     <style>
-        localStorage.setItem('ggs_lang', lang || 'en');
+        /* Earth Button Animations */
+        @keyframes earthSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes earthPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+        }
+        .dev-earth-btn {
+            animation: earthPulse 2s ease-in-out infinite;
+            background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(6,78,59,0.1));
+            cursor: pointer;
+            position: relative;
+        }
+        .dev-earth-btn:hover span {
+            animation: earthSpin 1s linear infinite;
+            display: inline-block;
+        }
+        .dev-modal-overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .dev-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .dev-modal-content {
+            transform: scale(0.8) translateY(20px);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .dev-modal-overlay.active .dev-modal-content {
+            transform: scale(1) translateY(0);
+        }
+        .dev-card {
+            transition: all 0.3s ease;
+        }
+        .dev-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(16, 185, 129, 0.2);
+        }
+        .dev-card-img {
+            transition: transform 0.5s ease;
+        }
+        .dev-card:hover .dev-card-img {
+            transform: scale(1.08);
+        }
 
         @keyframes fadeSlideUp {
             from { opacity: 0; transform: translateY(18px); }
@@ -357,6 +404,10 @@
                             <span class="material-symbols-outlined text-lg">home</span>
                             <span data-i18n="nav_back_home">Back to Home</span>
                         </a>
+                        <!-- Earth Dev Button -->
+                        <button onclick="openDevModal()" class="dev-earth-btn flex items-center justify-center size-10 rounded-full hover:scale-110 transition-all duration-300" title="Meet the Developers">
+                            <span class="text-2xl">🌍</span>
+                        </button>
                         <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center size-10 rounded-xl hover:bg-forest/5 transition-colors">
                             <span class="material-symbols-outlined text-2xl text-forest">menu</span>
                         </button>
@@ -665,6 +716,7 @@ Go Green School Web is an educational website that provides information about wa
             about_who_p1: "Go Green School is an educational initiative dedicated to integrating environmental awareness into the school curriculum. We believe that the future of our planet lies in the hands of today's students.",
             about_who_p2: "Founded with the vision of creating environmentally conscious leaders, our school combines academic excellence with hands-on sustainability programs that make a real difference.",
             about_who_p3: "Through our comprehensive approach, students learn not just about environmental issues, but actively participate in solutions — from waste management to green energy projects.",
+            about_who_p4: "In conclusion, waste management is an important part of a Go Green School program. By separating, recycling, and reusing waste, schools can reduce pollution and create a cleaner and greener environment for everyone.",
             about_stat_students: "Students Enrolled",
             about_vision_title: "Our Vision",
             about_vision_desc: "To become a leading educational institution that produces environmentally conscious leaders who are committed to sustainability and innovation for a greener future.",
@@ -710,6 +762,14 @@ Go Green School Web is an educational website that provides information about wa
             footer_copyright: "© 2024 Go Green School. All Rights Reserved.",
             footer_privacy: "Privacy Policy",
             footer_terms: "Terms & Conditions",
+            dev_modal_title: "Meet Our Developers",
+            dev_modal_subtitle: "The team behind Go Green School",
+            dev_role: "Developer",
+            dev_specialty_1: "🌱 Frontend",
+            dev_specialty_2: "🌿 Backend",
+            dev_specialty_3: "🍀 UI/UX",
+            dev_specialty_4: "🌳 Fullstack",
+            dev_modal_footer: "Made with 💚 for a greener future",
         },
         id: {
             nav_home: "Beranda",
@@ -727,6 +787,7 @@ Go Green School Web is an educational website that provides information about wa
             about_who_p1: "Go Green School adalah inisiatif pendidikan yang didedikasikan untuk mengintegrasikan kesadaran lingkungan ke dalam kurikulum sekolah. Kami percaya bahwa masa depan planet kita ada di tangan siswa hari ini.",
             about_who_p2: "Didirikan dengan visi menciptakan pemimpin yang sadar lingkungan, sekolah kami menggabungkan keunggulan akademik dengan program keberlanjutan langsung yang membuat perbedaan nyata.",
             about_who_p3: "Melalui pendekatan komprehensif kami, siswa tidak hanya belajar tentang isu lingkungan, tetapi secara aktif berpartisipasi dalam solusi — dari pengelolaan sampah hingga proyek energi hijau.",
+            about_who_p4: "Kesimpulannya, pengelolaan sampah adalah bagian penting dari program Go Green School. Dengan memilah, mendaur ulang, dan menggunakan kembali sampah, sekolah dapat mengurangi polusi dan menciptakan lingkungan yang lebih bersih dan hijau untuk semua.",
             about_stat_students: "Siswa Terdaftar",
             about_vision_title: "Visi Kami",
             about_vision_desc: "Menjadi institusi pendidikan terdepan yang menghasilkan pemimpin sadar lingkungan yang berkomitmen pada keberlanjutan dan inovasi untuk masa depan yang lebih hijau.",
@@ -772,17 +833,33 @@ Go Green School Web is an educational website that provides information about wa
             footer_copyright: "© 2024 Go Green School. Hak Cipta Dilindungi.",
             footer_privacy: "Kebijakan Privasi",
             footer_terms: "Syarat & Ketentuan",
+            dev_modal_title: "Temui Developer Kami",
+            dev_modal_subtitle: "Tim di balik Go Green School",
+            dev_role: "Pengembang",
+            dev_specialty_1: "🌱 Frontend",
+            dev_specialty_2: "🌿 Backend",
+            dev_specialty_3: "🍀 UI/UX",
+            dev_specialty_4: "🌳 Fullstack",
+            dev_modal_footer: "Dibuat dengan 💚 untuk masa depan yang lebih hijau",
         }
     };
 
     function setLanguage(lang) {
         currentLang = lang;
         localStorage.setItem('ggs_lang', lang);
+        document.documentElement.lang = lang;
+
+        document.title = lang === 'en' ? 'About - Go Green School' : 'Tentang - Go Green School';
 
         document.querySelectorAll('[data-i18n]').forEach(function(el) {
             var key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) {
-                el.textContent = translations[lang][key];
+                var text = translations[lang][key];
+                if (text.includes('\n')) {
+                    el.innerHTML = text.replace(/\n/g, '<br/>');
+                } else {
+                    el.textContent = text;
+                }
             }
         });
 
@@ -795,6 +872,10 @@ Go Green School Web is an educational website that provides information about wa
             btnId.className = 'flex min-w-[40px] cursor-pointer items-center justify-center rounded-full h-8 px-3 bg-primary text-white text-xs font-bold transition-all';
             btnEn.className = 'flex min-w-[40px] cursor-pointer items-center justify-center rounded-full h-8 px-3 text-forest/60 text-xs font-bold hover:bg-forest/10 transition-all';
         }
+
+        // Update earth button tooltip
+        var earthBtn = document.querySelector('.dev-earth-btn');
+        if (earthBtn) earthBtn.title = lang === 'en' ? 'Meet the Developers' : 'Temui Developer';
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -863,6 +944,83 @@ Go Green School Web is an educational website that provides information about wa
         if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobile);
     });
     </script>
+
+<!-- Developer Credits Modal -->
+<div id="devModal" class="dev-modal-overlay fixed inset-0 z-[100] flex items-center justify-center p-4" style="background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);">
+    <div class="dev-modal-content bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <!-- Modal Header -->
+        <div class="relative bg-gradient-to-br from-primary via-emerald-500 to-forest rounded-t-3xl p-8 text-center overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-4 left-8 text-6xl">🌿</div>
+                <div class="absolute bottom-4 right-8 text-6xl">🌍</div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-8xl opacity-20">♻️</div>
+            </div>
+            <button onclick="closeDevModal()" class="absolute top-4 right-4 text-white/80 hover:text-white hover:bg-white/20 rounded-full size-10 flex items-center justify-center transition-all">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+            <div class="relative z-10">
+                <div class="text-5xl mb-3">🌏</div>
+                <h2 data-i18n="dev_modal_title" class="text-2xl md:text-3xl font-bold text-white mb-1">Meet Our Developers</h2>
+                <p data-i18n="dev_modal_subtitle" class="text-white/80 text-sm">The team behind Go Green School</p>
+            </div>
+        </div>
+        <!-- Developer Cards -->
+        <div class="p-6 md:p-8 grid grid-cols-2 gap-4 md:gap-6">
+            <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
+                <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
+                    <img src="https://ui-avatars.com/api/?name=Richard+Wong&background=10b981&color=fff&size=200&bold=true&font-size=0.35" alt="Richard Wong" class="dev-card-img w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-forest text-sm md:text-base">Richard Wong</h3>
+                <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
+                <div class="mt-2 flex justify-center"><span data-i18n="dev_specialty_1" class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">🌱 Frontend</span></div>
+            </div>
+            <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
+                <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
+                    <img src="https://ui-avatars.com/api/?name=Andika+Dicky&background=059669&color=fff&size=200&bold=true&font-size=0.35" alt="Andika Dicky Sanjaya" class="dev-card-img w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-forest text-sm md:text-base">Andika Dicky Sanjaya</h3>
+                <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
+                <div class="mt-2 flex justify-center"><span data-i18n="dev_specialty_2" class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">🌿 Backend</span></div>
+            </div>
+            <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
+                <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
+                    <img src="https://ui-avatars.com/api/?name=Irene+Trisnawati&background=047857&color=fff&size=200&bold=true&font-size=0.35" alt="Irene Trisnawati" class="dev-card-img w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-forest text-sm md:text-base">Irene Trisnawati</h3>
+                <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
+                <div class="mt-2 flex justify-center"><span data-i18n="dev_specialty_3" class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">🍀 UI/UX</span></div>
+            </div>
+            <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
+                <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
+                    <img src="https://ui-avatars.com/api/?name=Deny+Hendrata&background=065f46&color=fff&size=200&bold=true&font-size=0.35" alt="Deny Hendrata" class="dev-card-img w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-forest text-sm md:text-base">Deny Hendrata</h3>
+                <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
+                <div class="mt-2 flex justify-center"><span data-i18n="dev_specialty_4" class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">🌳 Fullstack</span></div>
+            </div>
+        </div>
+        <div class="px-6 pb-6 text-center">
+            <p data-i18n="dev_modal_footer" class="text-xs text-gray-400">Made with 💚 for a greener future</p>
+        </div>
+    </div>
+</div>
+
+<script>
+function openDevModal() {
+    document.getElementById('devModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeDevModal() {
+    document.getElementById('devModal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+document.getElementById('devModal').addEventListener('click', function(e) {
+    if (e.target === this) closeDevModal();
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDevModal();
+});
+</script>
 </body>
 </html>
 
