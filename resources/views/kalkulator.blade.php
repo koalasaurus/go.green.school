@@ -1834,7 +1834,7 @@
             </div>
             <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="https://ui-avatars.com/api/?name=Deny+Hendrata&background=065f46&color=fff&size=200&bold=true&font-size=0.35" alt="Deny Hendrata" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/Deny Hendrata.png') }}" alt="Deny Hendrata" class="dev-card-img w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Deny Hendrata</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
