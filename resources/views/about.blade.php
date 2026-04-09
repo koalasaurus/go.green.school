@@ -495,13 +495,11 @@
                                 </div>
                             </div>
                             <div class="relative">
-                                <div class="rounded-2xl overflow-hidden shadow-2xl shadow-forest/10 hover-glow transition-all duration-500">
-                                    <div class="bg-gradient-to-br from-primary/20 via-accent-teal/10 to-forest/10 h-80 flex items-center justify-center relative">
-                                        <div class="absolute inset-0 mesh-gradient"></div>
-                                        <div class="absolute top-4 right-4 w-20 h-20 border-2 border-primary/10 rounded-full animate-spin" style="animation-duration: 20s;"></div>
-                                        <div class="absolute bottom-6 left-6 w-12 h-12 border border-accent-blue/10 rounded-lg animate-spin" style="animation-duration: 15s; animation-direction: reverse;"></div>
-                                        <span class="material-symbols-outlined text-primary/30 relative z-10" style="font-size: 120px;">eco</span>
-                                    </div>
+                                <div class="rounded-2xl overflow-hidden shadow-2xl shadow-forest/10 hover-glow transition-all duration-500 relative">
+                                    <img src="{{ asset('images/slide2.jpg') }}" alt="Students sorting and recycling waste at school" class="w-full h-80 object-cover"/>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-forest/20 via-transparent to-primary/5"></div>
+                                    <div class="absolute top-4 right-4 w-20 h-20 border-2 border-white/20 rounded-full animate-spin" style="animation-duration: 20s;"></div>
+                                    <div class="absolute bottom-6 left-6 w-12 h-12 border border-white/20 rounded-lg animate-spin" style="animation-duration: 15s; animation-direction: reverse;"></div>
                                 </div>
                                 <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-6 border border-forest/5">
                                     <div class="flex items-center gap-4">
