@@ -1,59 +1,155 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Go Green School Web
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Website edukasi lingkungan berbasis **Laravel** untuk program sekolah hijau.
 
-## About Laravel
+Project ini berfokus pada edukasi pengelolaan sampah, pengenalan program sekolah, serta kalkulator sampah berbasis data untuk analisis sederhana di sekolah.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Teknologi yang Digunakan
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Laravel (PHP)
+- Blade Template
+- Tailwind CSS (CDN)
+- JavaScript (vanilla)
+- Chart.js (visualisasi pada halaman kalkulator)
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Halaman & Fitur Utama
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 1) Home (`/`)
+- Hero carousel (multi-slide)
+- Navigasi desktop + mobile menu
+- Section edukasi Go Green School
+- Section aksi kecil berdampak besar
+- Vision & Mission
+- Testimoni/komunitas
+- Footer lengkap
+- Modal profil developer
+- Dukungan multi-bahasa (EN/ID)
 
-## Laravel Sponsors
+## 2) About (`/about`)
+- Penjelasan profil Go Green School
+- Ringkasan informasi website
+- Visi dan misi
+- CTA ke halaman lain
+- Footer lengkap
+- Modal profil developer
+- Multi-bahasa (EN/ID)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 3) Program (`/program`)
+- Penjelasan program-program hijau
+- Prosedur pengelolaan sampah (organik, anorganik, B3)
+- Penjelasan konsep pengelolaan sampah
+- CTA ke contact/kalkulator
+- Footer lengkap
+- Modal profil developer
+- Multi-bahasa (EN/ID)
 
-### Premium Partners
+## 4) Contact (`/contact`)
+- Card kontak: **Email** dan **Instagram**
+- Form kirim email ke admin (Laravel backend + validasi)
+- Form Instagram DM dengan preview + copy message
+- FAQ section
+- Footer lengkap
+- Modal profil developer
+- Multi-bahasa (EN/ID)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 5) Kalkulator (`/kalkulator`)
+- Input data sampah (organik, anorganik, B3)
+- Hitung total, rata-rata harian, persentase, dan prediksi 30 hari
+- Visualisasi hasil dengan Chart.js
+- Riwayat data (local/browser storage)
+- Export CSV, hapus data, gabung data
+- Insight otomatis berdasarkan hasil perhitungan
+- Footer sudah disamakan dengan halaman lain
+- Modal profil developer
+- Multi-bahasa (EN/ID)
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Routing
 
-## Code of Conduct
+Daftar route utama di [routes/web.php](routes/web.php):
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- `GET /` → `welcome`
+- `GET /about` → `about`
+- `GET /program` → `program`
+- `GET /contact` → `contact`
+- `POST /contact` → `ContactController@send` (`contact.send`)
+- `GET /kalkulator` → `kalkulator`
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Backend Contact Form
 
-## License
+Proses kirim pesan di [app/Http/Controllers/ContactController.php](app/Http/Controllers/ContactController.php):
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Validasi input: `name`, `email`, `subject`, `message`
+- Kirim email menggunakan `Mail::to(...)`
+- Tujuan email: **go.green.website.2026@gmail.com**
+- Flash message sukses setelah pengiriman
+
+---
+
+## Pembaruan Konten yang Sudah Dikerjakan
+
+Berikut update penting yang sudah diterapkan di project:
+
+- Alamat footer semua halaman diperbarui menjadi:  
+	**Jl. Raya Sintang - Pontianak, RT 010/RW 003, Desa Balai Agung, Kec. Sungai Tebelian, Kab. Sintang, Kalbar.**
+
+- Email footer semua halaman diperbarui menjadi:  
+	**go.green.website.2026@gmail.com**
+
+- Kontak footer sebelumnya nomor telepon diubah menjadi IG:  
+	**@earthygreen.vibes**
+
+- Halaman Contact:
+	- Card email sudah diperbarui ke email terbaru
+	- Card Instagram ditambahkan garis hijau agar konsisten visual
+	- Card dan form WhatsApp dihapus
+
+- Halaman Kalkulator:
+	- Footer disamakan dengan style/footer halaman lain (full footer)
+
+- Foto developer:
+	- Foto **Deny Hendrata** sudah diganti ke file lokal:  
+		`public/images/Deny Hendrata.png`
+	- Diterapkan di semua modal developer (Home, About, Program, Contact, Kalkulator)
+
+---
+
+## Struktur Folder Penting
+
+- [resources/views](resources/views) → semua Blade view
+- [routes/web.php](routes/web.php) → route aplikasi
+- [app/Http/Controllers](app/Http/Controllers) → controller
+- [app/Mail](app/Mail) → class email
+- [public/images](public/images) → aset gambar
+
+---
+
+## Cara Menjalankan Project
+
+## 1) Install dependency
+- `composer install`
+- `npm install`
+
+## 2) Konfigurasi environment
+- Copy `.env.example` jadi `.env`
+- Generate key:
+	- `php artisan key:generate`
+
+## 3) Jalankan server
+- Backend: `php artisan serve`
+- Frontend (Vite): `npm run dev`
+
+Lalu buka URL lokal yang tampil https://gogreenschool-main-svl9z8.free.laravel.cloud/
+
+---
+
+## Catatan
+
+Project ini dirancang untuk kebutuhan edukasi sekolah dan demo pengelolaan sampah berbasis web modern.
