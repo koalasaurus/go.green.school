@@ -1,77 +1,80 @@
-# Go Green School Web
+# 🌱 Go Green School Web
 
-Website edukasi lingkungan berbasis **Laravel** untuk program sekolah hijau.
+Selamat datang di **Go Green School Web** — platform edukasi lingkungan berbasis Laravel yang dirancang untuk membantu siswa, guru, dan komunitas sekolah membangun budaya hidup ramah lingkungan.
 
-Project ini berfokus pada edukasi pengelolaan sampah, pengenalan program sekolah, serta kalkulator sampah berbasis data untuk analisis sederhana di sekolah.
+Website ini menggabungkan **informasi edukatif**, **pengalaman UI modern**, dan **kalkulator sampah berbasis data** untuk mendukung aksi nyata menjaga bumi dari lingkungan sekolah.
 
----
-
-## Teknologi yang Digunakan
-
-- Laravel (PHP)
-- Blade Template
-- Tailwind CSS (CDN)
-- JavaScript (vanilla)
-- Chart.js (visualisasi pada halaman kalkulator)
+🔗 **Live Demo**: https://gogreenschool-main-svl9z8.free.laravel.cloud/
 
 ---
 
-## Halaman & Fitur Utama
+## ✨ Highlight Project
 
-## 1) Home (`/`)
-- Hero carousel (multi-slide)
+- 🎨 UI modern dengan animasi interaktif
+- 🌍 Dukungan multi-bahasa (EN/ID)
+- 📚 Konten edukasi pengelolaan sampah yang lengkap
+- 📊 Kalkulator sampah + visualisasi chart
+- 📩 Contact form terhubung ke email admin
+- 👨‍💻 Modal profil tim developer di semua halaman utama
+
+---
+
+## 🧰 Tech Stack
+
+- **Laravel** (PHP)
+- **Blade Template**
+- **Tailwind CSS** (CDN)
+- **JavaScript (Vanilla)**
+- **Chart.js**
+
+---
+
+## 🗂️ Halaman & Fitur
+
+### 1) Home (`/`)
+- Hero carousel multi-slide
 - Navigasi desktop + mobile menu
 - Section edukasi Go Green School
-- Section aksi kecil berdampak besar
+- Section “Small Actions, Big Impact”
 - Vision & Mission
 - Testimoni/komunitas
-- Footer lengkap
-- Modal profil developer
-- Dukungan multi-bahasa (EN/ID)
+- Footer lengkap + modal developer
 
-## 2) About (`/about`)
-- Penjelasan profil Go Green School
-- Ringkasan informasi website
-- Visi dan misi
+### 2) About (`/about`)
+- Profil dan cerita Go Green School
+- Ringkasan website
+- Visi & misi
 - CTA ke halaman lain
-- Footer lengkap
-- Modal profil developer
-- Multi-bahasa (EN/ID)
+- Footer lengkap + modal developer
 
-## 3) Program (`/program`)
-- Penjelasan program-program hijau
+### 3) Program (`/program`)
+- Daftar program hijau sekolah
 - Prosedur pengelolaan sampah (organik, anorganik, B3)
-- Penjelasan konsep pengelolaan sampah
+- Penjelasan konsep dan implementasi
 - CTA ke contact/kalkulator
-- Footer lengkap
-- Modal profil developer
-- Multi-bahasa (EN/ID)
+- Footer lengkap + modal developer
 
-## 4) Contact (`/contact`)
-- Card kontak: **Email** dan **Instagram**
-- Form kirim email ke admin (Laravel backend + validasi)
-- Form Instagram DM dengan preview + copy message
-- FAQ section
-- Footer lengkap
-- Modal profil developer
-- Multi-bahasa (EN/ID)
+### 4) Contact (`/contact`)
+- Card kontak: **Email** & **Instagram**
+- Form kirim email (validasi backend Laravel)
+- Form Instagram DM (preview + copy message)
+- FAQ
+- Footer lengkap + modal developer
 
-## 5) Kalkulator (`/kalkulator`)
+### 5) Kalkulator (`/kalkulator`)
 - Input data sampah (organik, anorganik, B3)
-- Hitung total, rata-rata harian, persentase, dan prediksi 30 hari
-- Visualisasi hasil dengan Chart.js
-- Riwayat data (local/browser storage)
-- Export CSV, hapus data, gabung data
+- Hitung total, rata-rata, persentase, prediksi 30 hari
+- Visualisasi chart (Chart.js)
+- Riwayat data di browser (local storage)
+- Export CSV, hapus data, dan gabung data
 - Insight otomatis berdasarkan hasil perhitungan
-- Footer sudah disamakan dengan halaman lain
-- Modal profil developer
-- Multi-bahasa (EN/ID)
+- Footer lengkap (sudah disamakan dengan halaman lain)
 
 ---
 
-## Routing
+## 🛣️ Routing
 
-Daftar route utama di [routes/web.php](routes/web.php):
+Route utama ada di [routes/web.php](routes/web.php):
 
 - `GET /` → `welcome`
 - `GET /about` → `about`
@@ -82,74 +85,73 @@ Daftar route utama di [routes/web.php](routes/web.php):
 
 ---
 
-## Backend Contact Form
+## 📬 Contact Backend
 
-Proses kirim pesan di [app/Http/Controllers/ContactController.php](app/Http/Controllers/ContactController.php):
+Alur pengiriman pesan pada [app/Http/Controllers/ContactController.php](app/Http/Controllers/ContactController.php):
 
-- Validasi input: `name`, `email`, `subject`, `message`
-- Kirim email menggunakan `Mail::to(...)`
-- Tujuan email: **go.green.website.2026@gmail.com**
-- Flash message sukses setelah pengiriman
-
----
-
-## Pembaruan Konten yang Sudah Dikerjakan
-
-Berikut update penting yang sudah diterapkan di project:
-
-- Alamat footer semua halaman diperbarui menjadi:  
-	**Jl. Raya Sintang - Pontianak, RT 010/RW 003, Desa Balai Agung, Kec. Sungai Tebelian, Kab. Sintang, Kalbar.**
-
-- Email footer semua halaman diperbarui menjadi:  
-	**go.green.website.2026@gmail.com**
-
-- Kontak footer sebelumnya nomor telepon diubah menjadi IG:  
-	**@earthygreen.vibes**
-
-- Halaman Contact:
-	- Card email sudah diperbarui ke email terbaru
-	- Card Instagram ditambahkan garis hijau agar konsisten visual
-	- Card dan form WhatsApp dihapus
-
-- Halaman Kalkulator:
-	- Footer disamakan dengan style/footer halaman lain (full footer)
-
-- Foto developer:
-	- Foto **Deny Hendrata** sudah diganti ke file lokal:  
-		`public/images/Deny Hendrata.png`
-	- Diterapkan di semua modal developer (Home, About, Program, Contact, Kalkulator)
+1. Validasi input (`name`, `email`, `subject`, `message`)
+2. Kirim email menggunakan `Mail::to(...)`
+3. Tujuan email: **go.green.website.2026@gmail.com**
+4. Tampilkan notifikasi sukses setelah terkirim
 
 ---
 
-## Struktur Folder Penting
+## ✅ Update yang Sudah Diterapkan
 
-- [resources/views](resources/views) → semua Blade view
+Berikut perubahan penting yang sudah dikerjakan pada project ini:
+
+### 🔧 Pembaruan Footer
+- Alamat semua footer diperbarui menjadi:  
+  **Jl. Raya Sintang - Pontianak, RT 010/RW 003, Desa Balai Agung, Kec. Sungai Tebelian, Kab. Sintang, Kalbar.**
+- Email semua footer diperbarui menjadi:  
+  **go.green.website.2026@gmail.com**
+- Kontak footer yang sebelumnya nomor telepon diubah menjadi IG:  
+  **@earthygreen.vibes**
+
+### 🔧 Halaman Contact
+- Email card diperbarui ke email terbaru
+- Card Instagram ditambahkan garis hijau agar konsisten visual
+- Card WhatsApp dan form WhatsApp dihapus
+
+### 🔧 Halaman Kalkulator
+- Footer disamakan dengan layout/footer halaman lain (full footer)
+
+### 🔧 Profil Developer
+- Foto **Deny Hendrata** diganti dari avatar menjadi file lokal:  
+  `public/images/Deny Hendrata.png`
+- Sudah diterapkan di Home, About, Program, Contact, dan Kalkulator
+
+---
+
+## 📁 Struktur Folder Penting
+
+- [resources/views](resources/views) → seluruh tampilan Blade
 - [routes/web.php](routes/web.php) → route aplikasi
-- [app/Http/Controllers](app/Http/Controllers) → controller
-- [app/Mail](app/Mail) → class email
+- [app/Http/Controllers](app/Http/Controllers) → controller backend
+- [app/Mail](app/Mail) → class pengiriman email
 - [public/images](public/images) → aset gambar
 
 ---
 
-## Cara Menjalankan Project
+## 🚀 Cara Menjalankan Project
 
-## 1) Install dependency
+### 1) Install dependency
 - `composer install`
 - `npm install`
 
-## 2) Konfigurasi environment
-- Copy `.env.example` jadi `.env`
-- Generate key:
-	- `php artisan key:generate`
+### 2) Konfigurasi environment
+- Copy `.env.example` menjadi `.env`
+- Generate application key:
+  - `php artisan key:generate`
 
-## 3) Jalankan server
+### 3) Jalankan aplikasi
 - Backend: `php artisan serve`
-- Frontend (Vite): `npm run dev`
+- Frontend: `npm run dev`
 
-Lalu buka URL lokal yang tampil https://gogreenschool-main-svl9z8.free.laravel.cloud/
+Setelah itu buka URL yang tampil di terminal, atau gunakan link live demo di atas.
 
 ---
 
-## Catatan
+## 📝 Catatan
 
-Project ini dirancang untuk kebutuhan edukasi sekolah dan demo pengelolaan sampah berbasis web modern.
+Project ini dibuat sebagai media pembelajaran dan kampanye lingkungan sekolah dengan pendekatan web modern yang interaktif, informatif, dan mudah digunakan.
