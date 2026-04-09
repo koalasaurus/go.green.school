@@ -391,9 +391,12 @@
                             <span data-i18n="nav_back_home">Back to Home</span>
                         </a>
                         <!-- Earth Dev Button -->
-                        <button onclick="openDevModal()" class="dev-earth-btn flex items-center justify-center size-10 rounded-full hover:scale-110 transition-all duration-300" title="Meet the Developers">
-                            <span class="text-2xl">🌍</span>
-                        </button>
+                        <div class="flex items-center gap-2">
+                            <button onclick="openDevModal()" class="dev-earth-btn flex items-center justify-center size-10 rounded-full hover:scale-110 transition-all duration-300" title="Meet the Developers">
+                                <span class="text-2xl">🌍</span>
+                            </button>
+                            <span class="hidden lg:inline text-xs font-semibold text-forest/70 whitespace-nowrap" data-i18n="nav_profile_hint">Developer Profile</span>
+                        </div>
                         <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center size-10 rounded-xl hover:bg-forest/5 transition-colors">
                             <span class="material-symbols-outlined text-2xl text-forest">menu</span>
                         </button>
@@ -884,12 +887,75 @@
             </div>
 
             <!-- Footer -->
-            <footer class="bg-forest px-6 md:px-20 lg:px-40 py-12">
-                <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-sage/40 uppercase tracking-widest">
+            <footer class="bg-forest text-sage py-20 px-4 md:px-20 lg:px-40">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-16">
+                    <div class="space-y-6 lg:col-span-1">
+                        <div class="flex items-center gap-2">
+                            <div class="size-8">
+                                <img alt="Go Green School Logo" class="w-full h-full object-contain brightness-0 invert" src="/images/logo2-removebg-preview.png"/>
+                            </div>
+                            <h2 class="text-white text-xl font-extrabold">Go Green School</h2>
+                        </div>
+                        <p class="text-sage/50 text-sm leading-relaxed" data-i18n="footer_desc">
+                            Shaping the character of future leaders who are not only academically intelligent, but also have high empathy for earth's sustainability.
+                        </p>
+                        <div class="flex gap-4">
+                            <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all" href="#">
+                                <span class="material-symbols-outlined text-xl">language</span>
+                            </a>
+                            <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all" href="#">
+                                <span class="material-symbols-outlined text-xl">share</span>
+                            </a>
+                            <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all" href="#">
+                                <span class="material-symbols-outlined text-xl">mail</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 lg:grid-cols-3 lg:col-span-3 gap-12">
+                        <div class="space-y-6">
+                            <h5 class="text-white font-bold text-sm uppercase tracking-widest" data-i18n="footer_quicklinks">Quick Links</h5>
+                            <ul class="space-y-4 text-sage/60 text-sm">
+                                <li><a class="hover:text-primary transition-colors" href="/" data-i18n="nav_home">Home</a></li>
+                                <li><a class="hover:text-primary transition-colors" href="/about" data-i18n="nav_about">About</a></li>
+                                <li><a class="hover:text-primary transition-colors" href="/program" data-i18n="nav_program">Program</a></li>
+                                <li><a class="hover:text-primary transition-colors" href="/contact" data-i18n="nav_contact">Contact</a></li>
+                                <li><a class="hover:text-primary transition-colors" href="/kalkulator" data-i18n="nav_calculator">Calculator</a></li>
+                            </ul>
+                        </div>
+                        <div class="space-y-6">
+                            <h5 class="text-white font-bold text-sm uppercase tracking-widest" data-i18n="footer_contactus">Contact Us</h5>
+                            <ul class="space-y-4 text-sage/60 text-sm">
+                                <li class="flex gap-2 items-start">
+                                    <span class="material-symbols-outlined text-primary text-base">location_on</span>
+                                    <span>Jl. Raya Sintang - Pontianak, RT 010/RW 003, Desa Balai Agung, Kec. Sungai Tebelian, Kab. Sintang, Kalbar.</span>
+                                </li>
+                                <li class="flex gap-2 items-start">
+                                    <span class="material-symbols-outlined text-primary text-base">mail</span>
+                                    <span>go.green.website.2026@gmail.com</span>
+                                </li>
+                                <li class="flex gap-2 items-start">
+                                    <span class="material-symbols-outlined text-primary text-base">photo_camera</span>
+                                    <span>@earthygreen.vibes</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="space-y-6">
+                            <h5 class="text-white font-bold text-sm uppercase tracking-widest" data-i18n="footer_newsletter">Newsletter</h5>
+                            <p class="text-sage/60 text-sm" data-i18n="footer_newsletter_desc">Get green tips in your inbox.</p>
+                            <div class="flex border-b border-white/10 pb-2">
+                                <input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-white/20 text-sage" placeholder="Your email" type="email"/>
+                                <button class="text-primary hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-sage/40 uppercase tracking-widest">
                     <p data-i18n="footer_copyright">© 2024 Go Green School. All Rights Reserved.</p>
                     <div class="flex gap-8">
-                        <a class="hover:text-white transition-colors" href="/" data-i18n="nav_home">Home</a>
-                        <a class="hover:text-white transition-colors" href="/kalkulator" data-i18n="nav_calculator">Calculator</a>
+                        <a class="hover:text-white transition-colors" href="#" data-i18n="footer_privacy">Privacy Policy</a>
+                        <a class="hover:text-white transition-colors" href="#" data-i18n="footer_terms">Terms &amp; Conditions</a>
                     </div>
                 </div>
             </footer>
@@ -993,6 +1059,7 @@
             nav_program: "Program",
             nav_contact: "Contact",
             nav_calculator: "Calculator",
+            nav_profile_hint: "Developer Profile",
             nav_back_home: "Back to Home",
             calc_badge: "RPL × Mathematics Collaboration",
             calc_title: "Waste Calculator",
@@ -1041,6 +1108,13 @@
             step2_desc: 'Click the Calculate button and the system will instantly compute the total, average, percentage, and 30-day prediction.',
             step3_title: "Analyze Results",
             step3_desc: "Review the charts, percentage breakdowns, and formulas to understand your waste management patterns.",
+            footer_desc: "Shaping the character of future leaders who are not only academically intelligent, but also have high empathy for earth's sustainability.",
+            footer_quicklinks: "Quick Links",
+            footer_contactus: "Contact Us",
+            footer_newsletter: "Newsletter",
+            footer_newsletter_desc: "Get green tips in your inbox.",
+            footer_privacy: "Privacy Policy",
+            footer_terms: "Terms & Conditions",
             footer_copyright: "© 2024 Go Green School. All Rights Reserved.",
             alert_fill: "Please fill in all fields with valid values!",
             days_label: "Days",
@@ -1090,6 +1164,7 @@
             nav_program: "Program",
             nav_contact: "Kontak",
             nav_calculator: "Kalkulator",
+            nav_profile_hint: "Profil Developer",
             nav_back_home: "Kembali ke Beranda",
             calc_badge: "Kolaborasi RPL × Matematika",
             calc_title: "Kalkulator Sampah",
@@ -1138,6 +1213,13 @@
             step2_desc: "Klik tombol Hitung dan sistem akan langsung menghitung total, rata-rata, persentase, dan prediksi 30 hari.",
             step3_title: "Analisis Hasil",
             step3_desc: "Tinjau grafik, rincian persentase, dan rumus untuk memahami pola pengelolaan sampah kamu.",
+            footer_desc: "Membentuk karakter pemimpin masa depan yang tidak hanya cerdas secara akademis, tetapi juga memiliki empati tinggi terhadap keberlanjutan bumi.",
+            footer_quicklinks: "Tautan Cepat",
+            footer_contactus: "Hubungi Kami",
+            footer_newsletter: "Buletin",
+            footer_newsletter_desc: "Dapatkan tips hijau di kotak masuk Anda.",
+            footer_privacy: "Kebijakan Privasi",
+            footer_terms: "Syarat & Ketentuan",
             footer_copyright: "© 2024 Go Green School. Hak Cipta Dilindungi.",
             alert_fill: "Harap isi semua kolom dengan nilai yang valid!",
             days_label: "Hari",
@@ -1728,7 +1810,7 @@
         <div class="p-6 md:p-8 grid grid-cols-2 gap-4 md:gap-6">
             <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="https://ui-avatars.com/api/?name=Richard+Wong&background=10b981&color=fff&size=200&bold=true&font-size=0.35" alt="Richard Wong" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/richard wong.png') }}" alt="Richard Wong" class="dev-card-img w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Richard Wong</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
@@ -1736,7 +1818,7 @@
             </div>
             <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="https://ui-avatars.com/api/?name=Andika+Dicky&background=059669&color=fff&size=200&bold=true&font-size=0.35" alt="Andika Dicky Sanjaya" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/andika dicky sanjaya.jpeg') }}" alt="Andika Dicky Sanjaya" class="dev-card-img w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Andika Dicky Sanjaya</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
@@ -1744,9 +1826,9 @@
             </div>
             <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="https://ui-avatars.com/api/?name=Irene+Trisnawati&background=047857&color=fff&size=200&bold=true&font-size=0.35" alt="Irene Trisnawati" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/irene krismawati.png') }}" alt="Irene Krismawati" class="dev-card-img w-full h-full object-cover">
                 </div>
-                <h3 class="font-bold text-forest text-sm md:text-base">Irene Trisnawati</h3>
+                <h3 class="font-bold text-forest text-sm md:text-base">Irene Krismawati</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
                 <div class="mt-2 flex justify-center"><span data-i18n="dev_specialty_3" class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">🍀 UI/UX</span></div>
             </div>

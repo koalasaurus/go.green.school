@@ -377,9 +377,12 @@
                             <span data-i18n="nav_back_home">Back to Home</span>
                         </a>
                         <!-- Earth Dev Button -->
-                        <button onclick="openDevModal()" class="dev-earth-btn flex items-center justify-center size-10 rounded-full hover:scale-110 transition-all duration-300" title="Meet the Developers">
-                            <span class="text-2xl">🌍</span>
-                        </button>
+                        <div class="flex items-center gap-2">
+                            <button onclick="openDevModal()" class="dev-earth-btn flex items-center justify-center size-10 rounded-full hover:scale-110 transition-all duration-300" title="Meet the Developers">
+                                <span class="text-2xl">🌍</span>
+                            </button>
+                            <span class="hidden lg:inline text-xs font-semibold text-forest/70 whitespace-nowrap" data-i18n="nav_profile_hint">Developer Profile</span>
+                        </div>
                         <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center size-10 rounded-xl hover:bg-forest/5 transition-colors">
                             <span class="material-symbols-outlined text-2xl text-forest">menu</span>
                         </button>
@@ -868,15 +871,15 @@
                             <ul class="space-y-4 text-sage/60 text-sm">
                                 <li class="flex gap-2 items-start">
                                     <span class="material-symbols-outlined text-primary text-base">location_on</span>
-                                    <span>Jl. Hijau Lestari No. 123, Jakarta</span>
+                                    <span>Jl. Raya Sintang - Pontianak, RT 010/RW 003, Desa Balai Agung, Kec. Sungai Tebelian, Kab. Sintang, Kalbar.</span>
                                 </li>
                                 <li class="flex gap-2 items-start">
                                     <span class="material-symbols-outlined text-primary text-base">mail</span>
-                                    <span>info@gogreenschool.id</span>
+                                    <span>go.green.website.2026@gmail.com</span>
                                 </li>
                                 <li class="flex gap-2 items-start">
-                                    <span class="material-symbols-outlined text-primary text-base">phone</span>
-                                    <span>(021) 555-0123</span>
+                                    <span class="material-symbols-outlined text-primary text-base">photo_camera</span>
+                                    <span>@earthygreen.vibes</span>
                                 </li>
                             </ul>
                         </div>
@@ -914,6 +917,7 @@
             nav_program: "Program",
             nav_contact: "Contact",
             nav_calculator: "Calculator",
+            nav_profile_hint: "Developer Profile",
             nav_back_home: "Back to Home",
             program_badge: "Our Programs",
             program_hero_title: "Programs at Go Green School",
@@ -1033,6 +1037,7 @@
             nav_program: "Program",
             nav_contact: "Kontak",
             nav_calculator: "Kalkulator",
+            nav_profile_hint: "Profil Developer",
             nav_back_home: "Kembali ke Beranda",
             program_badge: "Program Kami",
             program_hero_title: "Program di Go Green School",
@@ -1255,7 +1260,7 @@
         <div class="p-6 md:p-8 grid grid-cols-2 gap-4 md:gap-6">
             <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="https://ui-avatars.com/api/?name=Richard+Wong&background=10b981&color=fff&size=200&bold=true&font-size=0.35" alt="Richard Wong" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/richard wong.png') }}" alt="Richard Wong" class="dev-card-img w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Richard Wong</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
@@ -1263,7 +1268,7 @@
             </div>
             <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="https://ui-avatars.com/api/?name=Andika+Dicky&background=059669&color=fff&size=200&bold=true&font-size=0.35" alt="Andika Dicky Sanjaya" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/andika dicky sanjaya.jpeg') }}" alt="Andika Dicky Sanjaya" class="dev-card-img w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Andika Dicky Sanjaya</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
@@ -1271,9 +1276,9 @@
             </div>
             <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="https://ui-avatars.com/api/?name=Irene+Trisnawati&background=047857&color=fff&size=200&bold=true&font-size=0.35" alt="Irene Trisnawati" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/irene krismawati.png') }}" alt="Irene Krismawati" class="dev-card-img w-full h-full object-cover">
                 </div>
-                <h3 class="font-bold text-forest text-sm md:text-base">Irene Trisnawati</h3>
+                <h3 class="font-bold text-forest text-sm md:text-base">Irene Krismawati</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
                 <div class="mt-2 flex justify-center"><span data-i18n="dev_specialty_3" class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">🍀 UI/UX</span></div>
             </div>
