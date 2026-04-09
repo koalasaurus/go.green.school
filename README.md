@@ -6,6 +6,8 @@ Website ini menggabungkan **informasi edukatif**, **pengalaman UI modern**, dan 
 
 🔗 **Live Demo**: https://gogreenschool-main-svl9z8.free.laravel.cloud/
 
+🎬 **Konten Promosi**: https://www.instagram.com/reel/DWjIx3Tk_bs/?igsh=MW8wNm53MjlleHFwcA==
+
 ---
 
 ## ✨ Highlight Project
