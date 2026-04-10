@@ -540,7 +540,7 @@
                     <div class="max-w-7xl mx-auto relative z-10">
                         <div class="fade-up text-center mb-16">
                             <span class="text-primary font-bold tracking-widest uppercase text-xs" data-i18n="procedures_label">Guidelines</span>
-                            <h2 class="text-forest text-3xl md:text-5xl font-black tracking-tight mt-3" data-i18n="procedures_title">Green Procedures</h2>
+                            <h2 class="text-forest text-3xl md:text-5xl font-black tracking-tight mt-3" data-i18n="procedures_title">Waste &amp; Recycling Guides</h2>
                             <p class="text-forest/60 text-lg max-w-2xl mx-auto mt-4 leading-relaxed" data-i18n="procedures_subtitle">Step-by-step guides to implementing sustainable practices at school and home.</p>
                         </div>
                         
@@ -551,20 +551,12 @@
                                     <h3 class="text-forest font-black text-2xl" data-i18n="waste_mgmt_title">WISE WASTE MANAGEMENT</h3>
                                 </div>
                                 <div class="p-8 space-y-8">
-                                    <!-- Purpose -->
-                                    <div>
-                                        <h4 class="text-lg font-bold text-forest mb-2 flex items-center gap-2">
-                                            <span class="material-symbols-outlined text-primary">target</span>
-                                            <span data-i18n="waste_purpose_title">A. Purpose</span>
-                                        </h4>
-                                        <p class="text-forest/70 text-sm leading-relaxed" data-i18n="waste_purpose_desc">This procedure text aims to explain how to manage waste properly by separating it into three types: organic, inorganic, and hazardous waste (B3), in order to keep the environment clean and healthy. Poor waste management can pollute the environment and worsen climate change. Therefore, we must manage waste wisely.</p>
-                                    </div>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <!-- Tools -->
                                         <div>
                                             <h4 class="text-lg font-bold text-forest mb-2 flex items-center gap-2">
                                                 <span class="material-symbols-outlined text-primary">build</span>
-                                                <span data-i18n="waste_tools_title">B. Tools & Materials</span>
+                                                <span data-i18n="waste_tools_title">Tools &amp; Materials</span>
                                             </h4>
                                             <ul class="text-forest/70 text-sm space-y-2 list-disc pl-5">
                                                 <li data-i18n="waste_tool_1">Three trash bins (organic, inorganic, and B3)</li>
@@ -578,7 +570,7 @@
                                         <div>
                                             <h4 class="text-lg font-bold text-forest mb-2 flex items-center gap-2">
                                                   <span class="material-symbols-outlined text-primary">lightbulb</span>
-                                                  <span data-i18n="waste_implementation_title">D. Example of Implementation</span>
+                                                  <span data-i18n="waste_implementation_title">Example of Implementation</span>
                                             </h4>
                                             <p class="text-forest/70 text-sm leading-relaxed" data-i18n="waste_implementation_desc">Organic waste is processed into compost to be used in the school garden or home garden. Inorganic waste is recycled into useful items. Hazardous waste (B3) is collected and disposed of in a safe special facility.</p>
                                         </div>
@@ -587,7 +579,7 @@
                                     <div>
                                         <h4 class="text-lg font-bold text-forest mb-4 flex items-center gap-2">
                                             <span class="material-symbols-outlined text-primary">format_list_numbered</span>
-                                            <span data-i18n="waste_steps_title">C. Steps</span>
+                                            <span data-i18n="waste_steps_title">Steps</span>
                                         </h4>
                                         <div class="space-y-3">
                                             <div class="flex gap-4 p-3 bg-forest/5 rounded-xl">
@@ -633,19 +625,11 @@
                                     <h3 class="text-forest font-black text-2xl" data-i18n="plastic_recycle_title">HOW TO RECYCLE PLASTIC WASTE</h3>
                                 </div>
                                 <div class="p-8 space-y-8">
-                                    <!-- Purpose -->
-                                    <div>
-                                        <h4 class="text-lg font-bold text-forest mb-2 flex items-center gap-2">
-                                            <span class="material-symbols-outlined text-primary">target</span>
-                                            <span data-i18n="plastic_purpose_title">A. Purpose</span>
-                                        </h4>
-                                        <p class="text-forest/70 text-sm leading-relaxed" data-i18n="plastic_purpose_desc">This procedure text aims to explain how to recycle plastic waste so it can be reused into useful items. By recycling plastic, we can reduce the amount of waste and keep the environment clean.</p>
-                                    </div>
                                     <!-- Tools -->
                                     <div>
                                         <h4 class="text-lg font-bold text-forest mb-2 flex items-center gap-2">
                                             <span class="material-symbols-outlined text-primary">build</span>
-                                            <span data-i18n="plastic_tools_title">B. Tools & Materials</span>
+                                            <span data-i18n="plastic_tools_title">Tools &amp; Materials</span>
                                         </h4>
                                         <ul class="text-forest/70 text-sm space-y-2 list-disc pl-5">
                                             <li data-i18n="plastic_tool_1">Used plastic bottles</li>
@@ -659,7 +643,7 @@
                                     <div>
                                         <h4 class="text-lg font-bold text-forest mb-4 flex items-center gap-2">
                                             <span class="material-symbols-outlined text-primary">format_list_numbered</span>
-                                            <span data-i18n="plastic_steps_title">C. Steps</span>
+                                            <span data-i18n="plastic_steps_title">Steps</span>
                                         </h4>
                                         <div class="space-y-3">
                                             <div class="flex gap-4 p-3 bg-forest/5 rounded-xl">
@@ -752,7 +736,7 @@
                                       <div class="size-14 rounded-2xl bg-blue-100 flex items-center justify-center mb-6 mt-2">
                                           <span class="material-symbols-outlined text-blue-600 text-3xl">info</span>
                                       </div>
-                                      <h3 class="text-forest font-bold text-xl mb-4" data-i18n="explanation_general_title">General Statement</h3>
+                                      <h3 class="text-forest font-bold text-xl mb-4" data-i18n="explanation_general_title">Why Waste Management Matters</h3>
                                       <p class="text-forest/70 text-sm md:text-[15px] leading-7" data-i18n="explanation_general_desc">
                                           A Go Green School is a school that cares about the environment and encourages students to protect nature. One important activity in a Go Green School is waste management. Waste management helps reduce pollution and keeps the school environment clean and healthy.
                                       </p>
@@ -765,7 +749,7 @@
                                       <div class="size-14 rounded-2xl bg-amber-100 flex items-center justify-center mb-6 mt-2">
                                           <span class="material-symbols-outlined text-amber-600 text-3xl">route</span>
                                       </div>
-                                      <h3 class="text-forest font-bold text-xl mb-4" data-i18n="explanation_sequence_title">Sequence of Explanation</h3>
+                                      <h3 class="text-forest font-bold text-xl mb-4" data-i18n="explanation_sequence_title">How Waste Management Works at School</h3>
                                       <div class="space-y-4 text-forest/70 text-sm md:text-[15px] leading-7">
                                           <p data-i18n="explanation_seq_p1">
                                               Waste management in a Go Green School usually begins with separating waste into different categories such as organic waste and inorganic waste. Organic waste includes food scraps, leaves, and other natural materials. These materials can be processed into compost or natural fertilizer that can be used for plants in the school garden.
@@ -786,7 +770,7 @@
                                       <div class="size-14 rounded-2xl bg-green-100 flex items-center justify-center mb-6 mx-auto mt-2">
                                           <span class="material-symbols-outlined text-green-600 text-3xl">eco</span>
                                       </div>
-                                      <h3 class="text-forest font-bold text-xl mb-4" data-i18n="explanation_conclusion_title">Conclusion</h3>
+                                      <h3 class="text-forest font-bold text-xl mb-4" data-i18n="explanation_conclusion_title">Building a Cleaner School Together</h3>
                                       <p class="text-forest/70 text-sm md:text-base leading-7 max-w-3xl mx-auto" data-i18n="explanation_conclusion_desc">
                                           In conclusion, waste management is an important part of a Go Green School program. By separating, recycling, and reusing waste, schools can reduce pollution and create a cleaner and greener environment for everyone.
                                       </p>
@@ -956,20 +940,20 @@
             program_6_desc: "Use our mathematical waste calculator to analyze and predict school waste production with precision and data-driven insights.",
             program_6_link: "Try Calculator",
             procedures_label: "Guidelines",
-            procedures_title: "Green Procedures",
+            procedures_title: "Waste & Recycling Guides",
             procedures_subtitle: "Step-by-step guides to implementing sustainable practices at school and home.",
             waste_mgmt_title: "WISE WASTE MANAGEMENT",
             waste_purpose_title: "A. Purpose",
             waste_purpose_desc: "This procedure text aims to explain how to manage waste properly by separating it into three types: organic, inorganic, and hazardous waste (B3), in order to keep the environment clean and healthy. Poor waste management can pollute the environment and worsen climate change. Therefore, we must manage waste wisely.",
-            waste_tools_title: "B. Tools & Materials",
+            waste_tools_title: "Tools & Materials",
             waste_tool_1: "Three trash bins (organic, inorganic, and B3)",
             waste_tool_2: "Gloves",
             waste_tool_3: "A compost container",
             waste_tool_4: "Food scraps and dry leaves",
             waste_tool_5: "Used items such as plastic bottles and paper",
-            waste_implementation_title: "D. Example of Implementation",
+            waste_implementation_title: "Example of Implementation",
             waste_implementation_desc: "Organic waste is processed into compost to be used in the school garden or home garden. Inorganic waste is recycled into useful items. Hazardous waste (B3) is collected and disposed of in a safe special facility.",
-            waste_steps_title: "C. Steps",
+            waste_steps_title: "Steps",
             waste_step_1: "Prepare three different trash bins and label them organic, inorganic, and B3.",
             waste_step_2: "Separate the waste according to its type.",
             waste_step_3: "Put organic waste such as food scraps and leaves into the organic bin.",
@@ -981,13 +965,13 @@
             plastic_recycle_title: "HOW TO RECYCLE PLASTIC WASTE",
             plastic_purpose_title: "A. Purpose",
             plastic_purpose_desc: "This procedure text aims to explain how to recycle plastic waste so it can be reused into useful items. By recycling plastic, we can reduce the amount of waste and keep the environment clean.",
-            plastic_tools_title: "B. Tools & Materials",
+            plastic_tools_title: "Tools & Materials",
             plastic_tool_1: "Used plastic bottles",
             plastic_tool_2: "Scissors or a cutter",
             plastic_tool_3: "Glue",
             plastic_tool_4: "Paint or colored markers",
             plastic_tool_5: "Additional decorations (optional)",
-            plastic_steps_title: "C. Steps",
+            plastic_steps_title: "Steps",
             plastic_step_1: "Collect used plastic bottles that are no longer needed.",
             plastic_step_2: "Wash the plastic bottles until they are clean and do not smell.",
             plastic_step_3: "Dry the plastic bottles before using them.",
@@ -998,13 +982,13 @@
             explanation_label: "Explanation Text",
             explanation_title: "Waste Management in Go Green School",
             explanation_subtitle: "Understanding the concepts and processes behind our school's environmental initiatives.",
-            explanation_general_title: "General Statement",
+            explanation_general_title: "Why Waste Management Matters",
             explanation_general_desc: "A Go Green School is a school that cares about the environment and encourages students to protect nature. One important activity in a Go Green School is waste management. Waste management helps reduce pollution and keeps the school environment clean and healthy.",
-            explanation_sequence_title: "Sequence of Explanation",
+            explanation_sequence_title: "How Waste Management Works at School",
             explanation_seq_p1: "Waste management in a Go Green School usually begins with separating waste into different categories such as organic waste and inorganic waste. Organic waste includes food scraps, leaves, and other natural materials. These materials can be processed into compost or natural fertilizer that can be used for plants in the school garden.",
             explanation_seq_p2: "Meanwhile, inorganic waste such as plastic bottles, paper, and cans can be collected and recycled. Students and teachers work together to sort the waste and place it in the correct recycling bins. After that, recyclable waste can be reused or sent to recycling centers to be processed into new products.",
             explanation_seq_p3: "Through these activities, students learn how to manage waste properly and understand the importance of reducing environmental pollution.",
-            explanation_conclusion_title: "Conclusion",
+            explanation_conclusion_title: "Building a Cleaner School Together",
             explanation_conclusion_desc: "In conclusion, waste management is an important part of a Go Green School program. By separating, recycling, and reusing waste, schools can reduce pollution and create a cleaner and greener environment for everyone.",
             stat_students: "Students Enrolled",
             stat_programs: "Green Programs",
@@ -1076,20 +1060,20 @@
             program_6_desc: "Gunakan kalkulator sampah matematis kami untuk menganalisis dan memprediksi produksi sampah sekolah dengan presisi dan wawasan berbasis data.",
             program_6_link: "Coba Kalkulator",
             procedures_label: "Panduan",
-            procedures_title: "Prosedur Hijau",
+            procedures_title: "Panduan Pengelolaan Sampah & Daur Ulang",
             procedures_subtitle: "Panduan langkah demi langkah untuk menerapkan praktik berkelanjutan di sekolah dan rumah.",
             waste_mgmt_title: "PENGELOLAAN SAMPAH YANG BIJAK",
             waste_purpose_title: "A. Tujuan",
             waste_purpose_desc: "Teks prosedur ini bertujuan menjelaskan cara mengelola sampah dengan benar dengan memisahkannya menjadi tiga jenis: organik, anorganik, dan sampah berbahaya (B3), agar lingkungan tetap bersih dan sehat. Pengelolaan sampah yang buruk dapat mencemari lingkungan dan memperparah perubahan iklim. Oleh karena itu, kita harus mengelola sampah dengan bijak.",
-            waste_tools_title: "B. Alat & Bahan",
+            waste_tools_title: "Alat & Bahan",
             waste_tool_1: "Tiga tempat sampah (organik, anorganik, dan B3)",
             waste_tool_2: "Sarung tangan",
             waste_tool_3: "Wadah kompos",
             waste_tool_4: "Sisa makanan dan daun kering",
             waste_tool_5: "Barang bekas seperti botol plastik dan kertas",
-            waste_implementation_title: "D. Contoh Penerapan",
+            waste_implementation_title: "Contoh Penerapan",
             waste_implementation_desc: "Sampah organik diolah menjadi kompos untuk digunakan di kebun sekolah atau kebun rumah. Sampah anorganik didaur ulang menjadi barang yang bermanfaat. Sampah berbahaya (B3) dikumpulkan dan dibuang di fasilitas khusus yang aman.",
-            waste_steps_title: "C. Langkah-langkah",
+            waste_steps_title: "Langkah-langkah",
             waste_step_1: "Siapkan tiga tempat sampah berbeda dan beri label organik, anorganik, dan B3.",
             waste_step_2: "Pisahkan sampah sesuai jenisnya.",
             waste_step_3: "Masukkan sampah organik seperti sisa makanan dan daun ke tempat sampah organik.",
@@ -1101,13 +1085,13 @@
             plastic_recycle_title: "CARA MENDAUR ULANG SAMPAH PLASTIK",
             plastic_purpose_title: "A. Tujuan",
             plastic_purpose_desc: "Teks prosedur ini bertujuan menjelaskan cara mendaur ulang sampah plastik agar dapat digunakan kembali menjadi barang yang bermanfaat. Dengan mendaur ulang plastik, kita dapat mengurangi jumlah sampah dan menjaga lingkungan tetap bersih.",
-            plastic_tools_title: "B. Alat & Bahan",
+            plastic_tools_title: "Alat & Bahan",
             plastic_tool_1: "Botol plastik bekas",
             plastic_tool_2: "Gunting atau cutter",
             plastic_tool_3: "Lem",
             plastic_tool_4: "Cat atau spidol warna",
             plastic_tool_5: "Hiasan tambahan (opsional)",
-            plastic_steps_title: "C. Langkah-langkah",
+            plastic_steps_title: "Langkah-langkah",
             plastic_step_1: "Kumpulkan botol plastik bekas yang sudah tidak terpakai.",
             plastic_step_2: "Cuci botol plastik hingga bersih dan tidak berbau.",
             plastic_step_3: "Keringkan botol plastik sebelum digunakan.",
@@ -1118,13 +1102,13 @@
             explanation_label: "Teks Eksplanasi",
             explanation_title: "Pengelolaan Sampah di Go Green School",
             explanation_subtitle: "Memahami konsep dan proses di balik inisiatif lingkungan sekolah kami.",
-            explanation_general_title: "Pernyataan Umum",
+            explanation_general_title: "Mengapa Pengelolaan Sampah Itu Penting",
             explanation_general_desc: "Go Green School adalah sekolah yang peduli terhadap lingkungan dan mendorong siswa untuk menjaga alam. Salah satu kegiatan penting di Go Green School adalah pengelolaan sampah. Pengelolaan sampah membantu mengurangi polusi dan menjaga lingkungan sekolah tetap bersih dan sehat.",
-            explanation_sequence_title: "Urutan Penjelasan",
+            explanation_sequence_title: "Bagaimana Pengelolaan Sampah Berjalan di Sekolah",
             explanation_seq_p1: "Pengelolaan sampah di Go Green School biasanya dimulai dengan memisahkan sampah ke dalam kategori berbeda seperti sampah organik dan anorganik. Sampah organik meliputi sisa makanan, daun, dan bahan alami lainnya. Bahan-bahan ini dapat diolah menjadi kompos atau pupuk alami yang dapat digunakan untuk tanaman di kebun sekolah.",
             explanation_seq_p2: "Sementara itu, sampah anorganik seperti botol plastik, kertas, dan kaleng dapat dikumpulkan dan didaur ulang. Siswa dan guru bekerja sama untuk memilah sampah dan menempatkannya ke tempat daur ulang yang tepat. Setelah itu, sampah yang dapat didaur ulang bisa digunakan kembali atau dikirim ke pusat daur ulang untuk diproses menjadi produk baru.",
             explanation_seq_p3: "Melalui kegiatan ini, siswa belajar cara mengelola sampah dengan benar dan memahami pentingnya mengurangi pencemaran lingkungan.",
-            explanation_conclusion_title: "Kesimpulan",
+            explanation_conclusion_title: "Membangun Sekolah Lebih Bersih Bersama",
             explanation_conclusion_desc: "Kesimpulannya, pengelolaan sampah adalah bagian penting dari program Go Green School. Dengan memilah, mendaur ulang, dan menggunakan kembali sampah, sekolah dapat mengurangi polusi dan menciptakan lingkungan yang lebih bersih dan hijau untuk semua.",
             stat_students: "Siswa Terdaftar",
             stat_programs: "Program Hijau",

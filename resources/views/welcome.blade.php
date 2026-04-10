@@ -780,7 +780,7 @@ Get Started
 <div class="w-12 h-12 bg-red-50 text-red-500 rounded-2xl flex items-center justify-center">
 <span class="material-symbols-outlined text-2xl">warning</span>
 </div>
-<h3 class="text-forest text-xl md:text-2xl font-bold" data-i18n="intro_problem_title">The Earth Needs Our Help</h3>
+<h3 class="text-forest text-xl md:text-2xl font-bold" data-i18n="intro_problem_title"></h3>
 </div>
 <p class="text-forest/70 text-base md:text-lg leading-relaxed pl-0 md:pl-15" data-i18n="intro_problem_desc">
 Nowadays, we can see that a lot of information about the earth shows it is becoming more dangerous, unstable, and facing an uncertain future for the living creatures — humans, plants, and animals — that live inside it. We cannot just stand and do nothing; we need to take real action.
@@ -803,7 +803,7 @@ Nowadays, we can see that a lot of information about the earth shows it is becom
 <div class="w-12 h-12 bg-emerald-50 text-primary rounded-2xl flex items-center justify-center">
 <span class="material-symbols-outlined text-2xl">eco</span>
 </div>
-<h3 class="text-forest text-xl md:text-2xl font-bold" data-i18n="intro_definition_title">A School Committed to the Earth</h3>
+<h3 class="text-forest text-xl md:text-2xl font-bold" data-i18n="intro_definition_title"></h3>
 </div>
 <p class="text-forest/70 text-base md:text-lg leading-relaxed pl-0 md:pl-15" data-i18n="intro_definition_desc">
 Go Green School is an action which shows the school's commitment to help the earth become a better environment for mankind. These are small activities that we can do — for instance, when throwing trash into the trash bin, we classify them into several groups so it makes it easier to recycle. Another example is choosing paper bags rather than plastic bags in our daily life.
@@ -826,7 +826,7 @@ Go Green School is an action which shows the school's commitment to help the ear
 <div class="w-12 h-12 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center">
 <span class="material-symbols-outlined text-2xl">diversity_3</span>
 </div>
-<h3 class="text-forest text-xl md:text-2xl font-bold" data-i18n="intro_call_title">Together We Make a Difference</h3>
+<h3 class="text-forest text-xl md:text-2xl font-bold" data-i18n="intro_call_title"></h3>
 </div>
 <p class="text-forest/70 text-base md:text-lg leading-relaxed pl-0 md:pl-15" data-i18n="intro_call_desc">
 Clearly, these actions will not have a significant impact if only a few people are involved. It might be small actions, but by doing these, we help the earth recover. Because of that, as human beings who care about the future of the earth, we need to gather together and take these actions to save our planet.
@@ -1389,11 +1389,11 @@ const translations = {
         // Go Green School Introduction
         intro_label: "🌍 Understanding the Movement",
         intro_title: 'What is <span class="text-primary">Go Green School</span>?',
-        intro_problem_title: "The Earth Needs Our Help",
+        intro_problem_title: "",
         intro_problem_desc: "Nowadays, we can see that a lot of information about the earth shows it is becoming more dangerous, unstable, and facing an uncertain future for the living creatures — humans, plants, and animals — that live inside it. We cannot just stand and do nothing; we need to take real action.",
-        intro_definition_title: "A School Committed to the Earth",
+        intro_definition_title: "",
         intro_definition_desc: "Go Green School is an action which shows the school's commitment to help the earth become a better environment for mankind. These are small activities that we can do — for instance, when throwing trash into the trash bin, we classify them into several groups so it makes it easier to recycle. Another example is choosing paper bags rather than plastic bags in our daily life.",
-        intro_call_title: "Together We Make a Difference",
+        intro_call_title: "",
         intro_call_desc: "Clearly, these actions will not have a significant impact if only a few people are involved. It might be small actions, but by doing these, we help the earth recover. Because of that, as human beings who care about the future of the earth, we need to gather together and take these actions to save our planet.",
         // Small Actions
         actions_label: "Take Action Now",
@@ -1521,11 +1521,11 @@ const translations = {
         // Go Green School Introduction
         intro_label: "🌍 Memahami Gerakan",
         intro_title: 'Apa itu <span class="text-primary">Go Green School</span>?',
-        intro_problem_title: "Bumi Membutuhkan Bantuan Kita",
+        intro_problem_title: "",
         intro_problem_desc: "Saat ini, kita dapat melihat bahwa banyak informasi tentang bumi menunjukkan bahwa bumi semakin berbahaya, tidak stabil, dan menghadapi masa depan yang tidak pasti bagi makhluk hidup — manusia, tumbuhan, dan hewan — yang tinggal di dalamnya. Kita tidak bisa hanya berdiam diri dan tidak melakukan apa-apa; kita perlu mengambil tindakan nyata.",
-        intro_definition_title: "Sekolah yang Berkomitmen untuk Bumi",
+        intro_definition_title: "",
         intro_definition_desc: "Go Green School adalah sebuah aksi yang menunjukkan komitmen sekolah untuk membantu bumi menjadi lingkungan yang lebih baik bagi umat manusia. Ini adalah kegiatan-kegiatan kecil yang bisa kita lakukan — misalnya, saat membuang sampah ke tempat sampah, kita mengklasifikasikannya ke dalam beberapa kelompok agar lebih mudah didaur ulang. Contoh lainnya adalah memilih tas kertas daripada tas plastik dalam kehidupan sehari-hari.",
-        intro_call_title: "Bersama Kita Membuat Perbedaan",
+        intro_call_title: "",
         intro_call_desc: "Jelas, tindakan-tindakan ini tidak akan berdampak signifikan jika hanya sedikit orang yang terlibat. Mungkin ini tindakan kecil, tetapi dengan melakukannya, kita membantu bumi pulih. Karena itu, sebagai manusia yang peduli akan masa depan bumi, kita perlu bersatu dan melakukan tindakan ini untuk menyelamatkan planet kita.",
         // Small Actions
         actions_label: "Ambil Tindakan Sekarang",
