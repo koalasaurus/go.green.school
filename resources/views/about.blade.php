@@ -378,7 +378,7 @@
         <div class="layout-container flex h-full grow flex-col">
 
             <!-- Navigation Bar -->
-            <nav class="sticky top-0 z-50 glass-effect nav-gradient-line px-6 md:px-20 lg:px-40 py-4">
+            <nav class="fixed top-0 left-0 w-full z-50 glass-effect nav-gradient-line px-6 md:px-20 lg:px-40 py-4">
                 <div class="max-w-7xl mx-auto flex items-center justify-between">
                     <div class="flex items-center gap-10">
                         <a class="flex items-center gap-2 group" href="/">
@@ -458,7 +458,7 @@
             <div class="float-particle fixed top-[30%] right-[18%] w-3 h-3 bg-primary/20 rounded-full z-10" style="animation-delay: -2s;"></div>
             <div class="float-particle fixed top-[60%] left-[22%] w-2 h-2 bg-accent-blue/20 rounded-full z-10" style="animation-delay: -5s; animation-duration: 10s;"></div>
 
-            <main class="flex flex-col flex-1">
+            <main class="flex flex-col flex-1 pt-24">
 
                 <!-- Page Hero -->
                 <section class="relative px-4 md:px-20 lg:px-40 pt-16 pb-12">
@@ -995,7 +995,7 @@ Go Green School Web is an educational website that provides information about wa
             </div>
             <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="{{ asset('images/Deny Hendrata.png') }}" alt="Deny Hendrata" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/Deny Hendrata.png') }}" alt="Deny Hendrata" class="dev-card-img w-full h-full object-cover object-[center_20%]">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Deny Hendrata</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
