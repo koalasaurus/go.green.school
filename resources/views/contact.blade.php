@@ -801,7 +801,7 @@
                     </div>
                 </div>
                 <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-sage/40 uppercase tracking-widest">
-                    <p data-i18n="footer_copyright">© 2024 Go Green School. All Rights Reserved.</p>
+                    <p data-i18n="footer_copyright">© 2026 Go Green School. All Rights Reserved.</p>
                     <div class="flex gap-8">
                         <a class="hover:text-white transition-colors" href="#" data-i18n="footer_privacy">Privacy Policy</a>
                         <a class="hover:text-white transition-colors" href="#" data-i18n="footer_terms">Terms &amp; Conditions</a>
@@ -880,7 +880,7 @@
             footer_contactus: "Contact Us",
             footer_newsletter: "Newsletter",
             footer_newsletter_desc: "Get green tips in your inbox.",
-            footer_copyright: "© 2024 Go Green School. All Rights Reserved.",
+            footer_copyright: "© 2026 Go Green School. All Rights Reserved.",
             footer_privacy: "Privacy Policy",
             footer_terms: "Terms & Conditions",
             dev_modal_title: "Meet Our Developers",
@@ -952,7 +952,7 @@
             footer_contactus: "Hubungi Kami",
             footer_newsletter: "Buletin",
             footer_newsletter_desc: "Dapatkan tips hijau di kotak masuk Anda.",
-            footer_copyright: "© 2024 Go Green School. Hak Cipta Dilindungi.",
+            footer_copyright: "© 2026 Go Green School. Hak Cipta Dilindungi.",
             footer_privacy: "Kebijakan Privasi",
             footer_terms: "Syarat & Ketentuan",
             dev_modal_title: "Temui Developer Kami",

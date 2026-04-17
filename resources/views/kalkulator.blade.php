@@ -952,7 +952,7 @@
                     </div>
                 </div>
                 <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-sage/40 uppercase tracking-widest">
-                    <p data-i18n="footer_copyright">© 2024 Go Green School. All Rights Reserved.</p>
+                    <p data-i18n="footer_copyright">© 2026 Go Green School. All Rights Reserved.</p>
                     <div class="flex gap-8">
                         <a class="hover:text-white transition-colors" href="#" data-i18n="footer_privacy">Privacy Policy</a>
                         <a class="hover:text-white transition-colors" href="#" data-i18n="footer_terms">Terms &amp; Conditions</a>
@@ -1115,7 +1115,7 @@
             footer_newsletter_desc: "Get green tips in your inbox.",
             footer_privacy: "Privacy Policy",
             footer_terms: "Terms & Conditions",
-            footer_copyright: "© 2024 Go Green School. All Rights Reserved.",
+            footer_copyright: "© 2026 Go Green School. All Rights Reserved.",
             alert_fill: "Please fill in all fields with valid values!",
             days_label: "Days",
             insight_high: "⚠️ Your class produces a significant amount of waste. With a 30-day prediction of {pred} kg, consider implementing a waste reduction program. Focus on reducing {highest} waste which makes up {pct}% of total waste.",
@@ -1220,7 +1220,7 @@
             footer_newsletter_desc: "Dapatkan tips hijau di kotak masuk Anda.",
             footer_privacy: "Kebijakan Privasi",
             footer_terms: "Syarat & Ketentuan",
-            footer_copyright: "© 2024 Go Green School. Hak Cipta Dilindungi.",
+            footer_copyright: "© 2026 Go Green School. Hak Cipta Dilindungi.",
             alert_fill: "Harap isi semua kolom dengan nilai yang valid!",
             days_label: "Hari",
             insight_high: "⚠️ Kelas kamu menghasilkan cukup banyak sampah. Dengan prediksi 30 hari sebesar {pred} kg, pertimbangkan untuk menerapkan program pengurangan sampah. Fokus pada pengurangan sampah {highest} yang mencakup {pct}% dari total sampah.",
