@@ -1172,8 +1172,13 @@
     </script>
 
     <!-- Scroll-to-Top Button -->
-    <button id="scroll-top" class="scroll-top-btn fixed bottom-8 right-8 z-50 w-12 h-12 bg-primary hover:bg-forest text-white rounded-full shadow-xl shadow-primary/30 flex items-center justify-center transition-all hover:-translate-y-1" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-        <span class="material-symbols-outlined">keyboard_arrow_up</span>
+    <button id="scroll-top" class="scroll-top-btn fixed bottom-5 md:bottom-8 right-4 md:right-8 z-50 w-10 h-10 md:w-12 md:h-12 bg-primary hover:bg-forest text-white rounded-full shadow-xl shadow-primary/30 flex items-center justify-center transition-all hover:-translate-y-1" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <span class="material-symbols-outlined text-[20px] md:text-[24px]">keyboard_arrow_up</span>
+    </button>
+
+    <!-- Scroll-to-Bottom Button -->
+    <button id="scroll-bottom" class="scroll-top-btn fixed bottom-5 md:bottom-8 right-16 md:right-24 z-50 w-10 h-10 md:w-12 md:h-12 bg-primary hover:bg-forest text-white rounded-full shadow-xl shadow-primary/30 flex items-center justify-center transition-all hover:translate-y-1" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">
+        <span class="material-symbols-outlined text-[20px] md:text-[24px]">keyboard_arrow_down</span>
     </button>
 
     <!-- Scroll Animations + Mobile Menu + Nav Scroll -->
@@ -1196,9 +1201,16 @@
         });
 
         var scrollBtn = document.getElementById('scroll-top');
+        var scrollBottomBtn = document.getElementById('scroll-bottom');
         window.addEventListener('scroll', function () {
             if (window.scrollY > 500) scrollBtn.classList.add('show');
             else scrollBtn.classList.remove('show');
+
+            if (window.scrollY < document.body.scrollHeight - window.innerHeight - 500) {
+                scrollBottomBtn.classList.add('show');
+            } else {
+                scrollBottomBtn.classList.remove('show');
+            }
         });
 
         var mobileBtn = document.getElementById('mobile-menu-btn');
