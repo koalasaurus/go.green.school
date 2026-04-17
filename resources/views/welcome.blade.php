@@ -555,7 +555,7 @@ Get Started
 </div>
 <!-- Mobile Hamburger -->
 <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center size-10 rounded-xl hover:bg-forest/5 transition-colors">
-<span class="material-symbols-outlined text-2xl text-forest">menu</span>
+<span class="material-symbols-outlined text-2xl text-forest">Menu</span>
 </button>
 </div>
 </div>
