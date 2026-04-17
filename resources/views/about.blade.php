@@ -378,7 +378,7 @@
         <div class="layout-container flex h-full grow flex-col">
 
             <!-- Navigation Bar -->
-            <nav class="sticky top-0 z-50 glass-effect nav-gradient-line px-6 md:px-20 lg:px-40 py-4">
+            <nav class="fixed top-0 left-0 w-full z-50 glass-effect nav-gradient-line px-6 md:px-20 lg:px-40 py-4">
                 <div class="max-w-7xl mx-auto flex items-center justify-between">
                     <div class="flex items-center gap-10">
                         <a class="flex items-center gap-2 group" href="/">
@@ -405,9 +405,12 @@
                             <span data-i18n="nav_back_home">Back to Home</span>
                         </a>
                         <!-- Earth Dev Button -->
-                        <button onclick="openDevModal()" class="dev-earth-btn flex items-center justify-center size-10 rounded-full hover:scale-110 transition-all duration-300" title="Meet the Developers">
-                            <span class="text-2xl">🌍</span>
-                        </button>
+                        <div class="flex items-center gap-2">
+                            <button onclick="openDevModal()" class="dev-earth-btn flex items-center justify-center size-10 rounded-full hover:scale-110 transition-all duration-300" title="Meet the Developers">
+                                <span class="text-2xl">🌍</span>
+                            </button>
+                            <span class="hidden lg:inline text-xs font-semibold text-forest/70 whitespace-nowrap" data-i18n="nav_profile_hint">Developer Profile</span>
+                        </div>
                         <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center size-10 rounded-xl hover:bg-forest/5 transition-colors">
                             <span class="material-symbols-outlined text-2xl text-forest">menu</span>
                         </button>
@@ -455,7 +458,7 @@
             <div class="float-particle fixed top-[30%] right-[18%] w-3 h-3 bg-primary/20 rounded-full z-10" style="animation-delay: -2s;"></div>
             <div class="float-particle fixed top-[60%] left-[22%] w-2 h-2 bg-accent-blue/20 rounded-full z-10" style="animation-delay: -5s; animation-duration: 10s;"></div>
 
-            <main class="flex flex-col flex-1">
+            <main class="flex flex-col flex-1 pt-24">
 
                 <!-- Page Hero -->
                 <section class="relative px-4 md:px-20 lg:px-40 pt-16 pb-12">
@@ -492,13 +495,11 @@
                                 </div>
                             </div>
                             <div class="relative">
-                                <div class="rounded-2xl overflow-hidden shadow-2xl shadow-forest/10 hover-glow transition-all duration-500">
-                                    <div class="bg-gradient-to-br from-primary/20 via-accent-teal/10 to-forest/10 h-80 flex items-center justify-center relative">
-                                        <div class="absolute inset-0 mesh-gradient"></div>
-                                        <div class="absolute top-4 right-4 w-20 h-20 border-2 border-primary/10 rounded-full animate-spin" style="animation-duration: 20s;"></div>
-                                        <div class="absolute bottom-6 left-6 w-12 h-12 border border-accent-blue/10 rounded-lg animate-spin" style="animation-duration: 15s; animation-direction: reverse;"></div>
-                                        <span class="material-symbols-outlined text-primary/30 relative z-10" style="font-size: 120px;">eco</span>
-                                    </div>
+                                <div class="rounded-2xl overflow-hidden shadow-2xl shadow-forest/10 hover-glow transition-all duration-500 relative">
+                                    <img src="{{ asset('images/slide2.jpg') }}" alt="Students sorting and recycling waste at school" class="w-full h-80 object-cover"/>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-forest/20 via-transparent to-primary/5"></div>
+                                    <div class="absolute top-4 right-4 w-20 h-20 border-2 border-white/20 rounded-full animate-spin" style="animation-duration: 20s;"></div>
+                                    <div class="absolute bottom-6 left-6 w-12 h-12 border border-white/20 rounded-lg animate-spin" style="animation-duration: 15s; animation-direction: reverse;"></div>
                                 </div>
                                 <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-6 border border-forest/5">
                                     <div class="flex items-center gap-4">
@@ -656,15 +657,15 @@ Go Green School Web is an educational website that provides information about wa
                             <ul class="space-y-4 text-sage/60 text-sm">
                                 <li class="flex gap-2 items-start">
                                     <span class="material-symbols-outlined text-primary text-base">location_on</span>
-                                    <span>Jl. Hijau Lestari No. 123, Jakarta</span>
+                                    <span>Jl. Raya Sintang - Pontianak, RT 010/RW 003, Desa Balai Agung, Kec. Sungai Tebelian, Kab. Sintang, Kalbar.</span>
                                 </li>
                                 <li class="flex gap-2 items-start">
                                     <span class="material-symbols-outlined text-primary text-base">mail</span>
-                                    <span>info@gogreenschool.id</span>
+                                    <span>go.green.website.2026@gmail.com</span>
                                 </li>
                                 <li class="flex gap-2 items-start">
-                                    <span class="material-symbols-outlined text-primary text-base">phone</span>
-                                    <span>(021) 555-0123</span>
+                                    <span class="material-symbols-outlined text-primary text-base">photo_camera</span>
+                                    <span>@earthygreen.vibes</span>
                                 </li>
                             </ul>
                         </div>
@@ -706,6 +707,7 @@ Go Green School Web is an educational website that provides information about wa
             nav_program: "Program",
             nav_contact: "Contact",
             nav_calculator: "Calculator",
+            nav_profile_hint: "Developer Profile",
             nav_back_home: "Back to Home",
             about_badge: "About Us & Our Programs",
             about_title: "About Go Green School",
@@ -777,6 +779,7 @@ Go Green School Web is an educational website that provides information about wa
             nav_program: "Program",
             nav_contact: "Kontak",
             nav_calculator: "Kalkulator",
+            nav_profile_hint: "Profil Developer",
             nav_back_home: "Kembali ke Beranda",
             about_badge: "Tentang Kami & Program Kami",
             about_title: "Tentang Go Green School",
@@ -968,7 +971,7 @@ Go Green School Web is an educational website that provides information about wa
         <div class="p-6 md:p-8 grid grid-cols-2 gap-4 md:gap-6">
             <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="https://ui-avatars.com/api/?name=Richard+Wong&background=10b981&color=fff&size=200&bold=true&font-size=0.35" alt="Richard Wong" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/richard wong.png') }}" alt="Richard Wong" class="dev-card-img w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Richard Wong</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
@@ -976,7 +979,7 @@ Go Green School Web is an educational website that provides information about wa
             </div>
             <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="https://ui-avatars.com/api/?name=Andika+Dicky&background=059669&color=fff&size=200&bold=true&font-size=0.35" alt="Andika Dicky Sanjaya" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/andika dicky sanjaya.jpeg') }}" alt="Andika Dicky Sanjaya" class="dev-card-img w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Andika Dicky Sanjaya</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
@@ -984,15 +987,15 @@ Go Green School Web is an educational website that provides information about wa
             </div>
             <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="https://ui-avatars.com/api/?name=Irene+Trisnawati&background=047857&color=fff&size=200&bold=true&font-size=0.35" alt="Irene Trisnawati" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/irene krismawati.png') }}" alt="Irene Krismawati" class="dev-card-img w-full h-full object-cover">
                 </div>
-                <h3 class="font-bold text-forest text-sm md:text-base">Irene Trisnawati</h3>
+                <h3 class="font-bold text-forest text-sm md:text-base">Irene Krismawati</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
                 <div class="mt-2 flex justify-center"><span data-i18n="dev_specialty_3" class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">🍀 UI/UX</span></div>
             </div>
             <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="https://ui-avatars.com/api/?name=Deny+Hendrata&background=065f46&color=fff&size=200&bold=true&font-size=0.35" alt="Deny Hendrata" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/Deny Hendrata.png') }}" alt="Deny Hendrata" class="dev-card-img w-full h-full object-cover object-[center_20%]">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Deny Hendrata</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>

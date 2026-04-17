@@ -330,7 +330,7 @@
         <div class="layout-container flex h-full grow flex-col">
 
             <!-- Navigation Bar -->
-            <nav class="sticky top-0 z-50 glass-effect nav-gradient-line px-6 md:px-20 lg:px-40 py-4">
+            <nav class="fixed top-0 left-0 w-full z-50 glass-effect nav-gradient-line px-6 md:px-20 lg:px-40 py-4">
                 <div class="max-w-7xl mx-auto flex items-center justify-between">
                     <div class="flex items-center gap-10">
                         <a class="flex items-center gap-2 group" href="/">
@@ -357,9 +357,12 @@
                             <span data-i18n="nav_back_home">Back to Home</span>
                         </a>
                         <!-- Earth Dev Button -->
-                        <button onclick="openDevModal()" class="dev-earth-btn flex items-center justify-center size-10 rounded-full hover:scale-110 transition-all duration-300" title="Meet the Developers">
-                            <span class="text-2xl">🌍</span>
-                        </button>
+                        <div class="flex items-center gap-2">
+                            <button onclick="openDevModal()" class="dev-earth-btn flex items-center justify-center size-10 rounded-full hover:scale-110 transition-all duration-300" title="Meet the Developers">
+                                <span class="text-2xl">🌍</span>
+                            </button>
+                            <span class="hidden lg:inline text-xs font-semibold text-forest/70 whitespace-nowrap" data-i18n="nav_profile_hint">Developer Profile</span>
+                        </div>
                         <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center size-10 rounded-xl hover:bg-forest/5 transition-colors">
                             <span class="material-symbols-outlined text-2xl text-forest">menu</span>
                         </button>
@@ -407,7 +410,7 @@
             <div class="float-particle fixed top-[28%] right-[16%] w-3 h-3 bg-primary/20 rounded-full z-10" style="animation-delay: -2s;"></div>
             <div class="float-particle fixed top-[58%] left-[18%] w-2 h-2 bg-accent-blue/20 rounded-full z-10" style="animation-delay: -5s; animation-duration: 10s;"></div>
 
-            <main class="flex flex-col flex-1">
+            <main class="flex flex-col flex-1 pt-24">
 
                 <!-- Page Hero -->
                 <section class="relative px-4 md:px-20 lg:px-40 pt-16 pb-12">
@@ -437,7 +440,7 @@
                     <!-- Bottom fade into page background -->
                     <div class="absolute inset-x-0 bottom-0 h-24 pointer-events-none" style="background: linear-gradient(to bottom, transparent 0%, #f8faf9 100%); z-index: -1;"></div>
                     <div class="max-w-7xl mx-auto">
-                        <div class="fade-up grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="fade-up grid grid-cols-1 md:grid-cols-2 gap-6">
                             <!-- Email Tab (Default Active) -->
                             <button onclick="switchContactMode('email')" id="card-email" class="contact-card bg-white rounded-2xl shadow-lg shadow-forest/5 border-2 border-primary ring-2 ring-primary/20 p-8 text-center cursor-pointer transition-all hover-glow relative overflow-hidden">
                                 <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent-teal"></div>
@@ -445,28 +448,19 @@
                                     <span class="material-symbols-outlined text-primary text-3xl">mail</span>
                                 </div>
                                 <h3 class="text-forest font-bold text-lg mb-2" data-i18n="contact_email_title">Email</h3>
-                                <p class="text-forest/60 text-sm leading-relaxed">info@gogreenschool.id</p>
+                                <p class="text-forest/60 text-sm leading-relaxed">go.green.website.2026@gmail.com</p>
                             </button>
 
                             <!-- Instagram Tab -->
                             <button onclick="switchContactMode('instagram')" id="card-instagram" class="contact-card bg-white rounded-2xl shadow-lg shadow-forest/5 border-2 border-transparent p-8 text-center cursor-pointer transition-all hover:border-forest/10 hover-glow relative overflow-hidden">
-                                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-rose to-accent-violet opacity-0 transition-opacity group-hover:opacity-100"></div>
+                                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent-teal"></div>
                                 <div class="size-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
                                     <svg class="w-7 h-7 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                                 </div>
                                 <h3 class="text-forest font-bold text-lg mb-2" data-i18n="contact_ig_title">Instagram</h3>
-                                <p class="text-forest/60 text-sm leading-relaxed" data-i18n="contact_ig_desc">@earthyhgreen.vibes</p>
+                                <p class="text-forest/60 text-sm leading-relaxed" data-i18n="contact_ig_desc">@earthygreen.vibes</p>
                             </button>
 
-                            <!-- WhatsApp Tab -->
-                            <button onclick="switchContactMode('whatsapp')" id="card-whatsapp" class="contact-card bg-white rounded-2xl shadow-lg shadow-forest/5 border-2 border-transparent p-8 text-center cursor-pointer transition-all hover:border-forest/10 hover-glow relative overflow-hidden">
-                                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-light to-primary opacity-0 transition-opacity group-hover:opacity-100"></div>
-                                <div class="size-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
-                                    <svg class="w-7 h-7 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                                </div>
-                                <h3 class="text-forest font-bold text-lg mb-2" data-i18n="contact_wa_title">WhatsApp</h3>
-                                <p class="text-forest/60 text-sm leading-relaxed" data-i18n="contact_wa_desc">+62 21 555-0123</p>
-                            </button>
                         </div>
                     </div>
                 </section>
@@ -604,46 +598,6 @@
                                         </form>
                                     </div>
 
-                                    <!-- ===== WHATSAPP FORM (Hidden) ===== -->
-                                    <div id="form-whatsapp" class="hidden">
-                                        <div class="flex items-center gap-3 mb-8">
-                                            <div class="size-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                                                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                                            </div>
-                                            <div>
-                                                <h3 class="text-forest font-bold text-xl" data-i18n="form_wa_heading">Send via WhatsApp</h3>
-                                                <p class="text-forest/50 text-xs" data-i18n="form_wa_desc">Chat with us directly on WhatsApp</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="mb-6 p-4 bg-primary/5 border border-primary/10 rounded-xl flex items-start gap-3">
-                                            <span class="material-symbols-outlined text-primary text-xl mt-0.5">info</span>
-                                            <div>
-                                                <p class="text-forest text-sm font-semibold" data-i18n="form_wa_info_title">Chat via WhatsApp</p>
-                                                <p class="text-forest/60 text-xs mt-1" data-i18n="form_wa_info_desc">Fill in your message below. Clicking "Send" will open WhatsApp with your message pre-filled.</p>
-                                            </div>
-                                        </div>
-
-                                        <form id="wa-form" class="space-y-5" onsubmit="return redirectToWhatsApp(event)">
-                                            <div>
-                                                <label class="block text-sm font-semibold text-forest/80 mb-2" data-i18n="form_name">Full Name</label>
-                                                <div class="relative">
-                                                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-forest/30 text-xl">person</span>
-                                                    <input type="text" id="wa-name" placeholder="John Doe" class="input-field w-full pl-11 pr-4 py-3 border border-forest/10 rounded-xl text-sm focus:border-primary focus:outline-none transition-all bg-sage/30" required/>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <label class="block text-sm font-semibold text-forest/80 mb-2" data-i18n="form_message">Message</label>
-                                                <textarea rows="5" id="wa-message" placeholder="Write your message here..." class="input-field w-full px-4 py-3 border border-forest/10 rounded-xl text-sm focus:border-primary focus:outline-none transition-all bg-sage/30 resize-none" required></textarea>
-                                            </div>
-                                            <button type="submit" class="w-full flex items-center justify-center gap-2 bg-primary hover:bg-forest text-white py-3.5 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 transition-all transform hover:-translate-y-0.5">
-                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                                                <span data-i18n="form_wa_submit">Send via WhatsApp</span>
-                                            </button>
-                                            <p class="text-center text-xs text-forest/40" data-i18n="form_wa_note">WhatsApp will open with your message pre-filled</p>
-                                        </form>
-                                    </div>
-
                                 </div>
                             </div>
 
@@ -695,7 +649,7 @@
                                         <a href="#" class="w-12 h-12 rounded-xl bg-forest/5 border border-forest/10 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white text-forest/50 transition-all">
                                             <span class="material-symbols-outlined">language</span>
                                         </a>
-                                        <a href="#" class="w-12 h-12 rounded-xl bg-forest/5 border border-forest/10 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white text-forest/50 transition-all">
+                                        <a href="https://www.instagram.com/earthygreen.vibes/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-xl bg-forest/5 border border-forest/10 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white text-forest/50 transition-all">
                                             <span class="material-symbols-outlined">photo_camera</span>
                                         </a>
                                         <a href="#" class="w-12 h-12 rounded-xl bg-forest/5 border border-forest/10 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white text-forest/50 transition-all">
@@ -798,7 +752,7 @@
                             <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all" href="#">
                                 <span class="material-symbols-outlined text-xl">language</span>
                             </a>
-                            <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all" href="#">
+                            <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all" href="https://www.instagram.com/earthygreen.vibes/" target="_blank" rel="noopener noreferrer">
                                 <span class="material-symbols-outlined text-xl">share</span>
                             </a>
                             <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all" href="#">
@@ -822,15 +776,15 @@
                             <ul class="space-y-4 text-sage/60 text-sm">
                                 <li class="flex gap-2 items-start">
                                     <span class="material-symbols-outlined text-primary text-base">location_on</span>
-                                    <span>Jl. Hijau Lestari No. 123, Jakarta</span>
+                                    <span>Jl. Raya Sintang - Pontianak, RT 010/RW 003, Desa Balai Agung, Kec. Sungai Tebelian, Kab. Sintang, Kalbar.</span>
                                 </li>
                                 <li class="flex gap-2 items-start">
                                     <span class="material-symbols-outlined text-primary text-base">mail</span>
-                                    <span>info@gogreenschool.id</span>
+                                    <span>go.green.website.2026@gmail.com</span>
                                 </li>
                                 <li class="flex gap-2 items-start">
-                                    <span class="material-symbols-outlined text-primary text-base">phone</span>
-                                    <span>(021) 555-0123</span>
+                                    <span class="material-symbols-outlined text-primary text-base">photo_camera</span>
+                                    <span>@earthygreen.vibes</span>
                                 </li>
                             </ul>
                         </div>
@@ -872,13 +826,14 @@
             nav_program: "Program",
             nav_contact: "Contact",
             nav_calculator: "Calculator",
+            nav_profile_hint: "Developer Profile",
             nav_back_home: "Back to Home",
             contact_badge: "Get In Touch",
             contact_title: "Contact Us",
             contact_subtitle: "Have questions or want to learn more about Go Green School? We'd love to hear from you.",
             contact_email_title: "Email",
             contact_ig_title: "Instagram",
-            contact_ig_desc: "@earthyhgreen.vibes",
+            contact_ig_desc: "@earthygreen.vibes",
             contact_wa_title: "WhatsApp",
             contact_wa_desc: "+62 21 555-0123",
             form_email_heading: "Send via Email",
@@ -943,13 +898,14 @@
             nav_program: "Program",
             nav_contact: "Kontak",
             nav_calculator: "Kalkulator",
+            nav_profile_hint: "Profil Developer",
             nav_back_home: "Kembali ke Beranda",
             contact_badge: "Hubungi Kami",
             contact_title: "Kontak Kami",
             contact_subtitle: "Punya pertanyaan atau ingin tahu lebih banyak tentang Go Green School? Kami senang mendengar dari Anda.",
             contact_email_title: "Email",
             contact_ig_title: "Instagram",
-            contact_ig_desc: "@earthyhgreen.vibes",
+            contact_ig_desc: "@earthygreen.vibes",
             contact_wa_title: "WhatsApp",
             contact_wa_desc: "+62 21 555-0123",
             form_email_heading: "Kirim via Email",
@@ -1051,13 +1007,12 @@
     <!-- Contact Mode Switching + IG DM + WhatsApp Script -->
     <script>
     // ===== CONFIGURATION - GANTI DENGAN DATA KALIAN =====
-    var IG_USERNAME = 'earthyhgreen.vibes';
-    var WA_NUMBER = '6221555012';  // Nomor WA tanpa + dan spasi
+    var IG_USERNAME = 'earthygreen.vibes';
 
     // ===== TAB SWITCHING =====
     function switchContactMode(mode) {
         // Hide all forms
-        var forms = ['form-email', 'form-instagram', 'form-whatsapp'];
+        var forms = ['form-email', 'form-instagram'];
         forms.forEach(function(id) {
             var el = document.getElementById(id);
             if (el) el.classList.add('hidden');
@@ -1068,7 +1023,7 @@
         if (target) target.classList.remove('hidden');
 
         // Update card styles
-        var cards = ['card-email', 'card-instagram', 'card-whatsapp'];
+        var cards = ['card-email', 'card-instagram'];
         cards.forEach(function(id) {
             var card = document.getElementById(id);
             if (card) {
@@ -1139,24 +1094,15 @@
             });
         }
 
-        setTimeout(function() {
-            window.open('https://ig.me/m/' + IG_USERNAME, '_blank');
-        }, 800);
-        return false;
-    }
+        // Buka URL langsung dalam konteks user-click agar tidak diblokir popup blocker
+        var igDmUrl = 'https://ig.me/m/' + IG_USERNAME;
+        var igProfileUrl = 'https://www.instagram.com/' + IG_USERNAME + '/';
+        var opened = window.open(igDmUrl, '_blank');
 
-    // ===== WHATSAPP =====
-    function redirectToWhatsApp(e) {
-        e.preventDefault();
-        var name = document.getElementById('wa-name').value.trim();
-        var message = document.getElementById('wa-message').value.trim();
-
-        var fullMessage = '';
-        if (name) fullMessage += 'Halo, saya ' + name + '.\n\n';
-        if (message) fullMessage += message;
-
-        var waUrl = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(fullMessage);
-        window.open(waUrl, '_blank');
+        // Fallback jika browser memblokir tab baru
+        if (!opened) {
+            window.location.href = igProfileUrl;
+        }
         return false;
     }
 
@@ -1271,7 +1217,7 @@
         <div class="p-6 md:p-8 grid grid-cols-2 gap-4 md:gap-6">
             <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="https://ui-avatars.com/api/?name=Richard+Wong&background=10b981&color=fff&size=200&bold=true&font-size=0.35" alt="Richard Wong" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/richard wong.png') }}" alt="Richard Wong" class="dev-card-img w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Richard Wong</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
@@ -1279,7 +1225,7 @@
             </div>
             <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="https://ui-avatars.com/api/?name=Andika+Dicky&background=059669&color=fff&size=200&bold=true&font-size=0.35" alt="Andika Dicky Sanjaya" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/andika dicky sanjaya.jpeg') }}" alt="Andika Dicky Sanjaya" class="dev-card-img w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Andika Dicky Sanjaya</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
@@ -1287,15 +1233,15 @@
             </div>
             <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="https://ui-avatars.com/api/?name=Irene+Trisnawati&background=047857&color=fff&size=200&bold=true&font-size=0.35" alt="Irene Trisnawati" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/irene krismawati.png') }}" alt="Irene Krismawati" class="dev-card-img w-full h-full object-cover">
                 </div>
-                <h3 class="font-bold text-forest text-sm md:text-base">Irene Trisnawati</h3>
+                <h3 class="font-bold text-forest text-sm md:text-base">Irene Krismawati</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
                 <div class="mt-2 flex justify-center"><span data-i18n="dev_specialty_3" class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">🍀 UI/UX</span></div>
             </div>
             <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="https://ui-avatars.com/api/?name=Deny+Hendrata&background=065f46&color=fff&size=200&bold=true&font-size=0.35" alt="Deny Hendrata" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/Deny Hendrata.png') }}" alt="Deny Hendrata" class="dev-card-img w-full h-full object-cover object-[center_20%]">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Deny Hendrata</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
