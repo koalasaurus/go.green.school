@@ -1,23 +1,106 @@
 # 🌱 Go Green School Web
 
-Selamat datang di **Go Green School Web** — platform edukasi lingkungan berbasis Laravel yang dirancang untuk membantu siswa, guru, dan komunitas sekolah membangun budaya hidup ramah lingkungan.
+Selamat datang di **Go Green School Web** — sebuah website edukasi lingkungan berbasis Laravel yang dirancang untuk membangun kebiasaan peduli bumi melalui pendekatan yang informatif, modern, dan mudah dipahami.
 
-Website ini menggabungkan **informasi edukatif**, **pengalaman UI modern**, dan **kalkulator sampah berbasis data** untuk mendukung aksi nyata menjaga bumi dari lingkungan sekolah.
+Project ini menghadirkan kombinasi antara **konten edukatif**, **UI interaktif**, dan **fitur kalkulator sampah berbasis data** agar siswa, guru, dan komunitas sekolah dapat belajar sekaligus beraksi nyata untuk lingkungan.
 
-🔗 **Live Demo**: https://gogreenschool-main-svl9z8.free.laravel.cloud/
-
-🎬 **Konten Promosi**: https://www.instagram.com/reel/DWjIx3Tk_bs/?igsh=MW8wNm53MjlleHFwcA==
+🔗 **Live Demo**: https://gogreenschool-main-svl9z8.free.laravel.cloud/  
+🎬 **Konten Video Medsos**: https://www.instagram.com/reel/DWjIx3Tk_bs/?igsh=MW8wNm53MjlleHFwcA==
 
 ---
 
-## ✨ Highlight Project
+## ✨ Fitur Utama Website
 
-- 🎨 UI modern dengan animasi interaktif
-- 🌍 Dukungan multi-bahasa (EN/ID)
-- 📚 Konten edukasi pengelolaan sampah yang lengkap
-- 📊 Kalkulator sampah + visualisasi chart
-- 📩 Contact form terhubung ke email admin
-- 👨‍💻 Modal profil tim developer di semua halaman utama
+- 🎨 Desain antarmuka modern dengan animasi interaktif
+- 🌍 Dukungan bahasa ganda (Indonesia & English)
+- 📚 Materi edukasi lengkap (explanation text, procedure text, description text, about text)
+- ♻️ Informasi program sekolah hijau (pengelolaan sampah, konservasi air, energi hijau, dll)
+- 📊 Kalkulator sampah dengan perhitungan otomatis + visual chart
+- 🧾 Riwayat data kalkulator (local storage) + export CSV
+- 📩 Contact page dengan integrasi pengiriman email
+- 📱 Navigasi responsif (desktop & mobile) + tombol scroll naik/turun
+- 👨‍💻 Modal profil developer di halaman utama
+
+---
+
+## 🗂️ Halaman Website
+
+### 1) Home (`/`)
+- Hero carousel dan section edukasi utama
+- Penjelasan gerakan Go Green School
+- Konten **explanation text**
+- CTA ke halaman Program, Contact, dan Kalkulator
+
+### 2) About (`/about`)
+- Cerita, visi, misi, dan nilai Go Green School
+- Konten **about us text** dan **description text**
+- Ringkasan tujuan website
+
+### 3) Program (`/program`)
+- Daftar program hijau sekolah
+- Konten **procedure text** (langkah pengelolaan sampah dan daur ulang)
+- Panduan implementasi program berkelanjutan
+
+### 4) Contact (`/contact`)
+- Kontak email & Instagram
+- Form kirim pesan ke admin
+- FAQ + informasi komunikasi sekolah
+
+### 5) Kalkulator (`/kalkulator`)
+- Input data sampah organik, anorganik, dan B3
+- Hitung total, rata-rata, persentase, prediksi 30 hari
+- Visualisasi grafik (Chart.js)
+- Simpan, lihat, hapus, gabung data, dan export CSV
+
+---
+
+## 👥 Pembagian Tugas Tim
+
+Berikut rincian kontribusi tiap anggota tim dalam project **Go Green School**:
+
+- **Richard**
+   - Berkontribusi dalam penyempurnaan fitur website, khususnya pada peningkatan tampilan interaktif dan perbaikan komponen antarmuka agar pengalaman pengguna lebih nyaman.
+   - Menyusun dan menempatkan konten pada bagian _explanation text_ agar pesan edukasi lingkungan tersampaikan dengan bahasa yang jelas dan mudah dipahami.
+   - Mendesain **poster Digital Marketing versi 1** sebagai materi promosi utama project Go Green School.
+   - Terlibat dalam pembuatan **video konten media sosial** untuk mendukung publikasi website.
+
+- **Irene**
+   - Bertanggung jawab pada penyusunan konten bagian _procedure text_, termasuk alur langkah pengelolaan sampah dan implementasi kebiasaan hijau di lingkungan sekolah.
+   - Menyiapkan **poster Bahasa Indonesia** dengan fokus pada kekuatan pesan, kerapian tata bahasa, dan kesesuaian materi kampanye.
+   - Berpartisipasi dalam produksi **video konten media sosial** agar materi edukasi lebih menarik bagi audiens pelajar.
+
+- **Deny**
+   - Mengembangkan konten pada bagian _about us text_ untuk memperkuat identitas, tujuan, dan nilai utama dari website Go Green School.
+   - Berkolaborasi dalam pembuatan **poster Digital Marketing versi 2**, terutama pada penyusunan konsep pesan dan visual pendukung.
+   - Mendukung proses pembuatan **video konten media sosial** sebagai media kampanye digital project.
+
+- **Dicky**
+   - Menjadi penanggung jawab utama pengembangan website, mencakup struktur halaman, integrasi fitur, serta penyesuaian tampilan agar berjalan optimal di desktop dan mobile.
+   - Menyusun konten bagian _description text_ untuk memberikan informasi inti website secara ringkas, informatif, dan terarah.
+   - Berkolaborasi dalam pembuatan **poster Digital Marketing versi 2** bersama tim untuk memastikan konsistensi branding.
+   - Turut memproduksi **video konten media sosial** sebagai bagian dari strategi promosi Go Green School.
+
+---
+
+## 🖼️ Dokumentasi Poster
+
+### Poster Digital Marketing Versi 1 (Richard)
+![Poster Digital Marketing v1](Richard/Go%20Green%20School%20Catalogue%20-%20A3%20Size.png)
+
+### Poster Bahasa Indonesia (Irene)
+![Poster Bahasa Indonesia 1](Irene/1.png)
+![Poster Bahasa Indonesia 2](Irene/2.png)
+
+### Poster Digital Marketing Versi 2 (Dicky & Deny)
+![Poster Digital Marketing v2](Dicky/GO%20GREEN%20SCHOOL.png)
+
+---
+
+## 🎬 Video Konten Medsos
+
+Video promosi website kami dapat ditonton melalui link berikut:
+
+📍 **[Tonton Video Konten Medsos](https://www.instagram.com/reel/DWjIx3Tk_bs/?igsh=MW8wNm53MjlleHFwcA==)**
 
 ---
 
@@ -31,129 +114,22 @@ Website ini menggabungkan **informasi edukatif**, **pengalaman UI modern**, dan 
 
 ---
 
-## 🗂️ Halaman & Fitur
-
-### 1) Home (`/`)
-- Hero carousel multi-slide
-- Navigasi desktop + mobile menu
-- Section edukasi Go Green School
-- Section “Small Actions, Big Impact”
-- Vision & Mission
-- Testimoni/komunitas
-- Footer lengkap + modal developer
-
-### 2) About (`/about`)
-- Profil dan cerita Go Green School
-- Ringkasan website
-- Visi & misi
-- CTA ke halaman lain
-- Footer lengkap + modal developer
-
-### 3) Program (`/program`)
-- Daftar program hijau sekolah
-- Prosedur pengelolaan sampah (organik, anorganik, B3)
-- Penjelasan konsep dan implementasi
-- CTA ke contact/kalkulator
-- Footer lengkap + modal developer
-
-### 4) Contact (`/contact`)
-- Card kontak: **Email** & **Instagram**
-- Form kirim email (validasi backend Laravel)
-- Form Instagram DM (preview + copy message)
-- FAQ
-- Footer lengkap + modal developer
-
-### 5) Kalkulator (`/kalkulator`)
-- Input data sampah (organik, anorganik, B3)
-- Hitung total, rata-rata, persentase, prediksi 30 hari
-- Visualisasi chart (Chart.js)
-- Riwayat data di browser (local storage)
-- Export CSV, hapus data, dan gabung data
-- Insight otomatis berdasarkan hasil perhitungan
-- Footer lengkap (sudah disamakan dengan halaman lain)
-
----
-
-## 🛣️ Routing
-
-Route utama ada di [routes/web.php](routes/web.php):
-
-- `GET /` → `welcome`
-- `GET /about` → `about`
-- `GET /program` → `program`
-- `GET /contact` → `contact`
-- `POST /contact` → `ContactController@send` (`contact.send`)
-- `GET /kalkulator` → `kalkulator`
-
----
-
-## 📬 Contact Backend
-
-Alur pengiriman pesan pada [app/Http/Controllers/ContactController.php](app/Http/Controllers/ContactController.php):
-
-1. Validasi input (`name`, `email`, `subject`, `message`)
-2. Kirim email menggunakan `Mail::to(...)`
-3. Tujuan email: **go.green.website.2026@gmail.com**
-4. Tampilkan notifikasi sukses setelah terkirim
-
----
-
-## ✅ Update yang Sudah Diterapkan
-
-Berikut perubahan penting yang sudah dikerjakan pada project ini:
-
-### 🔧 Pembaruan Footer
-- Alamat semua footer diperbarui menjadi:  
-  **Jl. Raya Sintang - Pontianak, RT 010/RW 003, Desa Balai Agung, Kec. Sungai Tebelian, Kab. Sintang, Kalbar.**
-- Email semua footer diperbarui menjadi:  
-  **go.green.website.2026@gmail.com**
-- Kontak footer yang sebelumnya nomor telepon diubah menjadi IG:  
-  **@earthygreen.vibes**
-
-### 🔧 Halaman Contact
-- Email card diperbarui ke email terbaru
-- Card Instagram ditambahkan garis hijau agar konsisten visual
-- Card WhatsApp dan form WhatsApp dihapus
-
-### 🔧 Halaman Kalkulator
-- Footer disamakan dengan layout/footer halaman lain (full footer)
-
-### 🔧 Profil Developer
-- Foto **Deny Hendrata** diganti dari avatar menjadi file lokal:  
-  `public/images/Deny Hendrata.png`
-- Sudah diterapkan di Home, About, Program, Contact, dan Kalkulator
-
----
-
-## 📁 Struktur Folder Penting
-
-- [resources/views](resources/views) → seluruh tampilan Blade
-- [routes/web.php](routes/web.php) → route aplikasi
-- [app/Http/Controllers](app/Http/Controllers) → controller backend
-- [app/Mail](app/Mail) → class pengiriman email
-- [public/images](public/images) → aset gambar
-
----
-
 ## 🚀 Cara Menjalankan Project
 
-### 1) Install dependency
-- `composer install`
-- `npm install`
+1. Install dependency
+   - `composer install`
+   - `npm install`
 
-### 2) Konfigurasi environment
-- Copy `.env.example` menjadi `.env`
-- Generate application key:
-  - `php artisan key:generate`
+2. Konfigurasi environment
+   - Copy `.env.example` menjadi `.env`
+   - Jalankan `php artisan key:generate`
 
-### 3) Jalankan aplikasi
-- Backend: `php artisan serve`
-- Frontend: `npm run dev`
-
-Setelah itu buka URL yang tampil di terminal, atau gunakan link live demo di atas.
+3. Jalankan project
+   - Backend: `php artisan serve`
+   - Frontend: `npm run dev`
 
 ---
 
-## 📝 Catatan
+## 📝 Penutup
 
-Project ini dibuat sebagai media pembelajaran dan kampanye lingkungan sekolah dengan pendekatan web modern yang interaktif, informatif, dan mudah digunakan.
+Go Green School Web dibuat sebagai media belajar sekaligus kampanye digital untuk menumbuhkan budaya sekolah yang lebih hijau, lebih sadar lingkungan, dan lebih berdampak bagi masa depan.
