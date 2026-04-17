@@ -1225,7 +1225,7 @@ View All Tips
 </div>
 </div>
 <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-sage/40 uppercase tracking-widest">
-<p data-i18n="footer_copyright">© 2026 Go Green School. All Rights Reserved.</p>
+<p data-i18n="footer_copyright">© 2024 Go Green School. All Rights Reserved.</p>
 <div class="flex gap-8">
 <a class="hover:text-white transition-colors" href="#" data-i18n="footer_privacy">Privacy Policy</a>
 <a class="hover:text-white transition-colors" href="#" data-i18n="footer_terms">Terms &amp; Conditions</a>
@@ -1383,7 +1383,7 @@ const translations = {
         footer_news: "School News",
         footer_career: "Career",
         footer_contactus: "Contact Us",
-        footer_copyright: "© 2026 Go Green School. All Rights Reserved.",
+        footer_copyright: "© 2024 Go Green School. All Rights Reserved.",
         footer_privacy: "Privacy Policy",
         footer_terms: "Terms & Conditions",
         // Go Green School Introduction
