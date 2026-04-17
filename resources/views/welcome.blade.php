@@ -7,6 +7,7 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <script id="tailwind-config">
         tailwind.config = {
           darkMode: "class",
@@ -1197,15 +1198,15 @@ View All Tips
 <ul class="space-y-4 text-sage/60 text-sm">
 <li class="flex gap-2 items-start">
 <span class="material-symbols-outlined text-primary text-base">location_on</span>
-<span>Jl. Hijau Lestari No. 123, Jakarta</span>
+<span>Jalan Sintang, Kapuas Kanan Hulu, Kec. Sungai Tebelian, Kabupaten Sintang, Kalimantan Barat 78616</span>
 </li>
 <li class="flex gap-2 items-start">
 <span class="material-symbols-outlined text-primary text-base">mail</span>
-<span>info@gogreenschool.id</span>
+<span>go.green.website.2026@gmail.com</span>
 </li>
 <li class="flex gap-2 items-start">
-<span class="material-symbols-outlined text-primary text-base">phone</span>
-<span>(021) 555-0123</span>
+<i class="fa-brands fa-instagram text-primary text-base"></i>
+<span>earthygreen.vibes</span>
 </li>
 </ul>
 </div>
@@ -1222,7 +1223,7 @@ View All Tips
 </div>
 </div>
 <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-sage/40 uppercase tracking-widest">
-<p data-i18n="footer_copyright">© 2024 Go Green School. All Rights Reserved.</p>
+<p data-i18n="footer_copyright">© 2026 Go Green School. All Rights Reserved.</p>
 <div class="flex gap-8">
 <a class="hover:text-white transition-colors" href="#" data-i18n="footer_privacy">Privacy Policy</a>
 <a class="hover:text-white transition-colors" href="#" data-i18n="footer_terms">Terms &amp; Conditions</a>
@@ -1379,7 +1380,7 @@ const translations = {
         footer_news: "School News",
         footer_career: "Career",
         footer_contactus: "Contact Us",
-        footer_copyright: "© 2024 Go Green School. All Rights Reserved.",
+        footer_copyright: "© 2026 Go Green School. All Rights Reserved.",
         footer_privacy: "Privacy Policy",
         footer_terms: "Terms & Conditions",
         // Go Green School Introduction
@@ -1503,14 +1504,14 @@ const translations = {
         testi2_text: '"Go Green School memberikan saya dasar yang kuat untuk melanjutkan studi di bidang teknik lingkungan. Pengalamannya sangat nyata."',
         testi3_role: "Guru Sains",
         testi3_text: '"Mengajar di sini bukan sekadar memberikan materi, tapi benar-benar mempraktikkan gaya hidup hijau setiap hari bersama siswa."',
-        footer_desc: "Membentuk karakter pemimpin masa depan yang tidak hanya cerdas secara akademis, tetapi juga memiliki empati tinggi terhadap kelestarian bumi.",
+        footer_desc: "Gerakan hijau bukan hanya tren, tapi tanggung jawab.",
         footer_quicklinks: "Tautan Cepat",
         footer_registration: "Pendaftaran",
         footer_curriculum: "Kurikulum",
         footer_news: "Berita Sekolah",
         footer_career: "Karir",
         footer_contactus: "Hubungi Kami",
-        footer_copyright: "© 2024 Go Green School. Hak Cipta Dilindungi.",
+        footer_copyright: "© 2026 Go Green School. Hak Cipta Dilindungi.",
         footer_privacy: "Kebijakan Privasi",
         footer_terms: "Syarat & Ketentuan",
         // Go Green School Introduction
@@ -1933,6 +1934,11 @@ document.addEventListener('DOMContentLoaded', function () {
 <span class="material-symbols-outlined">keyboard_arrow_up</span>
 </button>
 
+<!-- Scroll-to-Bottom Button -->
+<button id="scroll-bottom" class="scroll-top-btn fixed bottom-8 right-24 z-50 w-12 h-12 bg-primary hover:bg-forest text-white rounded-full shadow-xl shadow-primary/30 flex items-center justify-center transition-all hover:translate-y-1" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">
+<span class="material-symbols-outlined">keyboard_arrow_down</span>
+</button>
+
 <!-- Scroll Animations + Mobile Menu + Nav Scroll + Counter -->
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -1959,11 +1965,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Scroll-to-top button visibility
     var scrollBtn = document.getElementById('scroll-top');
+    var scrollBottomBtn = document.getElementById('scroll-bottom');
     window.addEventListener('scroll', function () {
         if (window.scrollY > 500) {
             scrollBtn.classList.add('show');
         } else {
             scrollBtn.classList.remove('show');
+        }
+        if (window.scrollY < document.body.scrollHeight - window.innerHeight - 500) {
+            scrollBottomBtn.classList.add('show');
+        } else {
+            scrollBottomBtn.classList.remove('show');
         }
     });
 
