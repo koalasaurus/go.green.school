@@ -1009,10 +1009,10 @@
             dev_modal_title: "Meet Our Developers",
             dev_modal_subtitle: "The team behind Go Green School",
             dev_role: "Developer",
-            dev_specialty_1: "🌱 Frontend",
-            dev_specialty_2: "🌿 Backend",
-            dev_specialty_3: "🍀 UI/UX",
-            dev_specialty_4: "🌳 Fullstack",
+            dev_specialty_1: "Frontend & Interactive Content",
+            dev_specialty_2: "Lead Developer & System Integration",
+            dev_specialty_3: "Procedure Content & Campaign Design",
+            dev_specialty_4: "Brand Story & Media Content",
             dev_modal_footer: "Made with 💚 for a greener future",
         },
         id: {
@@ -1129,10 +1129,10 @@
             dev_modal_title: "Temui Developer Kami",
             dev_modal_subtitle: "Tim di balik Go Green School",
             dev_role: "Pengembang",
-            dev_specialty_1: "🌱 Frontend",
-            dev_specialty_2: "🌿 Backend",
-            dev_specialty_3: "🍀 UI/UX",
-            dev_specialty_4: "🌳 Fullstack",
+            dev_specialty_1: "Frontend & Interactive Content",
+            dev_specialty_2: "Lead Developer & System Integration",
+            dev_specialty_3: "Procedure Content & Campaign Design",
+            dev_specialty_4: "Brand Story & Media Content",
             dev_modal_footer: "Dibuat dengan 💚 untuk masa depan yang lebih hijau",
         }
     };
@@ -1251,43 +1251,53 @@
                 <div class="text-5xl mb-3">🌏</div>
                 <h2 data-i18n="dev_modal_title" class="text-2xl md:text-3xl font-bold text-white mb-1">Meet Our Developers</h2>
                 <p data-i18n="dev_modal_subtitle" class="text-white/80 text-sm">The team behind Go Green School</p>
+                <div class="mt-4 flex flex-wrap items-center justify-center gap-2 text-[11px]">
+                    <span class="px-3 py-1 rounded-full bg-white/20 text-white/95 border border-white/30">🌱 Green Innovators</span>
+                    <span class="px-3 py-1 rounded-full bg-white/20 text-white/95 border border-white/30">💡 Creative Minds</span>
+                    <span class="px-3 py-1 rounded-full bg-white/20 text-white/95 border border-white/30">🤝 One Team</span>
+                </div>
             </div>
         </div>
-        <div class="p-6 md:p-8 grid grid-cols-2 gap-4 md:gap-6">
-            <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
+        <div class="p-6 md:p-8 bg-gradient-to-b from-white to-sage/20 grid grid-cols-2 gap-4 md:gap-6">
+            <div class="relative dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100 hover:shadow-lg hover:shadow-primary/15 transition-all duration-300 hover:-translate-y-1">
+                <div class="absolute top-3 right-3 text-sm opacity-70">🎨</div>
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
                     <img src="{{ asset('images/richard wong.png') }}" alt="Richard Wong" class="dev-card-img w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Richard Wong</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
-                <div class="mt-2 flex justify-center"><span data-i18n="dev_specialty_1" class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">🌱 Frontend</span></div>
+                <div class="mt-2 flex justify-center"><span data-i18n="dev_specialty_1" class="inline-block max-w-full whitespace-normal text-center bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">Frontend & Interactive Content</span></div>
             </div>
-            <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
+            <div class="relative dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100 hover:shadow-lg hover:shadow-primary/15 transition-all duration-300 hover:-translate-y-1">
+                <div class="absolute top-3 right-3 text-sm opacity-70">🧠</div>
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
                     <img src="{{ asset('images/andika dicky sanjaya.jpeg') }}" alt="Andika Dicky Sanjaya" class="dev-card-img w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Andika Dicky Sanjaya</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
-                <div class="mt-2 flex justify-center"><span data-i18n="dev_specialty_2" class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">🌿 Backend</span></div>
+                <div class="mt-2 flex justify-center"><span data-i18n="dev_specialty_2" class="inline-block max-w-full whitespace-normal text-center bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">Lead Developer & System Integration</span></div>
             </div>
-            <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
+            <div class="relative dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100 hover:shadow-lg hover:shadow-primary/15 transition-all duration-300 hover:-translate-y-1">
+                <div class="absolute top-3 right-3 text-sm opacity-70">📝</div>
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
                     <img src="{{ asset('images/irene krismawati.png') }}" alt="Irene Krismawati" class="dev-card-img w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Irene Krismawati</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
-                <div class="mt-2 flex justify-center"><span data-i18n="dev_specialty_3" class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">🍀 UI/UX</span></div>
+                <div class="mt-2 flex justify-center"><span data-i18n="dev_specialty_3" class="inline-block max-w-full whitespace-normal text-center bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">Procedure Content & Campaign Design</span></div>
             </div>
-            <div class="dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100">
+            <div class="relative dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100 hover:shadow-lg hover:shadow-primary/15 transition-all duration-300 hover:-translate-y-1">
+                <div class="absolute top-3 right-3 text-sm opacity-70">📢</div>
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
                     <img src="{{ asset('images/Deny Hendrata.png') }}" alt="Deny Hendrata" class="dev-card-img w-full h-full object-cover object-[center_20%]">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Deny Hendrata</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
-                <div class="mt-2 flex justify-center"><span data-i18n="dev_specialty_4" class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">🌳 Fullstack</span></div>
+                <div class="mt-2 flex justify-center"><span data-i18n="dev_specialty_4" class="inline-block max-w-full whitespace-normal text-center bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">Brand Story & Media Content</span></div>
             </div>
         </div>
         <div class="px-6 pb-6 text-center">
+            <p class="text-xs text-emerald-700/70 mb-2">✨ Building a greener future, one feature at a time.</p>
             <p data-i18n="dev_modal_footer" class="text-xs text-gray-400">Made with 💚 for a greener future</p>
         </div>
     </div>
