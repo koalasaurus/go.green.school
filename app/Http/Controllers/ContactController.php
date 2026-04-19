@@ -25,10 +25,13 @@ class ContactController extends Controller
         try {
             Mail::to($contactReceiver)->send(new ContactMail($validated));
         } catch (Throwable $e) {
-            Log::error('Failed to send contact form email', [
+            Log::error('Failed to send contact form email: '.$e->getMessage(), [
                 'to' => $contactReceiver,
                 'from' => $validated['email'] ?? null,
                 'subject' => $validated['subject'] ?? null,
+                'mailer' => config('mail.default'),
+                'mail_host' => config('mail.mailers.smtp.host'),
+                'mail_port' => config('mail.mailers.smtp.port'),
                 'error' => $e->getMessage(),
             ]);
 
