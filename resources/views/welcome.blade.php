@@ -1095,62 +1095,104 @@ View All Tips
 <div class="absolute top-20 right-10 text-8xl opacity-5 select-none">💬</div>
 <div class="absolute bottom-10 left-10 text-6xl opacity-5 select-none">🌿</div>
 <div class="fade-up text-center mb-16">
-<span class="inline-flex items-center gap-2 bg-primary/10 text-primary font-bold tracking-widest uppercase text-xs px-5 py-2.5 rounded-full mb-4" data-i18n="community_label">⭐ Testimonials</span>
-<h2 class="text-forest text-4xl md:text-5xl font-black tracking-tight mt-3" data-i18n="community_title">Community Voices</h2>
-<p class="text-forest/60 max-w-xl mx-auto mt-4 text-lg" data-i18n="community_desc">What they say about the learning experience at Go Green School.</p>
+<span class="inline-flex items-center gap-2 bg-primary/10 text-primary font-bold tracking-widest uppercase text-xs px-5 py-2.5 rounded-full mb-4" data-i18n="community_label">👨‍💻 Developer Voices</span>
+<h2 class="text-forest text-4xl md:text-5xl font-black tracking-tight mt-3" data-i18n="community_title">Suara Developer</h2>
+<p class="text-forest/60 max-w-xl mx-auto mt-4 text-lg" data-i18n="community_desc">Apa kata tim developer tentang harapan dan peran mereka dalam membangun website Go Green School.</p>
 <div class="w-24 h-1.5 bg-gradient-to-r from-primary to-forest rounded-full mx-auto mt-6"></div>
 </div>
-<div class="fade-up stagger-children grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<!-- Testimonial 1 -->
-<div class="quote-card relative bg-white p-8 pt-10 rounded-2xl shadow-sm border border-forest/5 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden">
+<div class="fade-up relative overflow-hidden rounded-3xl group">
+<!-- Developer Carousel -->
+<div id="developer-carousel-track" class="flex transition-transform duration-700 ease-in-out">
+<!-- Developer 1 -->
+<div class="min-w-full px-4">
+<div class="quote-card relative bg-white p-8 pt-10 rounded-2xl shadow-sm border border-forest/5 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden flex flex-col h-full min-h-[29rem] justify-between">
 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-emerald-300"></div>
 <div class="flex gap-1 mb-4">
 <span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span>
 </div>
-<p class="italic text-forest/70 leading-relaxed mb-6" data-i18n="testi1_text">"My child is now much more aware of the environment. She even taught us how to make compost at home!"</p>
+<p class="italic text-forest/70 leading-relaxed mb-6" data-i18n="testi1_text">"Perkenalkan saya Richard Wong, saya berharap website ayo gerakan hijau kami (kelompok 1) dapat memberi contoh dan menjadi referensi bagi sekolah - sekolah lain untuk membuat dan menerapkan gerakan hijau. mewakili semua anggota yang ikut turut bekerja sama dalam membuat website ini, kami akan sangat mengapresiasi apabila ada umpan balik terkait website agar kedepannya dapat menjadi catatan perbaikan kami."</p>
 <div class="flex items-center gap-4 pt-5 border-t border-forest/5">
 <div class="size-12 rounded-full overflow-hidden ring-2 ring-primary/20">
-<img alt="Siti Aminah" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4UfBv_Brv8TSd_KclplmJjOGwxOH_W2qpvldpYr5M1gyk8xf3sfJr3Mq8-xzB-5e4RaoQLRDXPWO6OgWW0UAjygvfo3XiVgLRjvyDk9n0I_L9PITt5yndXywHpTmt3br68J9vT0cRFp-UfvH_hK6Irc9Q7wf5bXBrtVQlNkPZXTZU2wpnpnvxnC7S6pmLegh1uCrV5UyIZ8FkOMDow2V46EumrqodcDgjyCpwWxxcEs1qPecdkVUk-1r_e8CkCJ61at8DAPYWwmc"/>
+<img alt="Richard Wong" class="w-full h-full object-cover" src="{{ asset('images/richard wong.png') }}"/>
 </div>
 <div>
-<h5 class="font-bold text-forest">Siti Aminah</h5>
-<p class="text-xs text-forest/50" data-i18n="testi1_role">Student Parent</p>
+<h5 class="font-bold text-forest">Richard Wong</h5>
+<p class="text-xs text-forest/50" data-i18n="testi1_role">Frontend Developer</p>
 </div>
 </div>
 </div>
-<!-- Testimonial 2 -->
-<div class="quote-card relative bg-white p-8 pt-10 rounded-2xl shadow-sm border border-forest/5 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden">
+</div>
+<!-- Developer 2 -->
+<div class="min-w-full px-4">
+<div class="quote-card relative bg-white p-8 pt-10 rounded-2xl shadow-sm border border-forest/5 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden flex flex-col h-full min-h-[29rem] justify-between">
 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-indigo-300"></div>
 <div class="flex gap-1 mb-4">
 <span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span>
 </div>
-<p class="italic text-forest/70 leading-relaxed mb-6" data-i18n="testi2_text">"Go Green School gave me a strong foundation to continue my studies in environmental engineering. The experience was very real."</p>
+<p class="italic text-forest/70 leading-relaxed mb-6" data-i18n="testi2_text">"Disini bersama Diki, Pembuatan website ini dirancang oleh kami bersama - sama dengan berbagai fitur untuk memudahkan pengguna. semoga dengan adanya website ini lebih mengenalkan tentang gerakan hijau pada masyarakat umum dan para pengunjung yang tertarik dapat langsung mencobanya."</p>
 <div class="flex items-center gap-4 pt-5 border-t border-forest/5">
 <div class="size-12 rounded-full overflow-hidden ring-2 ring-primary/20">
-<img alt="Budi Santoso" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk0j-EB1o47yAGJkmtpm0YEAuawQrcJqEFn7d5yVkjK5SZQQMGRaOhSTlQEj_63p1tUsIfz4dCLN9xqnz_gfWdV5Sl2SR1BrZbeSmXUAlhO61px5FuCUEx0PuDML6Q6i5A75R65tyX3_rbNRga9D9hWuOKnc7O127jju2oJirkwVyt9w_d10lldRBM_NVF8XdTG93PP4FIbqs0OBNRf9GyKiIPVADxpz4ejiTv2TrSvPxptXrHUQvcdFq-TBAjJr4Q7T1IYumJWEA"/>
+<img alt="Andika Dicky Sanjaya" class="w-full h-full object-cover" src="{{ asset('images/andika dicky sanjaya.jpeg') }}"/>
 </div>
 <div>
-<h5 class="font-bold text-forest">Budi Santoso</h5>
-<p class="text-xs text-forest/50" data-i18n="testi2_role">Alumni 2021</p>
+<h5 class="font-bold text-forest">Andika Dicky Sanjaya</h5>
+<p class="text-xs text-forest/50" data-i18n="testi2_role">Lead Developer</p>
 </div>
 </div>
 </div>
-<!-- Testimonial 3 -->
-<div class="quote-card relative bg-white p-8 pt-10 rounded-2xl shadow-sm border border-forest/5 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden">
+</div>
+<!-- Developer 3 -->
+<div class="min-w-full px-4">
+<div class="quote-card relative bg-white p-8 pt-10 rounded-2xl shadow-sm border border-forest/5 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden flex flex-col h-full min-h-[29rem] justify-between">
 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 to-rose-300"></div>
 <div class="flex gap-1 mb-4">
 <span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span>
 </div>
-<p class="italic text-forest/70 leading-relaxed mb-6" data-i18n="testi3_text">"Teaching here is not just about delivering material, but truly practicing a green lifestyle every day with students."</p>
+<p class="italic text-forest/70 leading-relaxed mb-6" data-i18n="testi3_text">"Halo, saya Iren Krismawati atau biasa dipanggil Iren. kami merancang dan mengimplementasikan berbagai elemen pelajaran mulai dari Matematika, Bahasa Indonesia, Bahasa Inggris, dan masih banyak lagi. semoga para pengunjung suka dan jangan lupa follow kami di instagram dengan nama @earthygreen.vibes ya."</p>
 <div class="flex items-center gap-4 pt-5 border-t border-forest/5">
 <div class="size-12 rounded-full overflow-hidden ring-2 ring-primary/20">
-<img alt="Dewi Lestari" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGwCasxaje4b1fRB9eziOyWSrcqgtVk7U1EFBA1bE9UsHflE2tVY4Db7VAfWM0m9F_3EadNNhmd7lsRDpl09mWJEH_-KUQ22UIiJUBHvG3ZqWJydyhnKfM9y9cwGh9nY8i-xLVMBWQi_yM_oakqKuUYrwJheRfwPF8u-r01zk1ANkTteYp4RzaKa06HWAxuNX68f9lMoMdHMXmHV4vOLOV0AjhEsZutbwEiFfBrQQwJoYUXisibuMBuLgvUynFShQmnOgmPnK6hSQ"/>
+<img alt="Irene Krismawati" class="w-full h-full object-cover" src="{{ asset('images/irene krismawati.png') }}"/>
 </div>
 <div>
-<h5 class="font-bold text-forest">Dewi Lestari</h5>
-<p class="text-xs text-forest/50" data-i18n="testi3_role">Science Teacher</p>
+<h5 class="font-bold text-forest">Irene Krismawati</h5>
+<p class="text-xs text-forest/50" data-i18n="testi3_role">Content Developer</p>
 </div>
 </div>
+</div>
+</div>
+<!-- Developer 4 -->
+<div class="min-w-full px-4">
+<div class="quote-card relative bg-white p-8 pt-10 rounded-2xl shadow-sm border border-forest/5 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden flex flex-col h-full min-h-[29rem] justify-between">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-400 to-pink-300"></div>
+<div class="flex gap-1 mb-4">
+<span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span><span class="text-amber-400 text-sm">★</span>
+</div>
+<p class="italic text-forest/70 leading-relaxed mb-6" data-i18n="testi4_text">"Deny disini, saya lebih banyak bertugas terkait konten dan promosi melalui media sosial. saya berharap website ini bisa menjangkau tidak hanya kepada orang - orang sekitar namun juga hingga ke masyarakat global."</p>
+<div class="flex items-center gap-4 pt-5 border-t border-forest/5">
+<div class="size-12 rounded-full overflow-hidden ring-2 ring-primary/20">
+<img alt="Deny Hendrata" class="w-full h-full object-cover object-[center_20%]" src="{{ asset('images/Deny Hendrata.png') }}"/>
+</div>
+<div>
+<h5 class="font-bold text-forest">Deny Hendrata</h5>
+<p class="text-xs text-forest/50" data-i18n="testi4_role">Media Developer</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Developer Carousel Controls -->
+<button id="developer-carousel-prev" class="absolute left-4 top-1/2 -translate-y-1/2 size-12 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-forest hover:bg-white/40 transition-all opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button id="developer-carousel-next" class="absolute right-4 top-1/2 -translate-y-1/2 size-12 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-forest hover:bg-white/40 transition-all opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<!-- Developer Carousel Indicators -->
+<div id="developer-carousel-indicators" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+<button class="size-2.5 rounded-full bg-primary transition-all" data-slide="0"></button>
+<button class="size-2.5 rounded-full bg-forest/30 transition-all" data-slide="1"></button>
+<button class="size-2.5 rounded-full bg-forest/30 transition-all" data-slide="2"></button>
+<button class="size-2.5 rounded-full bg-forest/30 transition-all" data-slide="3"></button>
 </div>
 </div>
 </section>
@@ -1163,8 +1205,8 @@ View All Tips
 </div>
 <!-- Footer -->
 <footer class="bg-forest text-sage py-20 px-4 md:px-20 lg:px-40">
-<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-16">
-<div class="space-y-6 lg:col-span-1">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+<div class="space-y-6">
 <div class="flex items-center gap-2">
 <div class="size-8">
 <img alt="Go Green School Logo" class="w-full h-full object-contain brightness-0 invert" src="/images/logo2-removebg-preview.png"/>
@@ -1186,16 +1228,6 @@ View All Tips
 </a>
 </div>
 </div>
-<div class="grid grid-cols-2 lg:grid-cols-3 lg:col-span-3 gap-12">
-<div class="space-y-6">
-<h5 class="text-white font-bold text-sm uppercase tracking-widest" data-i18n="footer_quicklinks">Quick Links</h5>
-<ul class="space-y-4 text-sage/60 text-sm">
-<li><a class="hover:text-primary transition-colors" href="#" data-i18n="footer_registration">Registration</a></li>
-<li><a class="hover:text-primary transition-colors" href="#" data-i18n="footer_curriculum">Curriculum</a></li>
-<li><a class="hover:text-primary transition-colors" href="#" data-i18n="footer_news">School News</a></li>
-<li><a class="hover:text-primary transition-colors" href="#" data-i18n="footer_career">Career</a></li>
-</ul>
-</div>
 <div class="space-y-6">
 <h5 class="text-white font-bold text-sm uppercase tracking-widest" data-i18n="footer_contactus">Contact Us</h5>
 <ul class="space-y-4 text-sage/60 text-sm">
@@ -1206,7 +1238,6 @@ View All Tips
 <li class="flex gap-2 items-start">
 <span class="material-symbols-outlined text-primary text-base">mail</span>
 <span>go.green.website.2026@gmail.com</span>
-<span>go.green.website.2026@gmail.com</span>
 </li>
 <li class="flex gap-2 items-start">
 <i class="fa-brands fa-instagram text-primary text-base"></i>
@@ -1214,23 +1245,10 @@ View All Tips
 </li>
 </ul>
 </div>
-<div class="space-y-6">
-<h5 class="text-white font-bold text-sm uppercase tracking-widest" data-i18n="footer_newsletter">Newsletter</h5>
-<p class="text-sage/60 text-sm" data-i18n="footer_newsletter_desc">Get green tips in your inbox.</p>
-<div class="flex border-b border-white/10 pb-2">
-<input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-white/20 text-sage" placeholder="Your email" type="email"/>
-<button class="text-primary hover:text-white transition-colors">
-<span class="material-symbols-outlined">arrow_forward</span>
-</button>
-</div>
-</div>
-</div>
 </div>
 <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-sage/40 uppercase tracking-widest">
 <p data-i18n="footer_copyright">© 2026 Go Green School. All Rights Reserved.</p>
 <div class="flex gap-8">
-<a class="hover:text-white transition-colors" href="#" data-i18n="footer_privacy">Privacy Policy</a>
-<a class="hover:text-white transition-colors" href="#" data-i18n="footer_terms">Terms &amp; Conditions</a>
 </div>
 </div>
 </footer>
@@ -1370,14 +1388,17 @@ const translations = {
         tip2_title: "Start Your Own Vegetable Garden",
         tip3_title: "Save Energy at Home",
         tip4_title: "How to Sort Waste Properly",
-        community_title: "Community Voices",
-        community_desc: "What they say about the learning experience at Go Green School.",
-        testi1_role: "Student Parent",
-        testi1_text: '"My child is now much more aware of the environment. She even taught us how to make compost at home!"',
-        testi2_role: "Alumni 2021",
-        testi2_text: '"Go Green School gave me a strong foundation to continue my studies in environmental engineering. The experience was very real."',
-        testi3_role: "Science Teacher",
-        testi3_text: '"Teaching here is not just about delivering material, but truly practicing a green lifestyle every day with students."',
+        community_label: "👨‍💻 Developer Voices",
+        community_title: "Developer Voices",
+        community_desc: "The development team shares their hopes and describes their role in building the Go Green School website.",
+        testi1_role: "Frontend Developer",
+        testi1_text: '"My name is Richard Wong. I hope that our ‘Let’s Go Green’ website (Group 1) can serve as an example and a reference for other schools looking to set up and implement green initiatives. On behalf of all the members who have collaborated on creating this website, we would greatly appreciate any feedback regarding the site, so that we may use it to improve it in the future."',
+        testi2_role: "Lead Developer",
+        testi2_text: '"Here with Diki, we have designed this website together, incorporating a range of features to make it user-friendly. We hope that this website will help raise awareness of the green movement amongst the general public, and that interested visitors will be able to try it out for themselves."',
+        testi3_role: "Content Developer",
+        testi3_text: '"Hello, my name is Iren Krismawati, though I’m usually called Iren. We design and implement a range of lesson materials covering subjects such as Maths, Indonesian, English and many more. We hope you enjoy them, and please don’t forget to follow us on Instagram at @earthygreen.vibes."',
+        testi4_role: "Media Developer",
+        testi4_text: '"My name is Deny; my role mainly involves content and promotion via social media. I hope this website will reach not only people in the local area but also a global audience."',
         footer_desc: "Shaping the character of future leaders who are not only academically intelligent, but also have high empathy for earth's sustainability.",
         footer_quicklinks: "Quick Links",
         footer_registration: "Registration",
@@ -1386,8 +1407,6 @@ const translations = {
         footer_career: "Career",
         footer_contactus: "Contact Us",
         footer_copyright: "© 2026 Go Green School. All Rights Reserved.",
-        footer_privacy: "Privacy Policy",
-        footer_terms: "Terms & Conditions",
         // Go Green School Introduction
         intro_label: "🌍 Understanding the Movement",
         intro_title: 'What is <span class="text-primary">Go Green School</span>?',
@@ -1502,14 +1521,17 @@ const translations = {
         tip2_title: "Mulai Kebun Sayur Sendiri",
         tip3_title: "Hemat Energi di Rumah",
         tip4_title: "Cara Memilah Sampah dengan Benar",
-        community_title: "Suara Komunitas",
-        community_desc: "Apa kata mereka tentang pengalaman belajar di Go Green School.",
-        testi1_role: "Orang Tua Siswa",
-        testi1_text: '"Anak saya sekarang jauh lebih peduli dengan lingkungannya. Dia bahkan mengajari kami cara membuat kompos di rumah!"',
-        testi2_role: "Alumni 2021",
-        testi2_text: '"Go Green School memberikan saya dasar yang kuat untuk melanjutkan studi di bidang teknik lingkungan. Pengalamannya sangat nyata."',
-        testi3_role: "Guru Sains",
-        testi3_text: '"Mengajar di sini bukan sekadar memberikan materi, tapi benar-benar mempraktikkan gaya hidup hijau setiap hari bersama siswa."',
+        community_label: "👨‍💻 Suara Developer",
+        community_title: "Suara Developer",
+        community_desc: "Apa kata tim developer tentang harapan dan peran mereka dalam membangun website Go Green School.",
+        testi1_role: "Frontend Developer",
+        testi1_text: '"Perkenalkan saya Richard Wong, saya berharap website ayo gerakan hijau kami (kelompok 1) dapat memberi contoh dan menjadi referensi bagi sekolah - sekolah lain untuk membuat dan menerapkan gerakan hijau. mewakili semua anggota yang ikut turut bekerja sama dalam membuat website ini, kami akan sangat mengapresiasi apabila ada umpan balik terkait website agar kedepannya dapat menjadi catatan perbaikan kami."',
+        testi2_role: "Lead Developer",
+        testi2_text: '"Disini bersama Diki, Pembuatan website ini dirancang oleh kami bersama - sama dengan berbagai fitur untuk memudahkan pengguna. semoga dengan adanya website ini lebih mengenalkan tentang gerakan hijau pada masyarakat umum dan para pengunjung yang tertarik dapat langsung mencobanya."',
+        testi3_role: "Content Developer",
+        testi3_text: '"Halo, saya Iren Krismawati atau biasa dipanggil Iren. kami merancang dan mengimplementasikan berbagai elemen pelajaran mulai dari Matematika, Bahasa Indonesia, Bahasa Inggris, dan masih banyak lagi. semoga para pengunjung suka dan jangan lupa follow kami di instagram dengan nama @earthygreen.vibes ya."',
+        testi4_role: "Media Developer",
+        testi4_text: '"Deny disini, saya lebih banyak bertugas terkait konten dan promosi melalui media sosial. saya berharap website ini bisa menjangkau tidak hanya kepada orang - orang sekitar namun juga hingga ke masyarakat global."',
         footer_desc: "Gerakan hijau bukan hanya tren, tapi tanggung jawab.",
         footer_quicklinks: "Tautan Cepat",
         footer_registration: "Pendaftaran",
@@ -1518,8 +1540,6 @@ const translations = {
         footer_career: "Karir",
         footer_contactus: "Hubungi Kami",
         footer_copyright: "© 2026 Go Green School. Hak Cipta Dilindungi.",
-        footer_privacy: "Kebijakan Privasi",
-        footer_terms: "Syarat & Ketentuan",
         // Go Green School Introduction
         intro_label: "🌍 Memahami Gerakan",
         intro_title: 'Apa itu <span class="text-primary">Go Green School</span>?',
@@ -1932,6 +1952,96 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { passive: true });
 
     startAutoSlide();
+});
+
+// Developer Carousel Script
+document.addEventListener('DOMContentLoaded', function() {
+    const developerTrack = document.getElementById('developer-carousel-track');
+    const developerPrevBtn = document.getElementById('developer-carousel-prev');
+    const developerNextBtn = document.getElementById('developer-carousel-next');
+    const developerIndicators = document.querySelectorAll('#developer-carousel-indicators button');
+
+    let developerCurrent = 0;
+    let developerAutoSlideInterval;
+
+    function updateDeveloperIndicators() {
+        developerIndicators.forEach((indicator, index) => {
+            if (index === developerCurrent) {
+                indicator.classList.remove('bg-forest/30');
+                indicator.classList.add('bg-primary');
+            } else {
+                indicator.classList.remove('bg-primary');
+                indicator.classList.add('bg-forest/30');
+            }
+        });
+    }
+
+    function goToDeveloperSlide(index) {
+        const totalSlides = 4;
+        developerCurrent = (index + totalSlides) % totalSlides;
+        const translateX = -developerCurrent * 100;
+        developerTrack.style.transform = `translateX(${translateX}%)`;
+        updateDeveloperIndicators();
+    }
+
+    function nextDeveloperSlide() {
+        goToDeveloperSlide(developerCurrent + 1);
+    }
+
+    function prevDeveloperSlide() {
+        goToDeveloperSlide(developerCurrent - 1);
+    }
+
+    function startDeveloperAutoSlide() {
+        developerAutoSlideInterval = setInterval(nextDeveloperSlide, 8000);
+    }
+
+    function resetDeveloperAutoSlide() {
+        clearInterval(developerAutoSlideInterval);
+        startDeveloperAutoSlide();
+    }
+
+    // Event listeners
+    developerNextBtn.addEventListener('click', function() {
+        nextDeveloperSlide();
+        resetDeveloperAutoSlide();
+    });
+
+    developerPrevBtn.addEventListener('click', function() {
+        prevDeveloperSlide();
+        resetDeveloperAutoSlide();
+    });
+
+    developerIndicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', function() {
+            goToDeveloperSlide(index);
+            resetDeveloperAutoSlide();
+        });
+    });
+
+    // Touch support for developer carousel
+    let developerTouchStartX = 0;
+    let developerTouchEndX = 0;
+
+    const developerCarousel = developerTrack.parentElement;
+
+    developerCarousel.addEventListener('touchstart', function (e) {
+        developerTouchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    developerCarousel.addEventListener('touchend', function (e) {
+        developerTouchEndX = e.changedTouches[0].screenX;
+        const diff = developerTouchStartX - developerTouchEndX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) goToDeveloperSlide(developerCurrent + 1);
+            else goToDeveloperSlide(developerCurrent - 1);
+            resetDeveloperAutoSlide();
+        }
+    }, { passive: true });
+
+    // Initialize
+    updateDeveloperIndicators();
+    startDeveloperAutoSlide();
 });
 </script>
 
