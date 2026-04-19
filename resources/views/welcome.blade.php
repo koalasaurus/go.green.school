@@ -1214,7 +1214,7 @@ View All Tips
 <h2 class="text-white text-xl font-extrabold">Go Green School</h2>
 </div>
 <p class="text-sage/50 text-sm leading-relaxed" data-i18n="footer_desc">
-                        Shaping the character of future leaders who are not only academically intelligent, but also have high empathy for earth's sustainability.
+                        Gerakan hijau bukan hanya tren, tapi tanggung jawab.
                     </p>
 <div class="flex gap-4">
 <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all" href="#">
@@ -1399,7 +1399,7 @@ const translations = {
         testi3_text: '"Hello, my name is Iren Krismawati, though I’m usually called Iren. We design and implement a range of lesson materials covering subjects such as Maths, Indonesian, English and many more. We hope you enjoy them, and please don’t forget to follow us on Instagram at @earthygreen.vibes."',
         testi4_role: "Media Developer",
         testi4_text: '"My name is Deny; my role mainly involves content and promotion via social media. I hope this website will reach not only people in the local area but also a global audience."',
-        footer_desc: "Shaping the character of future leaders who are not only academically intelligent, but also have high empathy for earth's sustainability.",
+        footer_desc: "The green movement is not just a trend, but a responsibility.",
         footer_quicklinks: "Quick Links",
         footer_registration: "Registration",
         footer_curriculum: "Curriculum",

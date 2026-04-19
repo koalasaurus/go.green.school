@@ -747,7 +747,7 @@
                             <h2 class="text-white text-xl font-extrabold">Go Green School</h2>
                         </div>
                         <p class="text-sage/50 text-sm leading-relaxed" data-i18n="footer_desc">
-                            Shaping the character of future leaders who are not only academically intelligent, but also have high empathy for earth's sustainability.
+                            Gerakan hijau bukan hanya trend, tapi tanggung jawab.
                         </p>
                         <div class="flex gap-4">
                             <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all" href="#">
@@ -852,7 +852,7 @@
             faq_3_a: "Absolutely! We welcome community partnerships and volunteers. Please reach out through our contact form and our partnership team will be happy to discuss collaboration opportunities.",
             faq_4_q: "Is there a school tour available?",
             faq_4_a: "Yes, we offer school tours every weekday. Please contact us to schedule a visit so we can show you our green facilities and programs in action.",
-            footer_desc: "Shaping the character of future leaders who are not only academically intelligent, but also have high empathy for earth's sustainability.",
+            footer_desc: "The green movement is not just a trend, but a responsibility.",
             footer_quicklinks: "Quick Links",
             footer_contactus: "Contact Us",
             footer_newsletter: "Newsletter",
@@ -922,7 +922,7 @@
             faq_3_a: "Tentu saja! Kami menyambut kemitraan komunitas dan relawan. Silakan hubungi melalui formulir kontak kami dan tim kemitraan kami akan dengan senang hati mendiskusikan peluang kolaborasi.",
             faq_4_q: "Apakah ada tur sekolah yang tersedia?",
             faq_4_a: "Ya, kami menawarkan tur sekolah setiap hari kerja. Silakan hubungi kami untuk menjadwalkan kunjungan agar kami dapat menunjukkan fasilitas dan program hijau kami.",
-            footer_desc: "Membentuk karakter pemimpin masa depan yang tidak hanya cerdas secara akademis, tetapi juga memiliki empati tinggi terhadap keberlanjutan bumi.",
+            footer_desc: "Gerakan hijau bukan hanya trend, tapi tanggung jawab.",
             footer_quicklinks: "Tautan Cepat",
             footer_contactus: "Hubungi Kami",
             footer_newsletter: "Buletin",

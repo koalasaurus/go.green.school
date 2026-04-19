@@ -898,7 +898,7 @@
                             <h2 class="text-white text-xl font-extrabold">Go Green School</h2>
                         </div>
                         <p class="text-sage/50 text-sm leading-relaxed" data-i18n="footer_desc">
-                            Shaping the character of future leaders who are not only academically intelligent, but also have high empathy for earth's sustainability.
+                            Gerakan hijau bukan hanya tren, tapi tanggung jawab.
                         </p>
                         <div class="flex gap-4">
                             <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all" href="#">
@@ -1085,7 +1085,7 @@
             step2_desc: 'Click the Calculate button and the system will instantly compute the total, average, percentage, and 30-day prediction.',
             step3_title: "Analyze Results",
             step3_desc: "Review the charts, percentage breakdowns, and formulas to understand your waste management patterns.",
-            footer_desc: "Shaping the character of future leaders who are not only academically intelligent, but also have high empathy for earth's sustainability.",
+            footer_desc: "The green movement is not just a trend, but a responsibility.",
             footer_quicklinks: "Quick Links",
             footer_contactus: "Contact Us",
             footer_newsletter: "Newsletter",
@@ -1188,7 +1188,7 @@
             step2_desc: "Klik tombol Hitung dan sistem akan langsung menghitung total, rata-rata, persentase, dan prediksi 30 hari.",
             step3_title: "Analisis Hasil",
             step3_desc: "Tinjau grafik, rincian persentase, dan rumus untuk memahami pola pengelolaan sampah kamu.",
-            footer_desc: "Membentuk karakter pemimpin masa depan yang tidak hanya cerdas secara akademis, tetapi juga memiliki empati tinggi terhadap keberlanjutan bumi.",
+            footer_desc: "Gerakan hijau bukan hanya tren, tapi tanggung jawab.",
             footer_quicklinks: "Tautan Cepat",
             footer_contactus: "Hubungi Kami",
             footer_newsletter: "Buletin",
