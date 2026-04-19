@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -618,8 +619,8 @@ Go Green School Web is an educational website that provides information about wa
 
             <!-- Footer -->
             <footer class="bg-forest text-sage py-20 px-4 md:px-20 lg:px-40">
-                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-16">
-                    <div class="space-y-6 lg:col-span-1">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <div class="space-y-6">
                         <div class="flex items-center gap-2">
                             <div class="size-8">
                                 <img alt="Go Green School Logo" class="w-full h-full object-contain brightness-0 invert" src="/images/logo2-removebg-preview.png"/>
@@ -627,7 +628,7 @@ Go Green School Web is an educational website that provides information about wa
                             <h2 class="text-white text-xl font-extrabold">Go Green School</h2>
                         </div>
                         <p class="text-sage/50 text-sm leading-relaxed" data-i18n="footer_desc">
-                            Shaping the character of future leaders who are not only academically intelligent, but also have high empathy for earth's sustainability.
+                            Gerakan hijau bukan hanya tren, tapi tanggung jawab.
                         </p>
                         <div class="flex gap-4">
                             <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all" href="#">
@@ -637,55 +638,31 @@ Go Green School Web is an educational website that provides information about wa
                                 <span class="material-symbols-outlined text-xl">share</span>
                             </a>
                             <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all" href="#">
-                                <span class="material-symbols-outlined text-xl">mail</span>
+                                <span class="material-symbols-outlined text-xl">Mail</span>
                             </a>
                         </div>
                     </div>
-                    <div class="grid grid-cols-2 lg:grid-cols-3 lg:col-span-3 gap-12">
-                        <div class="space-y-6">
-                            <h5 class="text-white font-bold text-sm uppercase tracking-widest" data-i18n="footer_quicklinks">Quick Links</h5>
-                            <ul class="space-y-4 text-sage/60 text-sm">
-                                <li><a class="hover:text-primary transition-colors" href="/" data-i18n="nav_home">Home</a></li>
-                                <li><a class="hover:text-primary transition-colors" href="/about" data-i18n="nav_about">About</a></li>
-                                <li><a class="hover:text-primary transition-colors" href="/program" data-i18n="nav_program">Program</a></li>
-                                <li><a class="hover:text-primary transition-colors" href="/contact" data-i18n="nav_contact">Contact</a></li>
-                                <li><a class="hover:text-primary transition-colors" href="/kalkulator" data-i18n="nav_calculator">Calculator</a></li>
-                            </ul>
-                        </div>
-                        <div class="space-y-6">
-                            <h5 class="text-white font-bold text-sm uppercase tracking-widest" data-i18n="footer_contactus">Contact Us</h5>
-                            <ul class="space-y-4 text-sage/60 text-sm">
-                                <li class="flex gap-2 items-start">
-                                    <span class="material-symbols-outlined text-primary text-base">location_on</span>
-                                    <span>Jl. Raya Sintang - Pontianak, RT 010/RW 003, Desa Balai Agung, Kec. Sungai Tebelian, Kab. Sintang, Kalbar.</span>
-                                </li>
-                                <li class="flex gap-2 items-start">
-                                    <span class="material-symbols-outlined text-primary text-base">mail</span>
-                                    <span>go.green.website.2026@gmail.com</span>
-                                </li>
-                                <li class="flex gap-2 items-start">
-                                    <span class="material-symbols-outlined text-primary text-base">photo_camera</span>
-                                    <span>@earthygreen.vibes</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="space-y-6">
-                            <h5 class="text-white font-bold text-sm uppercase tracking-widest" data-i18n="footer_newsletter">Newsletter</h5>
-                            <p class="text-sage/60 text-sm" data-i18n="footer_newsletter_desc">Get green tips in your inbox.</p>
-                            <div class="flex border-b border-white/10 pb-2">
-                                <input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-white/20 text-sage" placeholder="Your email" type="email"/>
-                                <button class="text-primary hover:text-white transition-colors">
-                                    <span class="material-symbols-outlined">arrow_forward</span>
-                                </button>
-                            </div>
-                        </div>
+                    <div class="space-y-6">
+                        <h5 class="text-white font-bold text-sm uppercase tracking-widest" data-i18n="footer_contactus">Contact Us</h5>
+                        <ul class="space-y-4 text-sage/60 text-sm">
+                            <li class="flex gap-2 items-start">
+                                <span class="material-symbols-outlined text-primary text-base">location_on</span>
+                                <span>Jl. Raya Sintang - Pontianak, RT 010/RW 003, Desa Balai Agung, Kec. Sungai Tebelian, Kab. Sintang, Kalbar.</span>
+                            </li>
+                            <li class="flex gap-2 items-start">
+                                <span class="material-symbols-outlined text-primary text-base">mail</span>
+                                <span>go.green.website.2026@gmail.com</span>
+                            </li>
+                            <li class="flex gap-2 items-start">
+                                <i class="fa-brands fa-instagram text-primary text-base"></i>
+                                <span>earthygreen.vibes</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-sage/40 uppercase tracking-widest">
                     <p data-i18n="footer_copyright">© 2026 Go Green School. All Rights Reserved.</p>
                     <div class="flex gap-8">
-                        <a class="hover:text-white transition-colors" href="#" data-i18n="footer_privacy">Privacy Policy</a>
-                        <a class="hover:text-white transition-colors" href="#" data-i18n="footer_terms">Terms &amp; Conditions</a>
                     </div>
                 </div>
             </footer>
@@ -756,14 +733,12 @@ Go Green School Web is an educational website that provides information about wa
             cta_desc: "Be part of the green revolution in education. Together, we can create a sustainable future for the next generation.",
             cta_contact: "Contact Us",
             cta_calculator: "Try Calculator",
-            footer_desc: "Shaping the character of future leaders who are not only academically intelligent, but also have high empathy for earth's sustainability.",
+            footer_desc: "The green movement is not just a trend, but a responsibility.",
             footer_quicklinks: "Quick Links",
             footer_contactus: "Contact Us",
             footer_newsletter: "Newsletter",
             footer_newsletter_desc: "Get green tips in your inbox.",
             footer_copyright: "© 2026 Go Green School. All Rights Reserved.",
-            footer_privacy: "Privacy Policy",
-            footer_terms: "Terms & Conditions",
             dev_modal_title: "Meet Our Developers",
             dev_modal_subtitle: "The team behind Go Green School",
             dev_role: "Developer",
@@ -828,14 +803,12 @@ Go Green School Web is an educational website that provides information about wa
             cta_desc: "Jadilah bagian dari revolusi hijau dalam pendidikan. Bersama, kita bisa menciptakan masa depan berkelanjutan untuk generasi berikutnya.",
             cta_contact: "Hubungi Kami",
             cta_calculator: "Coba Kalkulator",
-            footer_desc: "Membentuk karakter pemimpin masa depan yang tidak hanya cerdas secara akademis, tetapi juga memiliki empati tinggi terhadap keberlanjutan bumi.",
+            footer_desc: "Gerakan hijau bukan hanya tren, tapi tanggung jawab.",
             footer_quicklinks: "Tautan Cepat",
             footer_contactus: "Hubungi Kami",
             footer_newsletter: "Buletin",
             footer_newsletter_desc: "Dapatkan tips hijau di kotak masuk Anda.",
             footer_copyright: "© 2026 Go Green School. Hak Cipta Dilindungi.",
-            footer_privacy: "Kebijakan Privasi",
-            footer_terms: "Syarat & Ketentuan",
             dev_modal_title: "Temui Developer Kami",
             dev_modal_subtitle: "Tim di balik Go Green School",
             dev_role: "Pengembang",
