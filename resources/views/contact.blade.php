@@ -604,13 +604,26 @@
 
                             <!-- Map & Additional Info -->
                             <div class="fade-up space-y-8">
-                                <!-- Map Placeholder -->
+                                <!-- Google Maps Embed -->
                                 <div class="bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 overflow-hidden hover-glow transition-all duration-500">
-                                    <div class="bg-gradient-to-br from-primary/10 via-accent-teal/5 to-forest/5 h-72 flex flex-col items-center justify-center text-center p-8 relative">
-                                        <div class="absolute inset-0 mesh-gradient"></div>
-                                        <span class="material-symbols-outlined text-primary/30 mb-4 relative z-10" style="font-size: 80px;">map</span>
-                                        <p class="text-forest/40 text-sm font-semibold relative z-10" data-i18n="map_placeholder">Map will be displayed here</p>
-                                        <p class="text-forest/30 text-xs mt-1 relative z-10" data-i18n="map_hint">Embed your Google Maps here</p>
+                                    <div class="h-72 relative">
+                                        <iframe
+                                            title="Go Green School Location"
+                                            class="w-full h-full border-0"
+                                            loading="lazy"
+                                            referrerpolicy="no-referrer-when-downgrade"
+                                            src="https://www.google.com/maps?q=Jalan%20Sintang%2C%20Kapuas%20Kanan%20Hulu%2C%20Kec.%20Sungai%20Tebelian%2C%20Kabupaten%20Sintang%2C%20Kalimantan%20Barat%2078616&z=16&output=embed">
+                                        </iframe>
+                                    </div>
+                                    <div class="px-4 py-3 bg-sage/40 border-t border-forest/5">
+                                        <a
+                                            href="https://www.google.com/maps/search/?api=1&query=Jalan%20Sintang%2C%20Kapuas%20Kanan%20Hulu%2C%20Kec.%20Sungai%20Tebelian%2C%20Kabupaten%20Sintang%2C%20Kalimantan%20Barat%2078616"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-forest transition-colors">
+                                            <span class="material-symbols-outlined text-base">map</span>
+                                            <span>Buka di Google Maps</span>
+                                        </a>
                                     </div>
                                 </div>
 
