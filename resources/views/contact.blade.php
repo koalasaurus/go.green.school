@@ -604,27 +604,31 @@
 
                             <!-- Map & Additional Info -->
                             <div class="fade-up space-y-8">
-                                <!-- Google Maps Embed -->
+                                <!-- Google Maps Embed (Clickable to School Location) -->
                                 <div class="bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 overflow-hidden hover-glow transition-all duration-500">
-                                    <div class="h-72 relative">
+                                    <a
+                                        href="https://www.google.com/maps/place/SMK+KARYA+BANGSA+SINTANG/@0.0333117,111.4623803,136m"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="block h-72 relative group"
+                                        aria-label="Buka lokasi sekolah di Google Maps">
                                         <iframe
-                                            title="Go Green School Location"
+                                            title="SMK Karya Bangsa Sintang - Satellite View"
                                             class="w-full h-full border-0"
                                             loading="lazy"
                                             referrerpolicy="no-referrer-when-downgrade"
-                                            src="https://www.google.com/maps?q=Jalan%20Sintang%2C%20Kapuas%20Kanan%20Hulu%2C%20Kec.%20Sungai%20Tebelian%2C%20Kabupaten%20Sintang%2C%20Kalimantan%20Barat%2078616&z=16&output=embed">
+                                            src="https://maps.google.com/maps?q=SMK%20KARYA%20BANGSA%20SINTANG&t=k&z=19&output=embed">
                                         </iframe>
-                                    </div>
-                                    <div class="px-4 py-3 bg-sage/40 border-t border-forest/5">
-                                        <a
-                                            href="https://www.google.com/maps/search/?api=1&query=Jalan%20Sintang%2C%20Kapuas%20Kanan%20Hulu%2C%20Kec.%20Sungai%20Tebelian%2C%20Kabupaten%20Sintang%2C%20Kalimantan%20Barat%2078616"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-forest transition-colors">
-                                            <span class="material-symbols-outlined text-base">map</span>
-                                            <span>Buka di Google Maps</span>
-                                        </a>
-                                    </div>
+                                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+                                        <div class="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-bold text-forest shadow">
+                                            <span class="material-symbols-outlined text-sm text-primary">location_on</span>
+                                            <span>SMK KARYA BANGSA SINTANG</span>
+                                        </div>
+                                        <div class="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-primary text-white px-3 py-1.5 text-[11px] font-bold shadow-lg shadow-primary/30">
+                                            <span class="material-symbols-outlined text-sm">open_in_new</span>
+                                            <span>Buka Google Maps</span>
+                                        </div>
+                                    </a>
                                 </div>
 
                                 <!-- Operating Hours -->
