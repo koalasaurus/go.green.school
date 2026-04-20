@@ -84,15 +84,12 @@ Berikut pembagian peran anggota tim pada project **Go Green School**. Bagian ini
 
 ## 🖼️ Dokumentasi Poster
 
-### Poster Digital Marketing Versi 1 (Richard)
-![Poster Digital Marketing v1](Richard/Go%20Green%20School%20Catalogue%20-%20A3%20Size.png)
-
 ### Poster Bahasa Indonesia (Irene)
 ![Poster Bahasa Indonesia 1](Irene/1.png)
 ![Poster Bahasa Indonesia 2](Irene/2.png)
 
 ### Poster Digital Marketing Versi 2 (Dicky & Deny)
-![Poster Digital Marketing v2](Dicky/GO%20GREEN%20SCHOOL.png)
+![Poster Digital Marketing v2](Dicky/poster%20versi%202.jpeg)
 
 ---
 
