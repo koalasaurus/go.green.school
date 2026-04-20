@@ -82,6 +82,7 @@
                 }
                 .dev-card-img {
                     transition: transform 0.5s ease;
+                    object-position: center 28%;
                 }
                 .dev-card:hover .dev-card-img {
                     transform: scale(1.08);
@@ -1113,7 +1114,7 @@ View All Tips
 <p class="italic text-forest/70 leading-relaxed mb-6" data-i18n="testi1_text">"Perkenalkan saya Richard Wong, saya berharap website ayo gerakan hijau kami (kelompok 1) dapat memberi contoh dan menjadi referensi bagi sekolah - sekolah lain untuk membuat dan menerapkan gerakan hijau. mewakili semua anggota yang ikut turut bekerja sama dalam membuat website ini, kami akan sangat mengapresiasi apabila ada umpan balik terkait website agar kedepannya dapat menjadi catatan perbaikan kami."</p>
 <div class="flex items-center gap-4 pt-5 border-t border-forest/5">
 <div class="size-12 rounded-full overflow-hidden ring-2 ring-primary/20">
-<img alt="Richard Wong" class="w-full h-full object-cover" src="{{ asset('images/richard wong.png') }}"/>
+<img alt="Richard Wong" class="w-full h-full object-cover object-center" src="{{ asset('images/richard wong.jpg') }}"/>
 </div>
 <div>
 <h5 class="font-bold text-forest">Richard Wong</h5>
@@ -1132,7 +1133,7 @@ View All Tips
 <p class="italic text-forest/70 leading-relaxed mb-6" data-i18n="testi2_text">"Disini bersama Diki, Pembuatan website ini dirancang oleh kami bersama - sama dengan berbagai fitur untuk memudahkan pengguna. semoga dengan adanya website ini lebih mengenalkan tentang gerakan hijau pada masyarakat umum dan para pengunjung yang tertarik dapat langsung mencobanya."</p>
 <div class="flex items-center gap-4 pt-5 border-t border-forest/5">
 <div class="size-12 rounded-full overflow-hidden ring-2 ring-primary/20">
-<img alt="Andika Dicky Sanjaya" class="w-full h-full object-cover" src="{{ asset('images/andika dicky sanjaya.jpeg') }}"/>
+<img alt="Andika Dicky Sanjaya" class="w-full h-full object-cover object-center" src="{{ asset('images/andika dicky sanjaya.jpeg') }}"/>
 </div>
 <div>
 <h5 class="font-bold text-forest">Andika Dicky Sanjaya</h5>
@@ -1151,7 +1152,7 @@ View All Tips
 <p class="italic text-forest/70 leading-relaxed mb-6" data-i18n="testi3_text">"Halo, saya Iren Krismawati atau biasa dipanggil Iren. kami merancang dan mengimplementasikan berbagai elemen pelajaran mulai dari Matematika, Bahasa Indonesia, Bahasa Inggris, dan masih banyak lagi. semoga para pengunjung suka dan jangan lupa follow kami di instagram dengan nama @earthygreen.vibes ya."</p>
 <div class="flex items-center gap-4 pt-5 border-t border-forest/5">
 <div class="size-12 rounded-full overflow-hidden ring-2 ring-primary/20">
-<img alt="Irene Krismawati" class="w-full h-full object-cover" src="{{ asset('images/irene krismawati.png') }}"/>
+<img alt="Irene Krismawati" class="w-full h-full object-cover object-center" src="{{ asset('images/irene krismawati.png') }}"/>
 </div>
 <div>
 <h5 class="font-bold text-forest">Irene Krismawati</h5>
@@ -1170,7 +1171,7 @@ View All Tips
 <p class="italic text-forest/70 leading-relaxed mb-6" data-i18n="testi4_text">"Deny disini, saya lebih banyak bertugas terkait konten dan promosi melalui media sosial. saya berharap website ini bisa menjangkau tidak hanya kepada orang - orang sekitar namun juga hingga ke masyarakat global."</p>
 <div class="flex items-center gap-4 pt-5 border-t border-forest/5">
 <div class="size-12 rounded-full overflow-hidden ring-2 ring-primary/20">
-<img alt="Deny Hendrata" class="w-full h-full object-cover object-[center_20%]" src="{{ asset('images/Deny Hendrata.png') }}"/>
+<img alt="Deny Hendrata" class="w-full h-full object-cover object-center" src="{{ asset('images/Deny Hendrata.jpeg') }}"/>
 </div>
 <div>
 <h5 class="font-bold text-forest">Deny Hendrata</h5>
@@ -2171,7 +2172,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="relative dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100 hover:shadow-lg hover:shadow-primary/15 transition-all duration-300 hover:-translate-y-1">
                 <div class="absolute top-3 right-3 text-sm opacity-70">🎨</div>
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="{{ asset('images/richard wong.png') }}" alt="Richard Wong" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/richard wong.jpg') }}" alt="Richard Wong" class="dev-card-img w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Richard Wong</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
@@ -2207,7 +2208,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="relative dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100 hover:shadow-lg hover:shadow-primary/15 transition-all duration-300 hover:-translate-y-1">
                 <div class="absolute top-3 right-3 text-sm opacity-70">📢</div>
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="{{ asset('images/Deny Hendrata.png') }}" alt="Deny Hendrata" class="dev-card-img w-full h-full object-cover object-[center_20%]">
+                    <img src="{{ asset('images/Deny Hendrata.jpeg') }}" alt="Deny Hendrata" class="dev-card-img w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Deny Hendrata</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>

@@ -87,6 +87,7 @@
         }
         .dev-card-img {
             transition: transform 0.5s ease;
+            object-position: center 28%;
         }
         .dev-card:hover .dev-card-img {
             transform: scale(1.08);
@@ -962,7 +963,7 @@ Go Green School Web is an educational website that provides information about wa
             <div class="relative dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100 hover:shadow-lg hover:shadow-primary/15 transition-all duration-300 hover:-translate-y-1">
                 <div class="absolute top-3 right-3 text-sm opacity-70">🎨</div>
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="{{ asset('images/richard wong.png') }}" alt="Richard Wong" class="dev-card-img w-full h-full object-cover">
+                    <img src="{{ asset('images/richard wong.jpg') }}" alt="Richard Wong" class="dev-card-img w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Richard Wong</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
@@ -989,7 +990,7 @@ Go Green School Web is an educational website that provides information about wa
             <div class="relative dev-card bg-gradient-to-br from-sage to-white rounded-2xl p-5 text-center border border-emerald-100 hover:shadow-lg hover:shadow-primary/15 transition-all duration-300 hover:-translate-y-1">
                 <div class="absolute top-3 right-3 text-sm opacity-70">📢</div>
                 <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 rounded-full overflow-hidden ring-3 ring-primary/30 ring-offset-2">
-                    <img src="{{ asset('images/Deny Hendrata.png') }}" alt="Deny Hendrata" class="dev-card-img w-full h-full object-cover object-[center_20%]">
+                    <img src="{{ asset('images/Deny Hendrata.jpeg') }}" alt="Deny Hendrata" class="dev-card-img w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-forest text-sm md:text-base">Deny Hendrata</h3>
                 <p data-i18n="dev_role" class="text-xs text-emerald-600/70 mt-1">Developer</p>
