@@ -607,7 +607,7 @@
                                 <!-- Google Maps Embed (Clickable to School Location) -->
                                 <div class="bg-white rounded-2xl shadow-lg shadow-forest/5 border border-forest/5 overflow-hidden hover-glow transition-all duration-500">
                                     <a
-                                        href="https://www.google.com/maps/place/SMK+KARYA+BANGSA+SINTANG/@0.0333117,111.4623803,136m"
+                                        href="https://www.google.com/maps/place/SMK+KARYA+BANGSA+SINTANG/@0.033318,111.4625295,19.61z/data=!4m6!3m5!1s0x31fe21fa6473db11:0x7383ddaf507df07c!8m2!3d0.0333036!4d111.4627361!16s%2Fg%2F11mtfdp2wc?hl=id&entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         class="block h-72 relative group"
